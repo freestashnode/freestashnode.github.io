@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freestashnode.github.io/news/article-18839.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Java开发日志EasyExcel自定义类型转换、Excel表头字段问题</title>
+        <meta name="description" content="1. EasyExcel自定义数据转换  EasyExcel 是阿里的一个用来读取和写入excel的库, 因为项目需要, 所以我需要从前端上传excel文件, 然后导入到数据库中  1.1 自定义转换" />
+        <link rel="icon" href="__ADDON__/img/freestashnode/favicon.ico" type="image/x-icon"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <!-- Stylesheets -->
+    <link href="/assets/website/css/freestashnode/font-awesome-all.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/flaticon.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/owl.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/bootstrap.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/animate.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/color.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/style.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/responsive.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YXFDLQYLFV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YXFDLQYLFV');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+<!-- page wrapper -->
+
+<body data-page="detail">
+    <div class="boxed_wrapper">
+                <!-- preloader -->
+        <div class="preloader"></div>
+        <!-- preloader -->
+        <!-- main header -->
+        <header class="main-header style-one">
+            <!-- header-lower -->
+            <div class="header-lower">
+                <div class="outer-box">
+                    <div class="logo-box">
+                        <figure class="logo">
+                                                        <a href="/">
+                                <span>Free Stash Node</span>
+                            </a>
+                                                    </figure>
+                    </div>
+                    <div class="menu-area">
+                        <!--Mobile Navigation Toggler-->
+                        <div class="mobile-nav-toggler">
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                        </div>
+                        <nav class="main-menu navbar-expand-md navbar-light">
+                            <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+                                <ul class="navigation clearfix">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                        <li><a href="#">关于</a></li>
+                                    <li><a href="#">联系</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!--sticky Header-->
+            <div class="sticky-header">
+                <div class="outer-box">
+                    <div class="logo-box">
+                        <figure class="logo">
+                            <a href="/">
+                                <span>Free Stash Node</span>
+                            </a>
+                        </figure>
+                    </div>
+                    <div class="menu-area">
+                        <nav class="main-menu clearfix">
+                            <!--Keep This Empty / Menu will come through Javascript-->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- main-header end -->
+        <!-- Mobile Menu  -->
+        <div class="mobile-menu">
+            <div class="menu-backdrop"></div>
+            <div class="close-btn"><i class="fas fa-times"></i></div>
+            <nav class="menu-box">
+                <div class="menu-outer">
+                    <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
+                </div>
+                <div class="social-links">
+                    <ul class="clearfix">
+                        <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+                        <li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+                        <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
+                        <li><a href="#"><span class="fab fa-instagram"></span></a></li>
+                        <li><a href="#"><span class="fab fa-youtube"></span></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div><!-- End Mobile Menu -->
+        <!-- Page Title -->
+        <section class="page-title centred" style="background-image: url(/assets/website/img/freestashnode/background/page-title.jpg);">
+            <div class="auto-container">
+                <div class="content-box">
+                    <div class="title">
+                        <h1>Java开发日志EasyExcel自定义类型转换、Excel表头字段问题</h1>
+                    </div>
+                    <ul class="bread-crumb clearfix">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- End Page Title -->
+        <!-- about-section -->
+        <section class="about-section">
+            <div class="auto-container">
+                <div class="row clearfix">
+                    <div class="col-md-9">
+                                          				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <h2><a id="1_EasyExcel_0" rel="nofollow"></a>1. EasyExcel自定义数据转换</h2> <ul> <li>EasyExcel 是阿里的一个用来读取和写入excel的库, 因为项目需要, 所以我需要从前端上传excel文件, 然后导入到数据库中</li> </ul> <h3><a id="11__8" rel="nofollow"></a>1.1 自定义转换类</h3> <ul> <li>因为我前端读取的是日期字符串, 但是实体类上的是日期类, 所以需要手动编写转换类进行转换</li> </ul> <pre><code class="prism language-java"><span class="token keyword">package</span><span class="token namespace">hbut<span class="token punctuation">.</span>community<span class="token punctuation">.</span>excel<span class="token punctuation">.</span>converter</span><span class="token punctuation">;</span><span class="token keyword">import</span><span class="token namespace">com<span class="token punctuation">.</span>alibaba<span class="token punctuation">.</span>excel<span class="token punctuation">.</span>converters<span class="token punctuation">.</span></span><span class="token class-name">Converter</span><span class="token punctuation">;</span><span class="token keyword">import</span><span class="token namespace">com<span class="token punctuation">.</span>alibaba<span class="token punctuation">.</span>excel<span class="token punctuation">.</span>converters<span class="token punctuation">.</span></span><span class="token class-name">ReadConverterContext</span><span class="token punctuation">;</span><span class="token keyword">import</span><span class="token namespace">com<span class="token punctuation">.</span>alibaba<span class="token punctuation">.</span>excel<span class="token punctuation">.</span>converters<span class="token punctuation">.</span></span><span class="token class-name">WriteConverterContext</span><span class="token punctuation">;</span><span class="token keyword">import</span><span class="token namespace">com<span class="token punctuation">.</span>alibaba<span class="token punctuation">.</span>excel<span class="token punctuation">.</span>enums<span class="token punctuation">.</span></span><span class="token class-name">CellDataTypeEnum</span><span class="token punctuation">;</span><span class="token keyword">import</span><span class="token namespace">com<span class="token punctuation">.</span>alibaba<span class="token punctuation">.</span>excel<span class="token punctuation">.</span>metadata<span class="token punctuation">.</span>data<span class="token punctuation">.</span></span><span class="token class-name">WriteCellData</span><span class="token punctuation">;</span><span class="token keyword">import</span><span class="token namespace">lombok<span class="token punctuation">.</span>extern<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span></span><span class="token class-name">Slf4j</span><span class="token punctuation">;</span><span class="token keyword">import</span><span class="token namespace">java<span class="token punctuation">.</span>text<span class="token punctuation">.</span></span><span class="token class-name">SimpleDateFormat</span><span class="token punctuation">;</span><span class="token keyword">import</span><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Date</span><span class="token punctuation">;</span><span class="token annotation punctuation">@Slf4j</span><span class="token keyword">public</span><span class="token keyword">class</span><span class="token class-name">CustomStringToDateConverter</span><span class="token keyword">implements</span><span class="token class-name">Converter</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Date</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">{<!-- --></span><span class="token keyword">private</span><span class="token class-name">SimpleDateFormat</span> format<span class="token operator">=</span><span class="token keyword">new</span><span class="token class-name">SimpleDateFormat</span><span class="token punctuation">(</span><span class="token string">"yyyy-MM-dd"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token annotation punctuation">@Override</span><span class="token keyword">public</span><span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">&gt;</span></span><span class="token function">supportJavaTypeKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">return</span><span class="token class-name">Converter</span><span class="token punctuation">.</span><span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">supportJavaTypeKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token annotation punctuation">@Override</span><span class="token keyword">public</span><span class="token class-name">CellDataTypeEnum</span><span class="token function">supportExcelTypeKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">return</span><span class="token class-name">Converter</span><span class="token punctuation">.</span><span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">supportExcelTypeKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token comment">/**      * 从excel文件中读取的时候会调用, 返回的是 Date 类型的, 类型在 implements Converter&lt;Date&gt; 指定      * @param context      * @return      * @throws Exception      */</span><span class="token annotation punctuation">@Override</span><span class="token keyword">public</span><span class="token class-name">Date</span><span class="token function">convertToJavaData</span><span class="token punctuation">(</span><span class="token class-name">ReadConverterContext</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">&gt;</span></span> context<span class="token punctuation">)</span><span class="token keyword">throws</span><span class="token class-name">Exception</span><span class="token punctuation">{<!-- --></span><span class="token class-name">String</span> stringValue<span class="token operator">=</span> context<span class="token punctuation">.</span><span class="token function">getReadCellData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getStringValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span>stringValue<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">return</span> format<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>stringValue<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre> <ul> <li><code>convertToJavaData</code> 这个方法的作用就是将字符串转换为日期类对象</li> </ul> <h3><a id="12__61" rel="nofollow"></a>1.2 实体类</h3> <ul> <li>使用时直接在字段上面指定即可</li> </ul> <pre><code class="prism language-java"><span class="token annotation punctuation">@Data</span><span class="token keyword">public</span><span class="token keyword">class</span><span class="token class-name">Bgqk</span><span class="token keyword">extends</span><span class="token class-name">AbstractExcel</span><span class="token punctuation">{<!-- --></span><span class="token comment">/**      * 内部序号      */</span><span class="token annotation punctuation">@ExcelProperty</span><span class="token punctuation">(</span>value<span class="token operator">=</span><span class="token string">"nbxh"</span><span class="token punctuation">)</span><span class="token keyword">private</span><span class="token class-name">String</span> nbxh<span class="token punctuation">;</span><span class="token comment">/**      * 变更事项      */</span><span class="token annotation punctuation">@ExcelProperty</span><span class="token punctuation">(</span><span class="token string">"bgsx"</span><span class="token punctuation">)</span><span class="token keyword">private</span><span class="token class-name">String</span> bgsx<span class="token punctuation">;</span><span class="token comment">/**      * 变更日期      */</span><span class="token annotation punctuation">@ExcelProperty</span><span class="token punctuation">(</span>value<span class="token operator">=</span><span class="token string">"cqrq"</span><span class="token punctuation">,</span> converter<span class="token operator">=</span><span class="token class-name">CustomStringToDateConverter</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token keyword">private</span><span class="token class-name">Date</span> cqrq<span class="token punctuation">;</span><span class="token comment">/**      * 当前数据日期      */</span><span class="token annotation punctuation">@ExcelIgnore</span><span class="token keyword">private</span><span class="token class-name">Date</span> currentDate<span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre> <h2><a id="2_Excel_100" rel="nofollow"></a>2. Excel表字段问题</h2> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220723/1b3e954d3c918e82a2ec714a38c3b38e.jpg" alt="Java开发日志EasyExcel自定义类型转换、Excel表头字段问题"></p> <ul> <li> <p>上图可以看到一个很明显的<code>nbxh(C|50)</code> 后面的<code>(C|50)</code> 并不是表头, 在读取的时候应该是</p> <pre><code class="prism language-java"><span class="token comment">/**      * 内部序号      */</span><span class="token annotation punctuation">@ExcelProperty</span><span class="token punctuation">(</span>value<span class="token operator">=</span><span class="token string">"nbxh"</span><span class="token punctuation">)</span><span class="token keyword">private</span><span class="token class-name">String</span> nbxh<span class="token punctuation">;</span></code></pre> </li> <li> <p>字段映射应该是<code>nbxh</code> 而并非是<code>nbxh(C|50)</code></p> </li> </ul> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>下一个：<a href="/news/article-18840.htm">Bootstrap Blazor 模板使用Layout 组件</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-10-31-share-clash-stash.htm" title="10月31日→22.1M/S|2024年最新免费节点Free Stash Node订阅链接地址">10月31日→22.1M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-7-clash-stash-node.htm" title="10月7日→22.8M/S|2024年最新免费节点Free Stash Node订阅链接地址">10月7日→22.8M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-2-clash-stash.htm" title="10月2日→23M/S|2024年最新免费节点Free Stash Node订阅链接地址">10月2日→23M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-20-share-clash-stash.htm" title="10月20日→20M/S|2024年最新免费节点Free Stash Node订阅链接地址">10月20日→20M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-27-node-share-links.htm" title="11月27日→21.2M/S|2024年最新免费节点Free Stash Node订阅链接地址">11月27日→21.2M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-18-free-node-subscribe.htm" title="11月18日→21.2M/S|2024年最新免费节点Free Stash Node订阅链接地址">11月18日→21.2M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-20-clash-stash.htm" title="11月20日→21.9M/S|2024年最新免费节点Free Stash Node订阅链接地址">11月20日→21.9M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-18840.htm" title="Bootstrap Blazor 模板使用Layout 组件">Bootstrap Blazor 模板使用Layout 组件</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-5-free-node-subscribe-links.htm" title="10月5日→19.3M/S|2024年最新免费节点Free Stash Node订阅链接地址">10月5日→19.3M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-10-clash-stash.htm" title="11月10日→18.9M/S|2024年最新免费节点Free Stash Node订阅链接地址">11月10日→18.9M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">12</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- about-section end -->
+                <!-- main-footer -->
+        <footer class="main-footer">
+            <div class="footer-bottom">
+                <div class="auto-container">
+                    <div class="inner-box clearfix">
+                        <div class="copyright pull-left">
+                            <p>
+                                <a href="/">Free Stash Node免费机场节点分享官网</a> 版权所有 Powered by WordPress
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- main-footer end -->
+        <!--Scroll to top-->
+        <button class="scroll-top scroll-to-target" data-target="html">
+            <span class="fa fa-arrow-up"></span>
+        </button>
+        <!-- jequery plugins -->
+        <script src="/assets/website/js/frontend/freestashnode/jquery.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/popper.min.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/owl.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/wow.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/validation.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/jquery.fancybox.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/appear.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/scrollbar.js"></script>
+        <!-- main-js -->
+        <script src="/assets/website/js/frontend/freestashnode/script.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+</body><!-- End of .page_wrapper -->
+
+</html>
