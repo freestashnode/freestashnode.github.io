@@ -133,7 +133,8 @@
             <div class="auto-container">
                 <div class="row clearfix">
                     <div class="col-md-9">
-                                          				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>大家都知道，注解只能配置常量，在一些构架的开发中，有时候我们需要给注解动态配置一些值，或者想从配置文件中读取配置。直接在注解上配置是无法实现的，但是我们可以在拿到注解的值之后，再对这些值进行另外的操作。比如在注解上面配置占位符，在使用的时候，再对这些占位符进行替换。在RocketMQ的监听配置中，就使用了这个技术，如下代码所示：</p> <pre><code>@RocketMQMessageListener(topic = "${game.server.config.business-game-message-topic}", consumerGroup = "gateway-message-consumer-group") public class GatewayMessageReceiveService implements RocketMQListener&lt;MessageExt&gt; {       	@Override 	public void onMessage(MessageExt message) {      } } </code></pre> <p>这里面RocketMQMessageListener注解配置的Topic就是配置的占位符，它会读取yml配置文件中的game.server.config.business-game-message-topic配置的值。那么它是怎么实现的呢？很简单，spring boot已经替换我们实现了，只需要调一下方法就可以了，如下面代码所示：</p> <pre><code>container.setTopic(environment.resolvePlaceholders(annotation.topic())); </code></pre> <p>比如，在服务器启动的时候，想在日志上面打印一下注解中topic的真实值，如下所示：</p> <pre><code>	@Autowired 	private Environment environment;  	@PostConstruct 	public void init() { 		RocketMQMessageListener messageListener = this.getClass().getAnnotation(RocketMQMessageListener.class); 	    String topic = environment.resolvePlaceholders(messageListener.topic()); 		logger.info("监听网关消息，topic:{},group:{}",topic,messageListener.consumerGroup()); 	} </code></pre> <p>另外，简单了解一下在Spring 占们符以#和$开头的不同：</p> <h3> <a id="key_27" rel="nofollow"></a>${key名称}</h3> <p>1.用户获取外部文件中指定key的值<br /> 2.可以在xml中配置，也可以出现在@value注解中<br /> 3.一般用于获取数据库配置内容信息</p> <h3> <a id="_31" rel="nofollow"></a>#{表达式}</h3> <p>1.spring中el表达式的格式<br /> 2.可以在xml中配置，也可以出现在@value注解中<br /> 3.可以任意表达式，支持运算符</p> </p></div> 			                <div class="clearfix"></div>
+                                        <input type="hidden" id="share-website-info" data-name="StashNode免费订阅官网" data-url="https://stashnode.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>大家都知道，注解只能配置常量，在一些构架的开发中，有时候我们需要给注解动态配置一些值，或者想从配置文件中读取配置。直接在注解上配置是无法实现的，但是我们可以在拿到注解的值之后，再对这些值进行另外的操作。比如在注解上面配置占位符，在使用的时候，再对这些占位符进行替换。在RocketMQ的监听配置中，就使用了这个技术，如下代码所示：</p> <pre><code>@RocketMQMessageListener(topic = "${game.server.config.business-game-message-topic}", consumerGroup = "gateway-message-consumer-group") public class GatewayMessageReceiveService implements RocketMQListener&lt;MessageExt&gt; {       	@Override 	public void onMessage(MessageExt message) {      } } </code></pre> <p>这里面RocketMQMessageListener注解配置的Topic就是配置的占位符，它会读取yml配置文件中的game.server.config.business-game-message-topic配置的值。那么它是怎么实现的呢？很简单，spring boot已经替换我们实现了，只需要调一下方法就可以了，如下面代码所示：</p> <pre><code>container.setTopic(environment.resolvePlaceholders(annotation.topic())); </code></pre> <p>比如，在服务器启动的时候，想在日志上面打印一下注解中topic的真实值，如下所示：</p> <pre><code>	@Autowired 	private Environment environment;  	@PostConstruct 	public void init() { 		RocketMQMessageListener messageListener = this.getClass().getAnnotation(RocketMQMessageListener.class); 	    String topic = environment.resolvePlaceholders(messageListener.topic()); 		logger.info("监听网关消息，topic:{},group:{}",topic,messageListener.consumerGroup()); 	} </code></pre> <p>另外，简单了解一下在Spring 占们符以#和$开头的不同：</p> <h3> <a id="key_27" rel="nofollow"></a>${key名称}</h3> <p>1.用户获取外部文件中指定key的值<br /> 2.可以在xml中配置，也可以出现在@value注解中<br /> 3.一般用于获取数据库配置内容信息</p> <h3> <a id="_31" rel="nofollow"></a>#{表达式}</h3> <p>1.spring中el表达式的格式<br /> 2.可以在xml中配置，也可以出现在@value注解中<br /> 3.可以任意表达式，支持运算符</p> </p></div> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-24318.htm">React + TypeScript + Taro前端开发小结</a></p>
                                         <p>下一个：<a href="/news/article-24791.htm">动物防疫法,自5月1日生效（动物防疫法5月1执行）</a></p>
@@ -146,16 +147,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-12-11-free-stash-node.htm" title="12月11日→19.2M/S|2024年最新免费节点Free Stash Node订阅链接地址">12月11日→19.2M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-29-free-node-subscribe.htm" title="10月29日→22.9M/S|2024年最新免费节点Free Stash Node订阅链接地址">10月29日→22.9M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-22-free-clash-stash.htm" title="10月22日→18.2M/S|2024年最新免费节点Free Stash Node订阅链接地址">10月22日→18.2M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-11-free-node-subscribe-links.htm" title="10月11日→19M/S|2024年最新免费节点Free Stash Node订阅链接地址">10月11日→19M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-8-clash-stash-node.htm" title="11月8日→18.3M/S|2024年最新免费节点Free Stash Node订阅链接地址">11月8日→18.3M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-19275.htm" title="人跟狗打的狂犬疫苗一样吗会传染吗（狗和人狂犬疫苗区别）">人跟狗打的狂犬疫苗一样吗会传染吗（狗和人狂犬疫苗区别）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-27-linux-clash-stash.htm" title="10月27日→19.6M/S|2024年最新免费节点Free Stash Node订阅链接地址">10月27日→19.6M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-24791.htm" title="动物防疫法,自5月1日生效（动物防疫法5月1执行）">动物防疫法,自5月1日生效（动物防疫法5月1执行）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-6-node-share.htm" title="11月6日→22.6M/S|2024年最新免费节点Free Stash Node订阅链接地址">11月6日→22.6M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-2-free-stash-node.htm" title="11月2日→22.4M/S|2024年最新免费节点Free Stash Node订阅链接地址">11月2日→22.4M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-18-free-node-subscribe-links.htm" title="10月18日→18.9M/S|2024年最新免费节点Free Stash Node订阅链接地址">10月18日→18.9M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-23858.htm" title="Python 替换.txt文件中的字符">Python 替换.txt文件中的字符</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-28-free-high-speed-nodes.htm" title="9月28日→18.7M/S|2024年最新免费节点Free Stash Node订阅链接地址">9月28日→18.7M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-3-share-clash-stash.htm" title="12月3日→22.8M/S|2024年最新免费节点Free Stash Node订阅链接地址">12月3日→22.8M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-23857.htm" title="数据结构——C语言实现带头双向循环链表">数据结构——C语言实现带头双向循环链表</a></li>
+                        <li class="py-2"><a href="/news/article-20189.htm" title="动物疫苗的意义和价值 动物疫苗的意义和价值是什么">动物疫苗的意义和价值 动物疫苗的意义和价值是什么</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-10-node-share.htm" title="12月10日→20.4M/S|2024年最新免费节点Free Stash Node订阅链接地址">12月10日→20.4M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-16-clash-stash.htm" title="11月16日→18.7M/S|2024年最新免费节点Free Stash Node订阅链接地址">11月16日→18.7M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-27115.htm" title="宠物粮食排行榜前十 宠物粮食排行榜前十名">宠物粮食排行榜前十 宠物粮食排行榜前十名</a></li>
+                        <li class="py-2"><a href="/news/article-25715.htm" title="猫体外驱虫药有哪些（猫体外驱虫药有哪些药）">猫体外驱虫药有哪些（猫体外驱虫药有哪些药）</a></li>
                     </ul>
     </div>
 </div>
@@ -167,7 +168,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">42</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
@@ -193,6 +194,15 @@
                 <div class="auto-container">
                     <div class="inner-box clearfix">
                         <div class="copyright pull-left">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
                             <p>
                                 <a href="/">Free Stash Node免费机场节点分享官网</a> 版权所有 Powered by WordPress
                             </p>

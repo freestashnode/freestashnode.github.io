@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>微信小程序，制作属于自己的Icon图标</title>
         <meta name="description" content="前言 最近在接手一个微信小程序，发现里面的图标都是使用的image组件，看起来非常别扭，加载也不太顺畅。 就想着看看微信有没有类似自带的图标库可以使用。 有是有，就是太少了，翻来翻去好像也就8 种，不" />
-        <link rel="icon" href="__ADDON__/img/freestashnode/favicon.ico" type="image/x-icon"/>
+        <link rel="icon" href="/assets/website/img/freestashnode/favicon.ico" type="image/x-icon"/>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <!-- Stylesheets -->
@@ -133,7 +133,8 @@
             <div class="auto-container">
                 <div class="row clearfix">
                     <div class="col-md-9">
-                                          				  				  				<h3 id="前言">前言</h3> <p>最近在接手一个微信小程序，发现里面的图标都是使用的<code>image</code>组件，看起来非常别扭，加载也不太顺畅。</p> <p>就想着看看微信有没有类似自带的图标库可以使用。</p> <p>有是有，就是太少了，翻来翻去好像也就<code>8</code> 种，不太够用啊。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/1b615f52d6a056307ad16fef30d82538.jpg" alt="微信小程序，制作属于自己的Icon图标"></p> <p>官方没有就只能自己做了，还是阿里的<code>iconfont</code>好使，首先你得有<code>iconfont</code>的账号。</p> <h4 id="1将你心仪的图标加入购物车">1、将你心仪的图标加入购物车</h4> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/08c72c18fdc231f1a4210ffb118a1040.jpg" alt="微信小程序，制作属于自己的Icon图标"></p> <h4 id="2将图标添加至项目">2、将图标添加至项目</h4> <p>点击右上角倒数第三个图标进入购物车，然后将购物车添加到我们的项目中，没有项目可以自行创建。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/41031f2977d5d0e5f1c305d1d572e711.jpg" alt="微信小程序，制作属于自己的Icon图标"></p> <h4 id="3我的项目">3、我的项目</h4> <p>进入到我的项目可以看到我们刚刚加入的图标，我的项目在最上方的资源管理 — 我的项目。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/180b6820bdf164e46925c91719d1c104.jpg" alt="微信小程序，制作属于自己的Icon图标"></p> <h4 id="4将项目下载至本地">4、将项目下载至本地</h4> <p>解压后你会看到如下文件</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/0e2ae1bc30f2c1420478cf9a433154eb.jpg" alt="微信小程序，制作属于自己的Icon图标"></p> <h4 id="5将字体转换为base64">5、将字体转换为<code>base64</code></h4> <p>进入网站：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://transfonter.org/"  target="_blank" rel="nofollow">https://transfonter.org/</a> ，找到文件中的 iconfont.ttf 字体文件，将字体文件转换为 base64。</p> <p>记得开启第<code>2</code>步的<code>Base64 encode</code>。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/028e16e49d02fd442299c2ed0d759f21.jpg" alt="微信小程序，制作属于自己的Icon图标"></p> <p>下载并解压后你将会获得如下的文件</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/ea9a13d025138346a647aeafbb4ab681.jpg" alt="微信小程序，制作属于自己的Icon图标"></p> <h4 id="6样式文件修改">6、样式文件修改</h4> <p>同时打开第<code>4</code> 步下载解压的<code>iconfont.css</code>文件和第<code>5</code> 步，下载解压的<code>stylesheet.css</code>文件。</p> <h5 id="我们先看confontcss文件红圈中的代码直接删除">我们先看<code>confont.css</code>文件，红圈中的代码直接删除</h5> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/794f97fd5d40f70b1b474adfa33ba14d.jpg" alt="微信小程序，制作属于自己的Icon图标"></p> <h5 id="再打开stylesheetcss文件将红圈中的代码复制到confontcss文件中去">再打开<code>stylesheet.css</code>文件，将红圈中的代码复制到<code>confont.css</code>文件中去</h5> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/fc149b159b5be6c08cafa15d1ca3184b.jpg" alt="微信小程序，制作属于自己的Icon图标"></p> <h4 id="7重命名">7、重命名</h4> <p>给<code>confont.css</code>重命名为<code>xxx.wxss</code>，并放到微信小程序项目中去，<strong>注意：后缀必须是<code>wxss</code></strong></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/bacb4e5d032b12702fa5b46cb1814726.jpg" alt="微信小程序，制作属于自己的Icon图标"></p> <h4 id="8导入样式文件并使用">8、导入样式文件并使用</h4> <p>在<code>app.wxss</code>中导入我们的<code>xxx.wxss</code>，我们生成的<code>icon</code> 图标就可以在项目中使用了。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/90fbe4a50c5a4039f472652e744ee3f8.jpg" alt="微信小程序，制作属于自己的Icon图标"></p> <pre><code>&lt;view class="iconfont icon-bianji"&gt;&lt;/view&gt;</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/e6f501f5c4401b0bf145a19008142fe0.jpg" alt="微信小程序，制作属于自己的Icon图标"></p> <h3 id="至此我们自定义的icon图标就制作完成了">至此，我们自定义的<code>Icon</code>图标就制作完成了</h3> 			                <div class="clearfix"></div>
+                                        <input type="hidden" id="share-website-info" data-name="StashNode免费订阅官网" data-url="https://stashnode.github.io">
+                  				  				  				<h3 id="前言">前言</h3> <p>最近在接手一个微信小程序，发现里面的图标都是使用的<code>image</code>组件，看起来非常别扭，加载也不太顺畅。</p> <p>就想着看看微信有没有类似自带的图标库可以使用。</p> <p>有是有，就是太少了，翻来翻去好像也就<code>8</code> 种，不太够用啊。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/1b615f52d6a056307ad16fef30d82538.jpg" alt="微信小程序，制作属于自己的Icon图标"></p> <p>官方没有就只能自己做了，还是阿里的<code>iconfont</code>好使，首先你得有<code>iconfont</code>的账号。</p> <h4 id="1将你心仪的图标加入购物车">1、将你心仪的图标加入购物车</h4> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/08c72c18fdc231f1a4210ffb118a1040.jpg" alt="微信小程序，制作属于自己的Icon图标"></p> <h4 id="2将图标添加至项目">2、将图标添加至项目</h4> <p>点击右上角倒数第三个图标进入购物车，然后将购物车添加到我们的项目中，没有项目可以自行创建。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/41031f2977d5d0e5f1c305d1d572e711.jpg" alt="微信小程序，制作属于自己的Icon图标"></p> <h4 id="3我的项目">3、我的项目</h4> <p>进入到我的项目可以看到我们刚刚加入的图标，我的项目在最上方的资源管理 — 我的项目。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/180b6820bdf164e46925c91719d1c104.jpg" alt="微信小程序，制作属于自己的Icon图标"></p> <h4 id="4将项目下载至本地">4、将项目下载至本地</h4> <p>解压后你会看到如下文件</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/0e2ae1bc30f2c1420478cf9a433154eb.jpg" alt="微信小程序，制作属于自己的Icon图标"></p> <h4 id="5将字体转换为base64">5、将字体转换为<code>base64</code></h4> <p>进入网站：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://transfonter.org/"  target="_blank" rel="nofollow">https://transfonter.org/</a> ，找到文件中的 iconfont.ttf 字体文件，将字体文件转换为 base64。</p> <p>记得开启第<code>2</code>步的<code>Base64 encode</code>。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/028e16e49d02fd442299c2ed0d759f21.jpg" alt="微信小程序，制作属于自己的Icon图标"></p> <p>下载并解压后你将会获得如下的文件</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/ea9a13d025138346a647aeafbb4ab681.jpg" alt="微信小程序，制作属于自己的Icon图标"></p> <h4 id="6样式文件修改">6、样式文件修改</h4> <p>同时打开第<code>4</code> 步下载解压的<code>iconfont.css</code>文件和第<code>5</code> 步，下载解压的<code>stylesheet.css</code>文件。</p> <h5 id="我们先看confontcss文件红圈中的代码直接删除">我们先看<code>confont.css</code>文件，红圈中的代码直接删除</h5> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/794f97fd5d40f70b1b474adfa33ba14d.jpg" alt="微信小程序，制作属于自己的Icon图标"></p> <h5 id="再打开stylesheetcss文件将红圈中的代码复制到confontcss文件中去">再打开<code>stylesheet.css</code>文件，将红圈中的代码复制到<code>confont.css</code>文件中去</h5> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/fc149b159b5be6c08cafa15d1ca3184b.jpg" alt="微信小程序，制作属于自己的Icon图标"></p> <h4 id="7重命名">7、重命名</h4> <p>给<code>confont.css</code>重命名为<code>xxx.wxss</code>，并放到微信小程序项目中去，<strong>注意：后缀必须是<code>wxss</code></strong></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/bacb4e5d032b12702fa5b46cb1814726.jpg" alt="微信小程序，制作属于自己的Icon图标"></p> <h4 id="8导入样式文件并使用">8、导入样式文件并使用</h4> <p>在<code>app.wxss</code>中导入我们的<code>xxx.wxss</code>，我们生成的<code>icon</code> 图标就可以在项目中使用了。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/90fbe4a50c5a4039f472652e744ee3f8.jpg" alt="微信小程序，制作属于自己的Icon图标"></p> <pre><code>&lt;view class="iconfont icon-bianji"&gt;&lt;/view&gt;</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/e6f501f5c4401b0bf145a19008142fe0.jpg" alt="微信小程序，制作属于自己的Icon图标"></p> <h3 id="至此我们自定义的icon图标就制作完成了">至此，我们自定义的<code>Icon</code>图标就制作完成了</h3> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
                                         <p>上一个：<a href="/news/article-21575.htm">南京哪里有领养宠物的地方（南京哪里可以领养宠物狗）</a></p>
                                         <p>下一个：<a href="/news/article-22018.htm">做猫粮的机器（做猫粮的机器多少钱）</a></p>
@@ -146,16 +147,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-9-27-share-clash-stash.htm" title="9月27日→22.6M/S|2024年最新免费节点Free Stash Node订阅链接地址">9月27日→22.6M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-19274.htm" title="C++ functional库中的仿函数">C++ functional库中的仿函数</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-7-node-share-links.htm" title="11月7日→18.7M/S|2024年最新免费节点Free Stash Node订阅链接地址">11月7日→18.7M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-19734.htm" title="宠物买卖法律责任（关于宠物交易的法律）">宠物买卖法律责任（关于宠物交易的法律）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-22-free-clash-stash.htm" title="10月22日→18.2M/S|2024年最新免费节点Free Stash Node订阅链接地址">10月22日→18.2M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-19733.htm" title="Goland内置类型error报红问题解决（Unresolved type ‘error‘）">Goland内置类型error报红问题解决（Unresolved type ‘error‘）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-29-free-node-subscribe.htm" title="10月29日→22.9M/S|2024年最新免费节点Free Stash Node订阅链接地址">10月29日→22.9M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-3-share-clash-stash.htm" title="12月3日→22.8M/S|2024年最新免费节点Free Stash Node订阅链接地址">12月3日→22.8M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
                         <li class="py-2"><a href="/news/article-22016.htm" title="微信小程序，制作属于自己的Icon图标">微信小程序，制作属于自己的Icon图标</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-14-clash-stash.htm" title="11月14日→20.9M/S|2024年最新免费节点Free Stash Node订阅链接地址">11月14日→20.9M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-22942.htm" title="动物疫苗接种禁忌症和注意事项有哪些呢 动物疫苗接种禁忌症和注意事项有哪些呢">动物疫苗接种禁忌症和注意事项有哪些呢 动物疫苗接种禁忌症和注意事项有哪些呢</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-24-clash-stash-node.htm" title="9月24日→19.6M/S|2024年最新免费节点Free Stash Node订阅链接地址">9月24日→19.6M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-21-node-share-links.htm" title="10月21日→18.7M/S|2024年最新免费节点Free Stash Node订阅链接地址">10月21日→18.7M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-28-free-high-speed-nodes.htm" title="9月28日→18.7M/S|2024年最新免费节点Free Stash Node订阅链接地址">9月28日→18.7M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-15-free-high-speed-nodes.htm" title="10月15日→19M/S|2024年最新免费节点Free Stash Node订阅链接地址">10月15日→19M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-30-node-share.htm" title="11月30日→19.1M/S|2024年最新免费节点Free Stash Node订阅链接地址">11月30日→19.1M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-22482.htm" title="动物疫苗公司产量排名榜前十名（动物疫苗行业排名）">动物疫苗公司产量排名榜前十名（动物疫苗行业排名）</a></li>
+                        <li class="py-2"><a href="/news/article-24788.htm" title="SpringBoot注解内容的动态配置">SpringBoot注解内容的动态配置</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-28-free-high-speed-nodes.htm" title="10月28日→18.8M/S|2024年最新免费节点Free Stash Node订阅链接地址">10月28日→18.8M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
                     </ul>
     </div>
 </div>
@@ -167,7 +168,7 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
@@ -193,6 +194,15 @@
                 <div class="auto-container">
                     <div class="inner-box clearfix">
                         <div class="copyright pull-left">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
                             <p>
                                 <a href="/">Free Stash Node免费机场节点分享官网</a> 版权所有 Powered by WordPress
                             </p>
