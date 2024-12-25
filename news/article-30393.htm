@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freestashnode.github.io/news/article-30393.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Vue使用自定义指令实现拖拽行为</title>
+        <meta name="description" content="需求 通过自定义指令的方式实现拖拽效果，预期的使用方式为：         &lt;div style="background: #f00; width: 200px; height: 200px;"" />
+        <link rel="icon" href="/assets/website/img/freestashnode/favicon.ico" type="image/x-icon"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <!-- Stylesheets -->
+    <link href="/assets/website/css/freestashnode/font-awesome-all.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/flaticon.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/owl.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/bootstrap.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/animate.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/color.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/style.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/responsive.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YXFDLQYLFV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YXFDLQYLFV');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+<!-- page wrapper -->
+
+<body data-page="detail">
+    <div class="boxed_wrapper">
+                <!-- preloader -->
+        <div class="preloader"></div>
+        <!-- preloader -->
+        <!-- main header -->
+        <header class="main-header style-one">
+            <!-- header-lower -->
+            <div class="header-lower">
+                <div class="outer-box">
+                    <div class="logo-box">
+                        <figure class="logo">
+                                                        <a href="/">
+                                <span>Free Stash Node</span>
+                            </a>
+                                                    </figure>
+                    </div>
+                    <div class="menu-area">
+                        <!--Mobile Navigation Toggler-->
+                        <div class="mobile-nav-toggler">
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                        </div>
+                        <nav class="main-menu navbar-expand-md navbar-light">
+                            <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+                                <ul class="navigation clearfix">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                        <li><a href="#">关于</a></li>
+                                    <li><a href="#">联系</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!--sticky Header-->
+            <div class="sticky-header">
+                <div class="outer-box">
+                    <div class="logo-box">
+                        <figure class="logo">
+                            <a href="/">
+                                <span>Free Stash Node</span>
+                            </a>
+                        </figure>
+                    </div>
+                    <div class="menu-area">
+                        <nav class="main-menu clearfix">
+                            <!--Keep This Empty / Menu will come through Javascript-->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- main-header end -->
+        <!-- Mobile Menu  -->
+        <div class="mobile-menu">
+            <div class="menu-backdrop"></div>
+            <div class="close-btn"><i class="fas fa-times"></i></div>
+            <nav class="menu-box">
+                <div class="menu-outer">
+                    <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
+                </div>
+                <div class="social-links">
+                    <ul class="clearfix">
+                        <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+                        <li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+                        <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
+                        <li><a href="#"><span class="fab fa-instagram"></span></a></li>
+                        <li><a href="#"><span class="fab fa-youtube"></span></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div><!-- End Mobile Menu -->
+        <!-- Page Title -->
+        <section class="page-title centred" style="background-image: url(/assets/website/img/freestashnode/background/page-title.jpg);">
+            <div class="auto-container">
+                <div class="content-box">
+                    <div class="title">
+                        <h1>Vue使用自定义指令实现拖拽行为</h1>
+                    </div>
+                    <ul class="bread-crumb clearfix">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- End Page Title -->
+        <!-- about-section -->
+        <section class="about-section">
+            <div class="auto-container">
+                <div class="row clearfix">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="StashNode免费订阅官网" data-url="https://stashnode.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-dracula"> <h3> <a id="_0" rel="nofollow"></a>需求</h3> <p>通过自定义指令的方式实现拖拽效果，预期的使用方式为：</p> <pre><code class="prism language-html">        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">background</span><span class="token punctuation">:</span> #f00<span class="token punctuation">;</span> <span class="token property">width</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span> <span class="token property">height</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span> <span class="token attr-name">v-drag</span><span class="token punctuation">&gt;</span></span>             XXXX         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span> </code></pre> <p>更重要的一个需求点：</p> <ul> <li>拖拽元素内部的子元素可以自行阻止拖拽行为</li> </ul> <p>比如：</p> <pre><code class="prism language-html">   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">background</span><span class="token punctuation">:</span> #f00<span class="token punctuation">;</span> <span class="token property">width</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span> <span class="token property">height</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span> <span class="token attr-name">v-drag</span><span class="token punctuation">&gt;</span></span>       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>el-button</span> <span class="token attr-name">@mousedown.native.stop</span><span class="token punctuation">&gt;</span></span>test<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>el-button</span><span class="token punctuation">&gt;</span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span> </code></pre> <p>曾经使用过<code>vue-resizable</code>，由于该组件是通过事件捕获的方式实现的，拖拽元素的子元素也会触发拖拽行为，不符合开发需求，所以自行实现了拖拽指令，相关源码如下。</p> <p>无任何依赖，复制即可使用</p> <h3> <a id="_22" rel="nofollow"></a>源码</h3> <pre><code class="prism language-js"><span class="token comment">/**  * @file 自定义拖拽命令  */</span>  <span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">'vue'</span><span class="token punctuation">;</span>  <span class="token keyword">const</span> Drag <span class="token operator">=</span> <span class="token punctuation">{<!-- --></span>     <span class="token function">install</span><span class="token punctuation">(</span>Vue<span class="token punctuation">:</span> any<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>         <span class="token comment">// 如需禁止拖拽元素内部某些元素触发拖拽，在内部不可触发拖拽元素上添加@mousedown.native.stop即可</span>         Vue<span class="token punctuation">.</span><span class="token function">directive</span><span class="token punctuation">(</span><span class="token string">'drag'</span><span class="token punctuation">,</span> <span class="token punctuation">{<!-- --></span>             <span class="token function">bind</span><span class="token punctuation">(</span>el<span class="token punctuation">:</span> any<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>                 el<span class="token punctuation">.</span>style<span class="token punctuation">.</span>position <span class="token operator">=</span> <span class="token string">'absolute'</span><span class="token punctuation">;</span>                 el<span class="token punctuation">.</span>style<span class="token punctuation">.</span>zIndex <span class="token operator">=</span> el<span class="token punctuation">.</span>style<span class="token punctuation">.</span>zIndex <span class="token operator">||</span> <span class="token string">'3000'</span><span class="token punctuation">;</span>             <span class="token punctuation">}</span><span class="token punctuation">,</span>              <span class="token function">inserted</span><span class="token punctuation">(</span>el<span class="token punctuation">:</span> any<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>                 <span class="token comment">// 设置元素初始位置</span>                 <span class="token keyword">const</span> boundingClientRect <span class="token operator">=</span> el<span class="token punctuation">.</span><span class="token function">getBoundingClientRect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                 el<span class="token punctuation">.</span>style<span class="token punctuation">.</span>left <span class="token operator">=</span> boundingClientRect<span class="token punctuation">.</span>x <span class="token operator">+</span> <span class="token string">'px'</span><span class="token punctuation">;</span>                 el<span class="token punctuation">.</span>style<span class="token punctuation">.</span>top <span class="token operator">=</span> boundingClientRect<span class="token punctuation">.</span>y <span class="token operator">+</span> <span class="token string">'px'</span><span class="token punctuation">;</span>                 <span class="token comment">// 将拖拽元素置于body子元素，防止被relative的父元素遮挡</span>                 document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>el<span class="token punctuation">)</span><span class="token punctuation">;</span>                  <span class="token keyword">let</span> originX<span class="token punctuation">:</span> number<span class="token punctuation">;</span>                 <span class="token keyword">let</span> originY<span class="token punctuation">:</span> number<span class="token punctuation">;</span>                 <span class="token keyword">const</span> <span class="token function-variable function">mouseDownHandler</span> <span class="token operator">=</span> <span class="token punctuation">(</span>evt<span class="token punctuation">:</span> MouseEvent<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{<!-- --></span>                     originX <span class="token operator">=</span> evt<span class="token punctuation">.</span>clientX <span class="token operator">-</span> el<span class="token punctuation">.</span>offsetLeft<span class="token punctuation">;</span>                     originY <span class="token operator">=</span> evt<span class="token punctuation">.</span>clientY <span class="token operator">-</span> el<span class="token punctuation">.</span>offsetTop<span class="token punctuation">;</span>                     el<span class="token punctuation">.</span>style<span class="token punctuation">.</span>cursor <span class="token operator">=</span> <span class="token string">'pointer'</span><span class="token punctuation">;</span>                 <span class="token punctuation">}</span><span class="token punctuation">;</span>                 <span class="token keyword">const</span> <span class="token function-variable function">mouseMoveHandler</span> <span class="token operator">=</span> <span class="token punctuation">(</span>evt<span class="token punctuation">:</span> MouseEvent<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{<!-- --></span>                     <span class="token keyword">if</span> <span class="token punctuation">(</span>evt<span class="token punctuation">.</span>buttons <span class="token operator">===</span> <span class="token number">1</span> <span class="token operator">&amp;&amp;</span> originX <span class="token operator">&amp;&amp;</span> originY<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>                         el<span class="token punctuation">.</span>style<span class="token punctuation">.</span>left <span class="token operator">=</span> evt<span class="token punctuation">.</span>clientX <span class="token operator">-</span> originX <span class="token operator">+</span> <span class="token string">'px'</span><span class="token punctuation">;</span>                         el<span class="token punctuation">.</span>style<span class="token punctuation">.</span>top <span class="token operator">=</span> evt<span class="token punctuation">.</span>clientY <span class="token operator">-</span> originY <span class="token operator">+</span> <span class="token string">'px'</span><span class="token punctuation">;</span>                     <span class="token punctuation">}</span>                 <span class="token punctuation">}</span><span class="token punctuation">;</span>                 <span class="token keyword">const</span> <span class="token function-variable function">mouseUpHandler</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{<!-- --></span>                     el<span class="token punctuation">.</span>style<span class="token punctuation">.</span>cursor <span class="token operator">=</span> <span class="token string">'default'</span><span class="token punctuation">;</span>                 <span class="token punctuation">}</span><span class="token punctuation">;</span>                 el<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'mousedown'</span><span class="token punctuation">,</span> mouseDownHandler<span class="token punctuation">)</span><span class="token punctuation">;</span>                 el<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'mousemove'</span><span class="token punctuation">,</span> mouseMoveHandler<span class="token punctuation">)</span><span class="token punctuation">;</span>                 el<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'mouseup'</span><span class="token punctuation">,</span> mouseUpHandler<span class="token punctuation">)</span><span class="token punctuation">;</span>                 el<span class="token punctuation">.</span>__mouseDownHandler__ <span class="token operator">=</span> mouseDownHandler<span class="token punctuation">;</span>                 el<span class="token punctuation">.</span>__mouseMoveHandler__ <span class="token operator">=</span> mouseMoveHandler<span class="token punctuation">;</span>                 el<span class="token punctuation">.</span>__mouseUpHandler__ <span class="token operator">=</span> mouseUpHandler<span class="token punctuation">;</span>             <span class="token punctuation">}</span><span class="token punctuation">,</span>              <span class="token function">unbind</span><span class="token punctuation">(</span>el<span class="token punctuation">:</span> any<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>                 el<span class="token punctuation">.</span><span class="token function">removeEventListener</span><span class="token punctuation">(</span><span class="token string">'mousedown'</span><span class="token punctuation">,</span> el<span class="token punctuation">.</span>__mouseDownHandler__<span class="token punctuation">)</span><span class="token punctuation">;</span>                 el<span class="token punctuation">.</span><span class="token function">removeEventListener</span><span class="token punctuation">(</span><span class="token string">'mousemove'</span><span class="token punctuation">,</span> el<span class="token punctuation">.</span>__mouseMoveHandler__<span class="token punctuation">)</span><span class="token punctuation">;</span>                 el<span class="token punctuation">.</span><span class="token function">removeEventListener</span><span class="token punctuation">(</span><span class="token string">'mouseup'</span><span class="token punctuation">,</span> el<span class="token punctuation">.</span>__mouseUpHandler__<span class="token punctuation">)</span><span class="token punctuation">;</span>                 <span class="token comment">// 当父组件销毁触发unbind的时候需要手动删除这个节点，不然会一直存留在body中</span>                 el<span class="token punctuation">.</span>parentNode<span class="token punctuation">.</span><span class="token function">removeChild</span><span class="token punctuation">(</span>el<span class="token punctuation">)</span><span class="token punctuation">;</span>             <span class="token punctuation">}</span>         <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">;</span> Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>Drag<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">export</span> <span class="token keyword">default</span> Drag<span class="token punctuation">;</span>  </code></pre> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-29922.htm">附近有没有领养小猫的（附近的领养宠物店）</a></p>
+                                        <p>下一个：<a href="/news/article-30394.htm">宠物粮食加工厂设备生产厂家排名榜最新 宠物粮食加工厂设备生产厂家排名榜最新</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-9-24-clash-stash-node.htm" title="9月24日→19.6M/S|2024年最新免费节点Free Stash Node订阅链接地址">9月24日→19.6M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-22483.htm" title="动物疫苗怎么卖钱的（动物疫苗经销商）">动物疫苗怎么卖钱的（动物疫苗经销商）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-4-free-subscribe-node.htm" title="12月4日→19.8M/S|2024年最新免费节点Free Stash Node订阅链接地址">12月4日→19.8M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-9-clash-stash-node.htm" title="10月9日→19.7M/S|2024年最新免费节点Free Stash Node订阅链接地址">10月9日→19.7M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-6-node-share.htm" title="11月6日→22.6M/S|2024年最新免费节点Free Stash Node订阅链接地址">11月6日→22.6M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-28-free-high-speed-nodes.htm" title="10月28日→18.8M/S|2024年最新免费节点Free Stash Node订阅链接地址">10月28日→18.8M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-1-node-share.htm" title="10月1日→19.1M/S|2024年最新免费节点Free Stash Node订阅链接地址">10月1日→19.1M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-27-node-share-links.htm" title="11月27日→21.2M/S|2024年最新免费节点Free Stash Node订阅链接地址">11月27日→21.2M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-28503.htm" title="开宠物店是不是很累（开宠物店会亏本吗）">开宠物店是不是很累（开宠物店会亏本吗）</a></li>
+                        <li class="py-2"><a href="/news/article-23857.htm" title="数据结构——C语言实现带头双向循环链表">数据结构——C语言实现带头双向循环链表</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">75</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">12</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- about-section end -->
+                <!-- main-footer -->
+        <footer class="main-footer">
+            <div class="footer-bottom">
+                <div class="auto-container">
+                    <div class="inner-box clearfix">
+                        <div class="copyright pull-left">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <p>
+                                <a href="/">Free Stash Node免费机场节点分享官网</a> 版权所有 Powered by WordPress
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- main-footer end -->
+        <!--Scroll to top-->
+        <button class="scroll-top scroll-to-target" data-target="html">
+            <span class="fa fa-arrow-up"></span>
+        </button>
+        <!-- jequery plugins -->
+        <script src="/assets/website/js/frontend/freestashnode/jquery.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/popper.min.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/owl.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/wow.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/validation.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/jquery.fancybox.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/appear.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/scrollbar.js"></script>
+        <!-- main-js -->
+        <script src="/assets/website/js/frontend/freestashnode/script.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+</body><!-- End of .page_wrapper -->
+
+</html>
