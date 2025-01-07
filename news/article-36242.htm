@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freestashnode.github.io/news/article-36242.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>手写事件发布订阅框架</title>
+        <meta name="description" content="一、前言     发布订阅模式也叫观察者模式，利用该模式可以进行代码解耦，很多框架都用到该设计模式，比如Spring的事件机制，guava的EventBus(事件总线)等，不清楚观察者模式的话可以查看" />
+        <link rel="icon" href="/assets/website/img/freestashnode/favicon.ico" type="image/x-icon"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <!-- Stylesheets -->
+    <link href="/assets/website/css/freestashnode/font-awesome-all.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/flaticon.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/owl.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/bootstrap.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/animate.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/color.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/style.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/responsive.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YXFDLQYLFV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YXFDLQYLFV');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+<!-- page wrapper -->
+
+<body data-page="detail">
+    <div class="boxed_wrapper">
+                <!-- preloader -->
+        <div class="preloader"></div>
+        <!-- preloader -->
+        <!-- main header -->
+        <header class="main-header style-one">
+            <!-- header-lower -->
+            <div class="header-lower">
+                <div class="outer-box">
+                    <div class="logo-box">
+                        <figure class="logo">
+                                                        <a href="/">
+                                <span>Free Stash Node</span>
+                            </a>
+                                                    </figure>
+                    </div>
+                    <div class="menu-area">
+                        <!--Mobile Navigation Toggler-->
+                        <div class="mobile-nav-toggler">
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                        </div>
+                        <nav class="main-menu navbar-expand-md navbar-light">
+                            <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+                                <ul class="navigation clearfix">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                        <li><a href="#">关于</a></li>
+                                    <li><a href="#">联系</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!--sticky Header-->
+            <div class="sticky-header">
+                <div class="outer-box">
+                    <div class="logo-box">
+                        <figure class="logo">
+                            <a href="/">
+                                <span>Free Stash Node</span>
+                            </a>
+                        </figure>
+                    </div>
+                    <div class="menu-area">
+                        <nav class="main-menu clearfix">
+                            <!--Keep This Empty / Menu will come through Javascript-->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- main-header end -->
+        <!-- Mobile Menu  -->
+        <div class="mobile-menu">
+            <div class="menu-backdrop"></div>
+            <div class="close-btn"><i class="fas fa-times"></i></div>
+            <nav class="menu-box">
+                <div class="menu-outer">
+                    <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
+                </div>
+                <div class="social-links">
+                    <ul class="clearfix">
+                        <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+                        <li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+                        <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
+                        <li><a href="#"><span class="fab fa-instagram"></span></a></li>
+                        <li><a href="#"><span class="fab fa-youtube"></span></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div><!-- End Mobile Menu -->
+        <!-- Page Title -->
+        <section class="page-title centred" style="background-image: url(/assets/website/img/freestashnode/background/page-title.jpg);">
+            <div class="auto-container">
+                <div class="content-box">
+                    <div class="title">
+                        <h1>手写事件发布订阅框架</h1>
+                    </div>
+                    <ul class="bread-crumb clearfix">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- End Page Title -->
+        <!-- about-section -->
+        <section class="about-section">
+            <div class="auto-container">
+                <div class="row clearfix">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="StashNode免费订阅官网" data-url="https://stashnode.github.io">
+                  				  				  				<h2 id="一前言">一、前言</h2> <p>    发布订阅模式也叫观察者模式，利用该模式可以进行代码解耦，很多框架都用到该设计模式，比如Spring的事件机制，guava的EventBus(事件总线)等，不清楚观察者模式的话可以查看本人之前写的博客《<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/2YSP/p/11602078.html"  target="_blank" rel="nofollow">设计模式之观察者模式</a>》。</p> <p>	为了更好的了解现有的事件框架实现原理，便手写了一个简单的事件发布/订阅框架供大家参考。</p> <h2 id="二设计编码">二、设计编码</h2> <p>首先创建一个事件类继承，所有的事件都继承该类。</p> <pre><code class="language-java">/**  * @author 2YSP  * @date 2022/4/16 16:00  */ public class Event extends EventObject {       /**      * Constructs a prototypical Event.      *      * @param source The object on which the Event initially occurred.      * @throws IllegalArgumentException if source is null.      */     public Event(Object source) {         super(source);     } }</code></pre> <p>JDK要求所有事件都继承EventObject，并通过source得到事件源。</p> <p>然后定义事件监听器接口EventListener</p> <pre><code class="language-java">/**  * @author 2YSP  * @description: 事件监听器  * @date 2022/4/10 14:45  */ public interface EventListener&lt;E extends Event&gt; {      /**      * 触发事件      * @param e      */     void onEvent(E e);  }</code></pre> <p>核心部分就是需要一个类来管理所有的事件监听器，分别具备以下三个方法：</p> <p><strong>registerListener()：</strong>注册一个事件监听器</p> <p><strong>removeListener()：</strong>移除事件监听器</p> <p><strong>notifyListener()：</strong>通知该事件触发的所有监听器</p> <pre><code class="language-java">package cn.sp.event;  import com.google.common.collect.Lists; import org.springframework.beans.BeansException; import org.springframework.context.ApplicationContext; import org.springframework.context.ApplicationContextAware; import org.springframework.stereotype.Component; import org.springframework.util.CollectionUtils; import org.springframework.util.ReflectionUtils;  import javax.annotation.PostConstruct; import java.lang.reflect.Method; import java.lang.reflect.Parameter; import java.util.HashMap; import java.util.List; import java.util.Map;  /**  * @author 2YSP  * @date 2022/4/16 16:12  */ @Component public class EventManager implements ApplicationContextAware {     /**      * 事件map      */     private static Map&lt;Class&lt;? extends Event&gt;, List&lt;EventListener&gt;&gt; map = new HashMap&lt;&gt;(64);       private static ApplicationContext applicationContext;      private static final String EVENT_METHOD = "onEvent";      /**      * 初始化事件缓存map      */     @PostConstruct     private void initEventMap() {         Map&lt;String, EventListener&gt; beanMap = applicationContext.getBeansOfType(EventListener.class);         if (beanMap == null) {             return;         }         beanMap.forEach((key, value) -&gt; {             // 反射获取onEvent方法的参数类型             Method[] methods = ReflectionUtils.getDeclaredMethods(value.getClass());             for (Method method : methods) {                 if (method.getName().equals(EVENT_METHOD)) {                     Parameter parameter = method.getParameters()[0];                     // 参数必须为Event的子类                     if (parameter.getType().getName().equals(Event.class.getName())) {                         continue;                     }                     registerListener((Class&lt;? extends Event&gt;) parameter.getType(), value);                 }             }         });     }      /**      * 注册一个事件监听器      *      * @param clazz      * @param eventListener      * @param &lt;E&gt;      */     public &lt;E extends Event&gt; void registerListener(Class&lt;? extends Event&gt; clazz, EventListener&lt;E&gt; eventListener) {         List&lt;EventListener&gt; list = map.get(clazz);         if (CollectionUtils.isEmpty(list)) {             map.put(clazz, Lists.newArrayList(eventListener));         } else {             list.add(eventListener);             map.put(clazz, list);         }     }      /**      * 移除一个事件监听器      *      * @param clazz      * @param &lt;E&gt;      */     public &lt;E extends Event&gt; void removeListener(Class&lt;E&gt; clazz) {         map.remove(clazz);     }      /**      * 通知所有该事件的监听器      *      * @param &lt;E&gt;      */     public &lt;E extends Event&gt; void notifyListener(E e) {         List&lt;EventListener&gt; eventListeners = map.get(e.getClass());         if (CollectionUtils.isEmpty(eventListeners)) {             return;         }         eventListeners.forEach(eventListener -&gt; {                 // 同步执行                 eventListener.onEvent(e);         });     }       @Override     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {         EventManager.applicationContext = applicationContext;     } }</code></pre> <p>通过initEventMap()方法在项目启动后，利用反射注册所有的事件监听器，但是notifyListener()方法是串行执行，如果想要异步执行增加一个标记注解<strong>@AsyncExecute</strong>就行了，优化后版本如下：</p> <pre><code class="language-java">/**  * @author 2YSP  * @date 2022/4/16 17:35  */ @Target(ElementType.TYPE) @Retention(RetentionPolicy.RUNTIME) public @interface AsyncExecute {  }</code></pre> <p>EventManager</p> <pre><code class="language-java">/**  * @author 2YSP  * @date 2022/4/16 16:12  */ @Component public class EventManager implements ApplicationContextAware {     /**      * 事件map      */     private static Map&lt;Class&lt;? extends Event&gt;, List&lt;EventListener&gt;&gt; map = new HashMap&lt;&gt;(64);       private static ApplicationContext applicationContext;      private static final String EVENT_METHOD = "onEvent";      /**      * 事件执行线程池      */     private static ExecutorService eventPool = new ThreadPoolExecutor(4,             8, 30L, TimeUnit.SECONDS,             new ArrayBlockingQueue&lt;&gt;(512), new ThreadFactoryBuilder().setNameFormat("event-pool-%d").build());      /**      * 初始化事件缓存map      */     @PostConstruct     private void initEventMap() {         Map&lt;String, EventListener&gt; beanMap = applicationContext.getBeansOfType(EventListener.class);         if (beanMap == null) {             return;         }         beanMap.forEach((key, value) -&gt; {             // 反射获取onEvent方法的参数类型             Method[] methods = ReflectionUtils.getDeclaredMethods(value.getClass());             for (Method method : methods) {                 if (method.getName().equals(EVENT_METHOD)) {                     Parameter parameter = method.getParameters()[0];                     // 参数必须为Event的子类                     if (parameter.getType().getName().equals(Event.class.getName())) {                         continue;                     }                     registerListener((Class&lt;? extends Event&gt;) parameter.getType(), value);                 }             }         });     }      /**      * 注册一个事件监听器      *      * @param clazz      * @param eventListener      * @param &lt;E&gt;      */     public &lt;E extends Event&gt; void registerListener(Class&lt;? extends Event&gt; clazz, EventListener&lt;E&gt; eventListener) {         List&lt;EventListener&gt; list = map.get(clazz);         if (CollectionUtils.isEmpty(list)) {             map.put(clazz, Lists.newArrayList(eventListener));         } else {             list.add(eventListener);             map.put(clazz, list);         }     }      /**      * 移除一个事件监听器      *      * @param clazz      * @param &lt;E&gt;      */     public &lt;E extends Event&gt; void removeListener(Class&lt;E&gt; clazz) {         map.remove(clazz);     }      /**      * 通知所有该事件的监听器      *      * @param &lt;E&gt;      */     public &lt;E extends Event&gt; void notifyListener(E e) {         List&lt;EventListener&gt; eventListeners = map.get(e.getClass());         if (CollectionUtils.isEmpty(eventListeners)) {             return;         }         eventListeners.forEach(eventListener -&gt; {             AsyncExecute asyncExecute = eventListener.getClass().getAnnotation(AsyncExecute.class);             if (asyncExecute == null) {                 // 同步执行                 eventListener.onEvent(e);             } else {                 // 异步执行                 eventPool.execute(() -&gt; eventListener.onEvent(e));             }         });     }       @Override     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {         EventManager.applicationContext = applicationContext;     } }</code></pre> <p>@AsyncExecute注解可用在类上，每次调用notifyListener()方法时通过反射判断是否存在@AsyncExecute注解，如果存在则用线程池异步执行，其实反射的性能不是很好，如果追求性能的话可以考虑在初始化时就将是否异步执行的信息维护到事件缓存map中。</p> <p>现在就差一个发布事件的工具类EventPublisher</p> <pre><code class="language-java">/**  * @author 2YSP  * @date 2022/4/16 16:07  */ @Component public class EventPublisher&lt;E extends Event&gt; {      @Resource     private EventManager eventManager;      public &lt;E extends Event&gt; void publish(E event) {         eventManager.notifyListener(event);     } }</code></pre> <h2 id="三测试">三、测试</h2> <p>测试的场景是订单创建后，发生订单创建事件，然后有两个监听器都监听了该事件，区别是一个用了@AsyncExecute注解，一个没有。</p> <ol> <li>创建Order实体</li> </ol> <pre><code class="language-java">public class Order {      private String orderNo;      public String getOrderNo() {         return orderNo;     }      public void setOrderNo(String orderNo) {         this.orderNo = orderNo;     } }</code></pre> <p>2.创建订单创建事件</p> <pre><code class="language-java">public class OrderCreateEvent extends Event {      private Order order;      public OrderCreateEvent(Object source, Order order) {         super(source);         this.order = order;     }      public Order getOrder() {         return order;     }      public void setOrder(Order order) {         this.order = order;     } }</code></pre> <p>3.创建事件监听器</p> <pre><code class="language-java">@Component public class OrderCreateEventListener implements EventListener&lt;OrderCreateEvent&gt; {      @Override     public void onEvent(OrderCreateEvent orderCreateEvent) {         System.out.println(Thread.currentThread().getName() + "--监听订单创建事件。。。。。。。。。");         Order order = orderCreateEvent.getOrder();         System.out.println(order.getOrderNo());     } }   @AsyncExecute @Component public class OrderCreateEventListener2 implements EventListener&lt;OrderCreateEvent&gt; {      @Override     public void onEvent(OrderCreateEvent orderCreateEvent) {         System.out.println(Thread.currentThread().getName() + "--监听订单创建事件2。。。。。。。。。");         Order order = orderCreateEvent.getOrder();         System.out.println(order.getOrderNo());     } }</code></pre> <p>4.发布事件</p> <pre><code class="language-java">@RequestMapping("/order") @RestController public class OrderController {      @Resource     private OrderService orderService;      @PostMapping("")     public void create(@RequestBody Order order) {         orderService.create(order);     } }   @Service public class OrderService {      @Resource     private EventPublisher&lt;OrderCreateEvent&gt; publisher;       /**      * 创建订单      *      * @param order      */     public void create(Order order) {         // 发送订单创建事件         order.setOrderNo("sssss");         publisher.publish(new OrderCreateEvent(this, order));     } }</code></pre> <p>测试代码编写完毕，启动项目请求订单创建接口http://localhost:8080/order，控制台输出如下</p> <pre><code class="language-bash">http-nio-8080-exec-2--监听订单创建事件。。。。。。。。。 sssss event-pool-0--监听订单创建事件2。。。。。。。。。 sssss</code></pre> <p>说明两个事件监听器都被触发了，且线程名字不同，说明一个是主线程同步执行，另一个是线程池异步，至此测试成功。</p> <h2 id="四总结">四、总结</h2> <p>写完发现实现一个发布/订阅框架并不难，当然这个功能比较简单，还有优化的空间，代码已经上传到github，<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/2YSP/event-all/tree/master/event"  target="_blank" rel="nofollow">点击即可查看</a>。</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-35708.htm">动物医院需要几个执业兽医师证吗知乎（动物医院资质）</a></p>
+                                        <p>下一个：<a href="/news/article-36243.htm">动物防疫站打疫苗吗 动物防疫站打疫苗吗要钱吗</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-10-11-free-node-subscribe-links.htm" title="10月11日→19M/S|2024年最新免费节点Free Stash Node订阅链接地址">10月11日→19M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-10-clash-stash.htm" title="11月10日→18.9M/S|2024年最新免费节点Free Stash Node订阅链接地址">11月10日→18.9M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-5-linux-clash-stash.htm" title="12月5日→22.3M/S|2024年最新免费节点Free Stash Node订阅链接地址">12月5日→22.3M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-29445.htm" title="springcloud-的使用alibaba版&#8212;&#8212;Nacos Discovery&#8211;服务治理">springcloud-的使用alibaba版&#8212;&#8212;Nacos Discovery&#8211;服务治理</a></li>
+                        <li class="py-2"><a href="/news/article-21109.htm" title="美迪青储机3300价格（美迪青储机报价）">美迪青储机3300价格（美迪青储机报价）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-17-free-node-subscribe-links.htm" title="10月17日→21.3M/S|2024年最新免费节点Free Stash Node订阅链接地址">10月17日→21.3M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-23-node-share-links.htm" title="10月23日→20.3M/S|2024年最新免费节点Free Stash Node订阅链接地址">10月23日→20.3M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-21572.htm" title="2021公务员国考报名公告（2021国考公务员招考公告）">2021公务员国考报名公告（2021国考公务员招考公告）</a></li>
+                        <li class="py-2"><a href="/news/article-24318.htm" title="React + TypeScript + Taro前端开发小结">React + TypeScript + Taro前端开发小结</a></li>
+                        <li class="py-2"><a href="/news/article-27575.htm" title="1688兽药批发网药品价格查询（兽药批发网下载安装）">1688兽药批发网药品价格查询（兽药批发网下载安装）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">21</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- about-section end -->
+                <!-- main-footer -->
+        <footer class="main-footer">
+            <div class="footer-bottom">
+                <div class="auto-container">
+                    <div class="inner-box clearfix">
+                        <div class="copyright pull-left">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <p>
+                                <a href="/">Free Stash Node免费机场节点分享官网</a> 版权所有 Powered by WordPress
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- main-footer end -->
+        <!--Scroll to top-->
+        <button class="scroll-top scroll-to-target" data-target="html">
+            <span class="fa fa-arrow-up"></span>
+        </button>
+        <!-- jequery plugins -->
+        <script src="/assets/website/js/frontend/freestashnode/jquery.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/popper.min.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/owl.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/wow.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/validation.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/jquery.fancybox.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/appear.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/scrollbar.js"></script>
+        <!-- main-js -->
+        <script src="/assets/website/js/frontend/freestashnode/script.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+</body><!-- End of .page_wrapper -->
+
+</html>
