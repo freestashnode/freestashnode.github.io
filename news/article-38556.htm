@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freestashnode.github.io/news/article-38556.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>dask使用kerberos认证读取hive数据库</title>
+        <meta name="description" content="dask使用kerberos认证读取hive数据库 1、首先主机需要有KERBEROS客户端，测试kinit命令是否存在； 2、执行 kinit -kt  xxx.keytab  xxx/zzzz@E" />
+        <link rel="icon" href="/assets/website/img/freestashnode/favicon.ico" type="image/x-icon"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <!-- Stylesheets -->
+    <link href="/assets/website/css/freestashnode/font-awesome-all.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/flaticon.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/owl.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/bootstrap.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/animate.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/color.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/style.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/responsive.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YXFDLQYLFV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YXFDLQYLFV');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+<!-- page wrapper -->
+
+<body data-page="detail">
+    <div class="boxed_wrapper">
+                <!-- preloader -->
+        <div class="preloader"></div>
+        <!-- preloader -->
+        <!-- main header -->
+        <header class="main-header style-one">
+            <!-- header-lower -->
+            <div class="header-lower">
+                <div class="outer-box">
+                    <div class="logo-box">
+                        <figure class="logo">
+                                                        <a href="/">
+                                <span>Free Stash Node</span>
+                            </a>
+                                                    </figure>
+                    </div>
+                    <div class="menu-area">
+                        <!--Mobile Navigation Toggler-->
+                        <div class="mobile-nav-toggler">
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                        </div>
+                        <nav class="main-menu navbar-expand-md navbar-light">
+                            <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+                                <ul class="navigation clearfix">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                        <li><a href="#">关于</a></li>
+                                    <li><a href="#">联系</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!--sticky Header-->
+            <div class="sticky-header">
+                <div class="outer-box">
+                    <div class="logo-box">
+                        <figure class="logo">
+                            <a href="/">
+                                <span>Free Stash Node</span>
+                            </a>
+                        </figure>
+                    </div>
+                    <div class="menu-area">
+                        <nav class="main-menu clearfix">
+                            <!--Keep This Empty / Menu will come through Javascript-->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- main-header end -->
+        <!-- Mobile Menu  -->
+        <div class="mobile-menu">
+            <div class="menu-backdrop"></div>
+            <div class="close-btn"><i class="fas fa-times"></i></div>
+            <nav class="menu-box">
+                <div class="menu-outer">
+                    <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
+                </div>
+                <div class="social-links">
+                    <ul class="clearfix">
+                        <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+                        <li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+                        <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
+                        <li><a href="#"><span class="fab fa-instagram"></span></a></li>
+                        <li><a href="#"><span class="fab fa-youtube"></span></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div><!-- End Mobile Menu -->
+        <!-- Page Title -->
+        <section class="page-title centred" style="background-image: url(/assets/website/img/freestashnode/background/page-title.jpg);">
+            <div class="auto-container">
+                <div class="content-box">
+                    <div class="title">
+                        <h1>dask使用kerberos认证读取hive数据库</h1>
+                    </div>
+                    <ul class="bread-crumb clearfix">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- End Page Title -->
+        <!-- about-section -->
+        <section class="about-section">
+            <div class="auto-container">
+                <div class="row clearfix">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="StashNode免费订阅官网" data-url="https://stashnode.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>dask使用kerberos认证读取hive数据库</p> <p>1、首先主机需要有KERBEROS客户端，测试kinit命令是否存在；</p> <p>2、执行</p> <pre><code class="prism language-linux">kinit -kt  xxx.keytab  xxx/zzzz@EXAMPLE.COM  </code></pre> <p>在此之前需要确认xxx.keytab 文件正确，以及/etc/krb5.conf配置文件配置正确</p> <p>下面是krb5.conf, 以下的配置和代码中的Example需要替换为自己的目标配置</p> <p>kerberos.example.com 这个配置是hive所在主机的映射名，可在/etc/hosts中配置映射</p> <pre><code># Configuration snippets may be placed in this directory as well includedir /etc/krb5.conf.d/  [logging]  default = FILE:/var/log/krb5libs.log  kdc = FILE:/var/log/krb5kdc.log  admin_server = FILE:/var/log/kadmind.log  [libdefaults]  dns_lookup_realm = false  ticket_lifetime = 24h  renew_lifetime = 7d  forwardable = true  rdns = false  pkinit_anchors = FILE:/etc/pki/tls/certs/ca-bundle.crt # default_realm = EXAMPLE.COM # default_ccache_name = KEYRING:persistent:%{uid}  [realms] # EXAMPLE.COM = { #  kdc = kerberos.example.com #  admin_server = kerberos.example.com # }  [domain_realm] # .example.com = EXAMPLE.COM # example.com = EXAMPLE.COM  </code></pre> <p>3、</p> <pre><code class="prism language-python">con <span class="token operator">=</span> <span class="token string">"hive://ipaddr:10000/database?auth=KERBEROS&amp;kerberos_service_name=hive"</span> </code></pre> <p>ipaddr是远程hive数据库主机地址，database是要连接的数据库名；</p> <p>这里设置auth=KERBEROS 使用kerberos方式连接hive数据库，不需要密码，但是需要keytab认证文件，设置kerberos_service_name=hive</p> <p>4、使用sqlalchemy构建sql查询语句</p> <pre><code class="prism language-python"><span class="token keyword">from</span> sqlalchemy <span class="token keyword">import</span> Column<span class="token punctuation">,</span> MetaData<span class="token punctuation">,</span> Table<span class="token punctuation">,</span> text <span class="token keyword">from</span> sqlalchemy<span class="token punctuation">.</span>sql <span class="token keyword">import</span> select  metadata <span class="token operator">=</span> MetaData<span class="token punctuation">(</span><span class="token punctuation">)</span> columns <span class="token operator">=</span> <span class="token string">"col1,col2,col3,col4"</span> li <span class="token operator">=</span> <span class="token punctuation">[</span>Column<span class="token punctuation">(</span>col<span class="token punctuation">)</span> <span class="token keyword">for</span> col <span class="token keyword">in</span> columns<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">","</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token operator">*</span>li<span class="token punctuation">)</span> t <span class="token operator">=</span> Table<span class="token punctuation">(</span><span class="token string">'tableName'</span><span class="token punctuation">,</span> metadata<span class="token punctuation">,</span>           <span class="token operator">*</span>li<span class="token punctuation">,</span>           schema<span class="token operator">=</span><span class="token string">'databaseName'</span><span class="token punctuation">)</span> s <span class="token operator">=</span> select<span class="token punctuation">(</span><span class="token punctuation">[</span>t<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span>where<span class="token punctuation">(</span>text<span class="token punctuation">(</span><span class="token string">"col2&gt;4"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> text<span class="token punctuation">(</span><span class="token string">"col3&gt;5"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>limit<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> </code></pre> <p>dask的read_sql_table方法要么就是进行整表查询</p> <p>5、使用krbcontext模块进行认证并进行数据读取</p> <pre><code class="prism language-python">principal <span class="token operator">=</span> <span class="token string">"xxx/zzzz@EXAMPLE.COM"</span> keytab_path <span class="token operator">=</span> <span class="token string">"./xxx.keytab"</span> <span class="token keyword">from</span> krbcontext <span class="token keyword">import</span> krbcontext <span class="token keyword">with</span> krbcontext<span class="token punctuation">(</span>using_keytab<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> principal<span class="token operator">=</span>principal<span class="token punctuation">,</span> keytab_file<span class="token operator">=</span>keytab_path<span class="token punctuation">)</span><span class="token punctuation">:</span> 	df <span class="token operator">=</span> dd<span class="token punctuation">.</span>read_sql_table<span class="token punctuation">(</span>s<span class="token punctuation">,</span> con<span class="token punctuation">,</span> index_col<span class="token operator">=</span><span class="token string">"col1"</span><span class="token punctuation">)</span> </code></pre> <p>有个依赖包需要sasl，这个包在linux上使用conda能够正常安装，在windows上可能会因为缺少一些不确定的东西而装不上，在linux上直接conda install sasl即可。</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-38555.htm">图文详解 | 33个Python关键字，一口吃掉一个！</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-28969.htm" title="vue+element+oss实现前端分片上传和断点续传">vue+element+oss实现前端分片上传和断点续传</a></li>
+                        <li class="py-2"><a href="/news/article-35708.htm" title="动物医院需要几个执业兽医师证吗知乎（动物医院资质）">动物医院需要几个执业兽医师证吗知乎（动物医院资质）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-20-share-clash-stash.htm" title="10月20日→20M/S|2024年最新免费节点Free Stash Node订阅链接地址">10月20日→20M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-11-free-node-subscribe-links.htm" title="11月11日→20.7M/S|2024年最新免费节点Free Stash Node订阅链接地址">11月11日→20.7M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-20653.htm" title="济南宠物免费领养中心在哪里（济南宠物救助领养中心地址）">济南宠物免费领养中心在哪里（济南宠物救助领养中心地址）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-6-linux-clash-stash.htm" title="1月6日→18.4M/S|2025年最新免费节点Free Stash Node订阅链接地址">1月6日→18.4M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-2-clash-stash.htm" title="12月2日→22.1M/S|2024年最新免费节点Free Stash Node订阅链接地址">12月2日→22.1M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-30393.htm" title="Vue使用自定义指令实现拖拽行为">Vue使用自定义指令实现拖拽行为</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-29-free-subscribe-node.htm" title="11月29日→21.3M/S|2024年最新免费节点Free Stash Node订阅链接地址">11月29日→21.3M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-24316.htm" title="win11系统如何添加pdf虚拟打印机">win11系统如何添加pdf虚拟打印机</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- about-section end -->
+                <!-- main-footer -->
+        <footer class="main-footer">
+            <div class="footer-bottom">
+                <div class="auto-container">
+                    <div class="inner-box clearfix">
+                        <div class="copyright pull-left">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <p>
+                                <a href="/">Free Stash Node免费机场节点分享官网</a> 版权所有 Powered by WordPress
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- main-footer end -->
+        <!--Scroll to top-->
+        <button class="scroll-top scroll-to-target" data-target="html">
+            <span class="fa fa-arrow-up"></span>
+        </button>
+        <!-- jequery plugins -->
+        <script src="/assets/website/js/frontend/freestashnode/jquery.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/popper.min.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/owl.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/wow.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/validation.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/jquery.fancybox.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/appear.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/scrollbar.js"></script>
+        <!-- main-js -->
+        <script src="/assets/website/js/frontend/freestashnode/script.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+</body><!-- End of .page_wrapper -->
+
+</html>
