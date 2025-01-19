@@ -1,4 +1,4 @@
-# 1月16日→20.1M/S|2025年最新免费节点Free Stash Node订阅链接地址  更新时间 2025-01-16 09:25:22
+# 1月19日→18.4M/S|2025年最新免费节点Free Stash Node订阅链接地址  更新时间 2025-01-19 07:23:44
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://freestashnode.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,23 +9,23 @@
 
 ### Clash订阅链接
 
-- https://freestashnode.github.io/uploads/2025/01/0-20250116.yaml
-- https://freestashnode.github.io/uploads/2025/01/1-20250116.yaml
-- https://freestashnode.github.io/uploads/2025/01/2-20250116.yaml
-- https://freestashnode.github.io/uploads/2025/01/3-20250116.yaml
-- https://freestashnode.github.io/uploads/2025/01/4-20250116.yaml
+- https://freestashnode.github.io/uploads/2025/01/0-20250119.yaml
+- https://freestashnode.github.io/uploads/2025/01/1-20250119.yaml
+- https://freestashnode.github.io/uploads/2025/01/2-20250119.yaml
+- https://freestashnode.github.io/uploads/2025/01/3-20250119.yaml
+- https://freestashnode.github.io/uploads/2025/01/4-20250119.yaml
 
 ### V2ray订阅链接
 
-- https://freestashnode.github.io/uploads/2025/01/0-20250116.txt
-- https://freestashnode.github.io/uploads/2025/01/1-20250116.txt
-- https://freestashnode.github.io/uploads/2025/01/2-20250116.txt
-- https://freestashnode.github.io/uploads/2025/01/3-20250116.txt
-- https://freestashnode.github.io/uploads/2025/01/4-20250116.txt
+- https://freestashnode.github.io/uploads/2025/01/0-20250119.txt
+- https://freestashnode.github.io/uploads/2025/01/1-20250119.txt
+- https://freestashnode.github.io/uploads/2025/01/2-20250119.txt
+- https://freestashnode.github.io/uploads/2025/01/3-20250119.txt
+- https://freestashnode.github.io/uploads/2025/01/4-20250119.txt
 
 ### Sing-box订阅链接
 
-- https://freestashnode.github.io/uploads/2025/01/20250116.json
+- https://freestashnode.github.io/uploads/2025/01/20250119.json
 
 ## 更多clash节点订阅 ：
 
