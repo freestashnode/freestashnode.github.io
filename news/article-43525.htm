@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freestashnode.github.io/news/article-43525.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>C语言与java中函数传参比较</title>
+        <meta name="description" content="C语言与java中函数传参比较 首先先说结论：C语言中参数传递有值传递，地址传递，引用传递。但java中的参数传递只有值传递 1.C语言中的参数传递 1&gt;值传递  值传递非常好理解，其实就是对函" />
+        <link rel="icon" href="/assets/website/img/freestashnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Stash Node免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freestashnode.github.io/news/article-43525.htm" />
+    <meta property="og:site_name" content="Free Stash Node免费机场节点分享官网" />
+    <meta property="og:title" content="C语言与java中函数传参比较" />
+    <meta property="og:image" content="https://freestashnode.github.io/uploads/20240919/ca37099adda0fdb537c3a0d5de734c41.webp" />
+        <meta property="og:release_date" content="2025-01-20T07:12:27" />
+    <meta property="og:updated_time" content="2025-01-20T07:12:27" />
+        <meta property="og:description" content="C语言与java中函数传参比较 首先先说结论：C语言中参数传递有值传递，地址传递，引用传递。但java中的参数传递只有值传递 1.C语言中的参数传递 1&gt;值传递  值传递非常好理解，其实就是对函" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="C语言与java中函数传参比较">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <!-- Stylesheets -->
+    <link href="/assets/website/css/freestashnode/font-awesome-all.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/flaticon.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/owl.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/bootstrap.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/animate.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/color.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/style.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/responsive.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YXFDLQYLFV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YXFDLQYLFV');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+<!-- page wrapper -->
+
+<body data-page="detail">
+    <div class="boxed_wrapper">
+                <!-- preloader -->
+        <div class="preloader"></div>
+        <!-- preloader -->
+        <!-- main header -->
+        <header class="main-header style-one">
+            <!-- header-lower -->
+            <div class="header-lower">
+                <div class="outer-box">
+                    <div class="logo-box">
+                        <figure class="logo">
+                                                        <a href="/">
+                                <span>Free Stash Node</span>
+                            </a>
+                                                    </figure>
+                    </div>
+                    <div class="menu-area">
+                        <!--Mobile Navigation Toggler-->
+                        <div class="mobile-nav-toggler">
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                        </div>
+                        <nav class="main-menu navbar-expand-md navbar-light">
+                            <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+                                <ul class="navigation clearfix">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                        <li><a href="#">关于</a></li>
+                                    <li><a href="#">联系</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!--sticky Header-->
+            <div class="sticky-header">
+                <div class="outer-box">
+                    <div class="logo-box">
+                        <figure class="logo">
+                            <a href="/">
+                                <span>Free Stash Node</span>
+                            </a>
+                        </figure>
+                    </div>
+                    <div class="menu-area">
+                        <nav class="main-menu clearfix">
+                            <!--Keep This Empty / Menu will come through Javascript-->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- main-header end -->
+        <!-- Mobile Menu  -->
+        <div class="mobile-menu">
+            <div class="menu-backdrop"></div>
+            <div class="close-btn"><i class="fas fa-times"></i></div>
+            <nav class="menu-box">
+                <div class="menu-outer">
+                    <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
+                </div>
+                <div class="social-links">
+                    <ul class="clearfix">
+                        <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+                        <li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+                        <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
+                        <li><a href="#"><span class="fab fa-instagram"></span></a></li>
+                        <li><a href="#"><span class="fab fa-youtube"></span></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div><!-- End Mobile Menu -->
+        <!-- Page Title -->
+        <section class="page-title centred" style="background-image: url(/assets/website/img/freestashnode/background/page-title.jpg);">
+            <div class="auto-container">
+                <div class="content-box">
+                    <div class="title">
+                        <h1>C语言与java中函数传参比较</h1>
+                    </div>
+                    <ul class="bread-crumb clearfix">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- End Page Title -->
+        <!-- about-section -->
+        <section class="about-section">
+            <div class="auto-container">
+                <div class="row clearfix">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="StashNode免费订阅官网" data-url="https://stashnode.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <h2 id="c语言与java中函数传参比较">C语言与java中函数传参比较</h2> <p>首先先说结论：<strong>C语言中参数传递有值传递，地址传递，引用传递。但java中的参数传递只有值传递</strong></p> <h3 id="1c语言中的参数传递">1.C语言中的参数传递</h3> <h4 id="1值传递">1&gt;值传递</h4> <ul> <li>值传递非常好理解，其实就是对函数所传入的实参进行了一次拷贝，虽然传入函数的值与原来的实参是相等的，但是在内存中却占据着不同的地址，所以在函数中对其进行操作也只是在新的内存地址上进行操作，并不会影响到原来的值。</li> <li>为了更好的理解，我们举个例子</li> </ul> <pre class="prettyprint"><code class="hljs perl"><span class="hljs-comment">#include&lt;stdio.h&gt;</span>  void test(<span class="hljs-keyword">int</span> a) {<span class="hljs-keyword">printf</span>(<span class="hljs-string">"a的值：<span class="hljs-variable">%d</span> ,"</span>,a);<span class="hljs-keyword">printf</span>(<span class="hljs-string">"a的地址：<span class="hljs-variable">%d</span>\n"</span>,&amp;a); }<span class="hljs-keyword">int</span> main() {<span class="hljs-keyword">int</span> a =<span class="hljs-number">10</span>;<span class="hljs-keyword">printf</span>(<span class="hljs-string">"a的值：<span class="hljs-variable">%d</span> ,"</span>,a);<span class="hljs-keyword">printf</span>(<span class="hljs-string">"a的地址：<span class="hljs-variable">%d</span>\n"</span>,&amp;a);     test(a);<span class="hljs-keyword">return</span><span class="hljs-number">0</span>; }</code></pre> <p>执行这段代码，我们发现运行结果是这样的：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220708/32bd127cd328d0b72894036ad0800159.jpg" alt="C语言与java中函数传参比较"></p> <p>清晰的看到通过值传递后函数中的a与实参a在内存中地址不同，所以在函数中对a进行修改是影响不到实际的a的。</p> <hr/> <h4 id="2地址传递">2&gt;地址传递</h4> <ul> <li>根据地址传递这个名字我们可以知道在传递参数时是以地址的方式传递的。并且传递的地址也是内存中的一块空间，下面我们来看一下这段代码</li> </ul> <pre class="prettyprint"><code class="hljs perl"><span class="hljs-comment">#include&lt;stdio.h&gt;</span><span class="hljs-keyword">int</span> main() {<span class="hljs-keyword">int</span> a =<span class="hljs-number">10</span>;<span class="hljs-keyword">int</span>* b = &amp;a;<span class="hljs-keyword">printf</span>(<span class="hljs-string">"a的值:<span class="hljs-variable">%d</span>\n"</span>,a);<span class="hljs-keyword">printf</span>(<span class="hljs-string">"a的地址:<span class="hljs-variable">%d</span>\n"</span>,&amp;a);<span class="hljs-keyword">printf</span>(<span class="hljs-string">"b的值:<span class="hljs-variable">%d</span>\n"</span>,b);<span class="hljs-keyword">printf</span>(<span class="hljs-string">"b的地址:<span class="hljs-variable">%d</span>\n"</span>,&amp;b);<span class="hljs-keyword">return</span><span class="hljs-number">0</span>; }</code></pre> <p>跑出来的结果</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220708/1cc1f16d238cde6ec0cbf8f05c8aba46.jpg" alt="C语言与java中函数传参比较"></p> <ul> <li>我们在声明指针变量是，一般是 int *b 这种形式</li> </ul> <p>但是我这里用 int* b是为了说明：指针其实是一种特殊的数据类型，所以：</p> <p>int* b其实就是声明b是一个指针变量</p> <p>上面的代码中把a的地址赋值给b(指针变量)，而这个指针变量有存放在内存中的某个地方</p> <pre class="prettyprint"><code class="hljs perl"><span class="hljs-comment">#include&lt;stdio.h&gt;</span>  void test(<span class="hljs-keyword">int</span>* b) {<span class="hljs-keyword">int</span> c =<span class="hljs-number">20</span>;<span class="hljs-variable">*b</span> = c;  }<span class="hljs-keyword">int</span> main() {<span class="hljs-keyword">int</span> a =<span class="hljs-number">10</span>;<span class="hljs-keyword">int</span>* b = &amp;a;<span class="hljs-keyword">printf</span>(<span class="hljs-string">"处理前：a的值:<span class="hljs-variable">%d</span>\n"</span>,a);<span class="hljs-keyword">printf</span>(<span class="hljs-string">"处理前：a的地址:<span class="hljs-variable">%d</span>\n"</span>,&amp;a);<span class="hljs-keyword">printf</span>(<span class="hljs-string">"处理前：b的值:<span class="hljs-variable">%d</span>\n"</span>,b);<span class="hljs-keyword">printf</span>(<span class="hljs-string">"处理前：b的地址:<span class="hljs-variable">%d</span>\n"</span>,&amp;b);      test(b);<span class="hljs-regexp">//test</span>(&amp;a);<span class="hljs-keyword">printf</span>(<span class="hljs-string">"处理后：a的值:<span class="hljs-variable">%d</span>\n"</span>,a);<span class="hljs-keyword">printf</span>(<span class="hljs-string">"处理后：a的地址:<span class="hljs-variable">%d</span>\n"</span>,&amp;a);<span class="hljs-keyword">printf</span>(<span class="hljs-string">"处理后：b的值:<span class="hljs-variable">%d</span>\n"</span>,b);<span class="hljs-keyword">printf</span>(<span class="hljs-string">"处理后：b的地址:<span class="hljs-variable">%d</span>\n"</span>,&amp;b);<span class="hljs-keyword">return</span><span class="hljs-number">0</span>; }</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220708/c58d0be4c7eee856597a31ca7777747e.jpg" alt="C语言与java中函数传参比较"></p> <hr/> <h3 id="3引用传递">3&gt;引用传递</h3> <p>很多人分不清地址传递与引用传递，甚至认为两者是相同的，但二者的根本区别就在于，是否开辟了一段新的内存来存放地址</p> <pre class="prettyprint"><code class="hljs perl"><span class="hljs-comment">#include&lt;stdio.h&gt;</span><span class="hljs-keyword">int</span> main() {<span class="hljs-keyword">int</span> a =<span class="hljs-number">10</span>;<span class="hljs-keyword">int</span>&amp; b = a;<span class="hljs-keyword">printf</span>(<span class="hljs-string">"a的值:<span class="hljs-variable">%d</span>\n"</span>,a);<span class="hljs-keyword">printf</span>(<span class="hljs-string">"a的地址:<span class="hljs-variable">%d</span>\n"</span>,&amp;a);<span class="hljs-keyword">printf</span>(<span class="hljs-string">"b的值:<span class="hljs-variable">%d</span>\n"</span>,b);<span class="hljs-keyword">printf</span>(<span class="hljs-string">"b的地址:<span class="hljs-variable">%d</span>\n"</span>,&amp;b);<span class="hljs-keyword">return</span><span class="hljs-number">0</span>; }</code></pre> <p>下面是运行结果：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220708/7a7cb9a8e7bb078a4fa9f646634a2211.jpg" alt="C语言与java中函数传参比较"></p> <p>我们可以看到a和b的值和地址都是相同的，所以调用b，就是调用a，对b赋值就是对a赋值。</p> <pre class="prettyprint"><code class="hljs perl"><span class="hljs-comment">#include&lt;stdio.h&gt;</span>  void test(<span class="hljs-keyword">int</span>&amp; b) {<span class="hljs-keyword">int</span> c =<span class="hljs-number">20</span>;     b = c; }<span class="hljs-keyword">int</span> main() {<span class="hljs-keyword">int</span> a =<span class="hljs-number">10</span>;<span class="hljs-keyword">int</span>&amp; b = a;<span class="hljs-keyword">printf</span>(<span class="hljs-string">"处理前：a的值:<span class="hljs-variable">%d</span>\n"</span>,a);<span class="hljs-keyword">printf</span>(<span class="hljs-string">"处理前：b的值:<span class="hljs-variable">%d</span>\n"</span>,b);      test(b);<span class="hljs-regexp">//test</span>(a);<span class="hljs-keyword">printf</span>(<span class="hljs-string">"处理后：a的值:<span class="hljs-variable">%d</span>\n"</span>,a);<span class="hljs-keyword">printf</span>(<span class="hljs-string">"处理后：b的值:<span class="hljs-variable">%d</span>\n"</span>,b);<span class="hljs-keyword">return</span><span class="hljs-number">0</span>; }</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220708/e214fa659d48748b2b46a1fa4339e71f.jpg" alt="C语言与java中函数传参比较"></p> <hr/> <p>三种传参方式比较：(以交换数据为例)</p> <pre class="prettyprint"><code class="hljs perl"><span class="hljs-comment">#include&lt;stdio.h&gt;</span>  void swap(<span class="hljs-keyword">int</span> a,<span class="hljs-keyword">int</span> b) {<span class="hljs-keyword">int</span> temp = a;     a = b;     b = temp; }  void swap2(<span class="hljs-keyword">int</span>&amp; a,<span class="hljs-keyword">int</span>&amp; b) {<span class="hljs-keyword">int</span> temp = a;     a = b;     b = temp; }  void swap3(<span class="hljs-keyword">int</span>* a,<span class="hljs-keyword">int</span>* b) {<span class="hljs-keyword">int</span> temp =<span class="hljs-variable">*a</span>;<span class="hljs-variable">*a</span> =<span class="hljs-variable">*b</span>;<span class="hljs-variable">*b</span> = temp; }<span class="hljs-keyword">int</span> main() {<span class="hljs-keyword">int</span> a =<span class="hljs-number">10</span>;<span class="hljs-keyword">int</span> b =<span class="hljs-number">20</span>;<span class="hljs-keyword">printf</span>(<span class="hljs-string">"交换前a =<span class="hljs-variable">%d</span>, b =<span class="hljs-variable">%d</span>\n"</span>,a,b);     swap(a,b);<span class="hljs-regexp">//swap</span>2(a,b);<span class="hljs-regexp">//swap</span>3(&amp;a,&amp;b);<span class="hljs-keyword">printf</span>(<span class="hljs-string">"交换后a =<span class="hljs-variable">%d</span>, b =<span class="hljs-variable">%d</span>\n"</span>,a,b);<span class="hljs-keyword">return</span><span class="hljs-number">0</span>; }</code></pre> <p>值传递：失败</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220708/58ecc5686efaba33a12e19a7f3e3ef52.jpg" alt="C语言与java中函数传参比较"></p> <p>地址传递：成功</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220708/8e172ab1e4939670c459cfc8d76544ff.jpg" alt="C语言与java中函数传参比较"></p> <p>引用传递：成功</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220708/25588d363afe297aec5809a44f8a2ab8.jpg" alt="C语言与java中函数传参比较"></p> <hr/> <h3 id="java中的参数传递">Java中的参数传递</h3> <ul> <li>很多文章中写到java分两种参数传递方式：值传递和引用传递。理由是：java并不是完全的面向对象语言(还有八大基本类型)。针对基本类型，在传递时是值传递。而对于其他的数组类型，类或者接口等引用数据类型，就是引用传递。这篇文章可以说是这种观点的代表：<br /><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/zhzhao999/article/details/53449504"  rel="nofollow">JAVA中值传递和引用传递的三种情况</a></li> </ul> <p>但是又有不少文章抨击上面文章的这种观点，并且表明：java中只有一种参数传递方式：值传递</p> <p>以这篇文章为代表：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/chen-kh/p/6696303.html"  rel="nofollow">Java：传值还是传引用？</a></p> <ul> <li>在这里我更支持后者的观点，并不是因为我也觉得java中只存在值传递，而是我知道上述前者文章中所说的引用传递并不是我们在上面C语言参数传递中讲的引用传递。接下来我们逐个分析。</li> </ul> <h4 id="1值传递-1">1&gt;值传递</h4> <p>因为java中不存在指针的概念，所以我们想像在C语言中那样为交换数据封装一个方法是无法实现的，因为java中并不存在指针类型(既有优点也有缺点)</p> <pre class="prettyprint"><code class="hljs cs"><span class="hljs-keyword">public</span><span class="hljs-keyword">class</span> paraTest01 {<span class="hljs-keyword">public</span><span class="hljs-keyword">static</span><span class="hljs-keyword">void</span><span class="hljs-title">main</span>(String[] args) {<span class="hljs-keyword">int</span> a =<span class="hljs-number">10</span>;<span class="hljs-keyword">int</span> b =<span class="hljs-number">20</span>;         swap(a,b);         System.<span class="hljs-keyword">out</span>.println(<span class="hljs-string">"最终 a = "</span> + a);         System.<span class="hljs-keyword">out</span>.println(<span class="hljs-string">"最终 b = "</span> + b);     }<span class="hljs-keyword">public</span><span class="hljs-keyword">static</span><span class="hljs-keyword">void</span><span class="hljs-title">swap</span>(<span class="hljs-keyword">int</span> a,<span class="hljs-keyword">int</span> b){<span class="hljs-keyword">int</span> temp = a;         a = b;         b = temp;         System.<span class="hljs-keyword">out</span>.println(<span class="hljs-string">"方法中：a = "</span> + a);         System.<span class="hljs-keyword">out</span>.println(<span class="hljs-string">"方法中：b= "</span> + b);     } }</code></pre> <p>运行结果：<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220708/02c081eda60ec381bcb1713c1163cb42.jpg" alt="C语言与java中函数传参比较"></p> <p>这个不需要解释了，应该都懂</p> <hr/> <h4 id="2-所谓的引用传递">2&gt; (所谓的)引用传递</h4> <p>之前的第一种观点认为：引用数据类型在进行参数传递的时候是引用传递，接下来我们依次探究</p> <ul> <li>数组的参数传递</li> </ul> <pre class="prettyprint"><code class="hljs cs"><span class="hljs-keyword">public</span><span class="hljs-keyword">class</span> ArrayParaTest {<span class="hljs-keyword">public</span><span class="hljs-keyword">static</span><span class="hljs-keyword">void</span><span class="hljs-title">main</span>(String[] args) {<span class="hljs-keyword">int</span>[] array = {<!-- --><span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>};         change(array);         System.<span class="hljs-keyword">out</span>.println(array[<span class="hljs-number">0</span>]);     }<span class="hljs-keyword">public</span><span class="hljs-keyword">static</span><span class="hljs-keyword">void</span><span class="hljs-title">change</span>(<span class="hljs-keyword">int</span>[] array){         array[<span class="hljs-number">0</span>] =<span class="hljs-number">0</span>;     } }</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220708/6cc4f7de364e58d4c68ef16003aa9273.jpg" alt="C语言与java中函数传参比较"></p> <p>结果是数组中的第一个元素被替换了。看到这可能很多人就认为这里就是引用传递，别急，我们继续看</p> <pre class="prettyprint"><code class="hljs cs"><span class="hljs-keyword">public</span><span class="hljs-keyword">class</span> paraTest02 {<span class="hljs-keyword">public</span><span class="hljs-keyword">static</span><span class="hljs-keyword">void</span><span class="hljs-title">main</span>(String[] args) {<span class="hljs-keyword">int</span>[] array = {<!-- --><span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>};         change(array);<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> temp : array){             System.<span class="hljs-keyword">out</span>.print(temp +<span class="hljs-string">" "</span>);         }     }<span class="hljs-keyword">public</span><span class="hljs-keyword">static</span><span class="hljs-keyword">void</span><span class="hljs-title">change</span>(<span class="hljs-keyword">int</span>[] array){         array =<span class="hljs-keyword">new</span><span class="hljs-keyword">int</span>[]{<!-- --><span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>,<span class="hljs-number">0</span>};     } }</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220708/50e4a440b33e4b353fbfd710b6c57458.jpg" alt="C语言与java中函数传参比较"></p> <p>懵逼了吗？说好的引用传递呢？很多人觉得，只要是一种类型的参数传递，要么就是能改变实际参数，要么就是不能改变实际参数。这怎么既有改变又有没改变呢？</p> <ul> <li>下面是另外一个例子</li> </ul> <pre class="prettyprint"><code class="hljs cs"><span class="hljs-keyword">public</span><span class="hljs-keyword">class</span> ClassPara {<span class="hljs-keyword">public</span><span class="hljs-keyword">static</span><span class="hljs-keyword">void</span><span class="hljs-title">main</span>(String[] args) {         Person p =<span class="hljs-keyword">new</span> Person(<span class="hljs-string">"张三"</span>);         change(p);         System.<span class="hljs-keyword">out</span>.println(p.getName());     }<span class="hljs-keyword">public</span><span class="hljs-keyword">static</span><span class="hljs-keyword">void</span><span class="hljs-title">change</span>(Person p){         p =<span class="hljs-keyword">new</span> Person(<span class="hljs-string">"李四"</span>);     } }  class Person{<span class="hljs-keyword">private</span> String name;<span class="hljs-keyword">public</span><span class="hljs-title">Person</span>(String name) {<span class="hljs-keyword">this</span>.name = name;     }<span class="hljs-keyword">public</span><span class="hljs-keyword">void</span><span class="hljs-title">setName</span>(String name) {<span class="hljs-keyword">this</span>.name = name;     }<span class="hljs-keyword">public</span> String<span class="hljs-title">getName</span>() {<span class="hljs-keyword">return</span> name;     } }</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220708/fc99dacaa83cbca7b738c23eb36621f8.jpg" alt="C语言与java中函数传参比较"></p> <p>原对象中的属性没有发生变化，但如果是下面的例子</p> <pre class="prettyprint"><code class="hljs cs"><span class="hljs-keyword">public</span><span class="hljs-keyword">class</span> ClassPara {<span class="hljs-keyword">public</span><span class="hljs-keyword">static</span><span class="hljs-keyword">void</span><span class="hljs-title">main</span>(String[] args) {         Person p =<span class="hljs-keyword">new</span> Person(<span class="hljs-string">"张三"</span>);         change(p);         System.<span class="hljs-keyword">out</span>.println(p.getName());     }<span class="hljs-keyword">public</span><span class="hljs-keyword">static</span><span class="hljs-keyword">void</span><span class="hljs-title">change</span>(Person p){         p.setName(<span class="hljs-string">"李四"</span>);     } }  class Person{<span class="hljs-keyword">private</span> String name;<span class="hljs-keyword">public</span><span class="hljs-title">Person</span>(String name) {<span class="hljs-keyword">this</span>.name = name;     }<span class="hljs-keyword">public</span><span class="hljs-keyword">void</span><span class="hljs-title">setName</span>(String name) {<span class="hljs-keyword">this</span>.name = name;     }<span class="hljs-keyword">public</span> String<span class="hljs-title">getName</span>() {<span class="hljs-keyword">return</span> name;     } }</code></pre> <p>这次的运行结果就是这样的：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220708/f72d32b222b0480a51c332952b1e119c.jpg" alt="C语言与java中函数传参比较"></p> <h5 id="综上我们可以总结出这样通俗的结论如果在方法参数中传递了引用数据类型后如果是对该引用自身自身的方法或属性进行操作那么实际的参数也伴随着发生了变化但如果是在方法中给该引用重新赋值了一个新的对象关键字-new-所创建的那么该引用就指向了另一个对象的引用而不是改变原引用中的属性">综上我们可以总结出这样通俗的结论：如果在方法参数中传递了引用数据类型后，如果是对该引用自身(自身的方法或属性)进行操作，那么实际的参数也伴随着发生了变化。但如果是在方法中给该引用重新赋值了一个新的对象(关键字 new 所创建的)，那么该引用就指向了另一个对象的引用，而不是改变原引用中的属性</h5> <hr/> <h3 id="string类">String类：</h3> <ul> <li>String类是比较特殊的一类引用数据类型，所以我们单独把它拿出来说，我们先看String类的jdk源码中有这么一句：</li> <li>“their values cannot be changed after they are created”</li> <li>并且还有一段：</li> <li>String str = “abc”;<br /> 等效于：<br /> char data[] = {‘a’, ‘b’, ‘c’};<br /> String str = new String(data);</li> </ul> <p>其实就是对String类的任何修改 就是新创建了一个对象，并把新的对象的引用赋给之前的对象的引用。</p> <p>所以下面这个例子也就可以理解了</p> <pre class="prettyprint"><code class="hljs cs"><span class="hljs-keyword">public</span><span class="hljs-keyword">class</span> StringParaTest {<span class="hljs-keyword">public</span><span class="hljs-keyword">static</span><span class="hljs-keyword">void</span><span class="hljs-title">main</span>(String[] args) {         String str =<span class="hljs-string">"AAA"</span>;         change(str);         System.<span class="hljs-keyword">out</span>.println(str);     }<span class="hljs-keyword">public</span><span class="hljs-keyword">static</span><span class="hljs-keyword">void</span><span class="hljs-title">change</span>(String str){         str =<span class="hljs-string">"abc"</span>;<span class="hljs-comment">//等价于：</span><span class="hljs-comment">// char data = {'a'.'b','c'};</span><span class="hljs-comment">//str = new String(data);</span>     } }</code></pre> <p>运行结果我们可以猜出来：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220708/d9f35064e0a68e0645c41983b4c01695.jpg" alt="C语言与java中函数传参比较"></p> <p>实质上在方法内还是只改变了对象的引用，所以没有什么卵用。</p> <hr/> <h4 id="综上其实我们所认为的java中的引用传递其实只是传递了对象的引用的值之所以可以改变实际参数是因为我们根据引用值找到了实际对象并对其进行了修改但是如果创建新的对象并赋值给该对象引用就只是改变了这个引用的指向而传入方法的引用只是原引用的一份拷贝所以完全不会影响到实际的参数值">综上，其实我们所认为的java中的引用传递，其实只是传递了对象的引用的值，之所以可以改变实际参数是因为我们根据引用值找到了实际对象并对其进行了修改。但是如果创建新的对象并赋值给该对象引用。就只是改变了这个引用的指向，而传入方法的引用只是原引用的一份拷贝，所以完全不会影响到实际的参数值。</h4> <h4 id="一个方法不能修改一个基本数据类型的参数数值型或布尔型一个方法可以改变一个对象参数的状态一个方法不能让对象参数引用一个新的对象">- 一个方法不能修改一个基本数据类型的参数(数值型或布尔型)。一个方法可以改变一个对象参数的状态。一个方法不能让对象参数引用一个新的对象。</h4> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-43021.htm">动物疫苗接种方法有哪几种呢英语（动物疫苗接种方法有哪几种呢英语怎么说）</a></p>
+                                        <p>下一个：<a href="/news/article-43526.htm">成都托运宠物的快递公司有哪些呢（成都宠物托运公司排名）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-21108.htm" title="重庆宠物猫领养中心有哪些地址（重庆猫咪领养中心地址）">重庆宠物猫领养中心有哪些地址（重庆猫咪领养中心地址）</a></li>
+                        <li class="py-2"><a href="/news/article-37574.htm" title="南京农大动物医院有哪些医生坐诊（南农大动物医院营业时间）">南京农大动物医院有哪些医生坐诊（南农大动物医院营业时间）</a></li>
+                        <li class="py-2"><a href="/news/article-24788.htm" title="SpringBoot注解内容的动态配置">SpringBoot注解内容的动态配置</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-21-free-node-subscribe.htm" title="11月21日→19.3M/S|2024年最新免费节点Free Stash Node订阅链接地址">11月21日→19.3M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-35177.htm" title="Mybaitis入门基础MyBatis的概念引入及工作原理">Mybaitis入门基础MyBatis的概念引入及工作原理</a></li>
+                        <li class="py-2"><a href="/news/article-27575.htm" title="1688兽药批发网药品价格查询（兽药批发网下载安装）">1688兽药批发网药品价格查询（兽药批发网下载安装）</a></li>
+                        <li class="py-2"><a href="/news/article-18840.htm" title="Bootstrap Blazor 模板使用Layout 组件">Bootstrap Blazor 模板使用Layout 组件</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-21-linux-clash-stash.htm" title="12月21日→21M/S|2024年最新免费节点Free Stash Node订阅链接地址">12月21日→21M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-19275.htm" title="人跟狗打的狂犬疫苗一样吗会传染吗（狗和人狂犬疫苗区别）">人跟狗打的狂犬疫苗一样吗会传染吗（狗和人狂犬疫苗区别）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-16-node-share-links.htm" title="12月16日→20.3M/S|2024年最新免费节点Free Stash Node订阅链接地址">12月16日→20.3M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">66</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- about-section end -->
+                <!-- main-footer -->
+        <footer class="main-footer">
+            <div class="footer-bottom">
+                <div class="auto-container">
+                    <div class="inner-box clearfix">
+                        <div class="copyright pull-left">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <p>
+                                <a href="/">Free Stash Node免费机场节点分享官网</a> 版权所有 Powered by WordPress
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- main-footer end -->
+        <!--Scroll to top-->
+        <button class="scroll-top scroll-to-target" data-target="html">
+            <span class="fa fa-arrow-up"></span>
+        </button>
+        <!-- jequery plugins -->
+        <script src="/assets/website/js/frontend/freestashnode/jquery.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/popper.min.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/owl.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/wow.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/validation.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/jquery.fancybox.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/appear.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/scrollbar.js"></script>
+        <!-- main-js -->
+        <script src="/assets/website/js/frontend/freestashnode/script.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+</body><!-- End of .page_wrapper -->
+
+</html>
