@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freestashnode.github.io/news/article-47963.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>企业应用架构研究系列十九：Docker开发环境</title>
+        <meta name="description" content="　　软件行业流行这样一个说法，由于Docker 技术的成熟和该技术被广大厂商的普遍应用，成就了微服务领域的快速成长，衍生了云原生技术和公有云的进一步推广。我个人认为Dockers 技术、微服务技术、云" />
+        <link rel="icon" href="/assets/website/img/freestashnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Stash Node免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freestashnode.github.io/news/article-47963.htm" />
+    <meta property="og:site_name" content="Free Stash Node免费机场节点分享官网" />
+    <meta property="og:title" content="企业应用架构研究系列十九：Docker开发环境" />
+    <meta property="og:image" content="https://freestashnode.github.io/uploads/20240919/21c2a7468dafa9830448f6174d6f4571.webp" />
+        <meta property="og:release_date" content="2025-01-29T10:28:14" />
+    <meta property="og:updated_time" content="2025-01-29T10:28:14" />
+        <meta property="og:description" content="　　软件行业流行这样一个说法，由于Docker 技术的成熟和该技术被广大厂商的普遍应用，成就了微服务领域的快速成长，衍生了云原生技术和公有云的进一步推广。我个人认为Dockers 技术、微服务技术、云" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="企业应用架构研究系列十九：Docker开发环境">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <!-- Stylesheets -->
+    <link href="/assets/website/css/freestashnode/font-awesome-all.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/flaticon.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/owl.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/bootstrap.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/animate.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/color.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/style.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/responsive.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YXFDLQYLFV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YXFDLQYLFV');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+<!-- page wrapper -->
+
+<body data-page="detail">
+    <div class="boxed_wrapper">
+                <!-- preloader -->
+        <div class="preloader"></div>
+        <!-- preloader -->
+        <!-- main header -->
+        <header class="main-header style-one">
+            <!-- header-lower -->
+            <div class="header-lower">
+                <div class="outer-box">
+                    <div class="logo-box">
+                        <figure class="logo">
+                                                        <a href="/">
+                                <span>Free Stash Node</span>
+                            </a>
+                                                    </figure>
+                    </div>
+                    <div class="menu-area">
+                        <!--Mobile Navigation Toggler-->
+                        <div class="mobile-nav-toggler">
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                        </div>
+                        <nav class="main-menu navbar-expand-md navbar-light">
+                            <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+                                <ul class="navigation clearfix">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                        <li><a href="#">关于</a></li>
+                                    <li><a href="#">联系</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!--sticky Header-->
+            <div class="sticky-header">
+                <div class="outer-box">
+                    <div class="logo-box">
+                        <figure class="logo">
+                            <a href="/">
+                                <span>Free Stash Node</span>
+                            </a>
+                        </figure>
+                    </div>
+                    <div class="menu-area">
+                        <nav class="main-menu clearfix">
+                            <!--Keep This Empty / Menu will come through Javascript-->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- main-header end -->
+        <!-- Mobile Menu  -->
+        <div class="mobile-menu">
+            <div class="menu-backdrop"></div>
+            <div class="close-btn"><i class="fas fa-times"></i></div>
+            <nav class="menu-box">
+                <div class="menu-outer">
+                    <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
+                </div>
+                <div class="social-links">
+                    <ul class="clearfix">
+                        <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+                        <li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+                        <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
+                        <li><a href="#"><span class="fab fa-instagram"></span></a></li>
+                        <li><a href="#"><span class="fab fa-youtube"></span></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div><!-- End Mobile Menu -->
+        <!-- Page Title -->
+        <section class="page-title centred" style="background-image: url(/assets/website/img/freestashnode/background/page-title.jpg);">
+            <div class="auto-container">
+                <div class="content-box">
+                    <div class="title">
+                        <h1>企业应用架构研究系列十九：Docker开发环境</h1>
+                    </div>
+                    <ul class="bread-crumb clearfix">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- End Page Title -->
+        <!-- about-section -->
+        <section class="about-section">
+            <div class="auto-container">
+                <div class="row clearfix">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="StashNode免费订阅官网" data-url="https://stashnode.github.io">
+                  				  				  				<p>　　软件行业流行这样一个说法，由于Docker 技术的成熟和该技术被广大厂商的普遍应用，成就了微服务领域的快速成长，衍生了云原生技术和公有云的进一步推广。我个人认为Dockers 技术、微服务技术、云原生技术乃至领域模型概念其实是彼此相互相吸，互相依赖，组成了当今软件行业的一个新的生态链。作为软件行业从业者，虽然不能精通每一项新兴技术，但是我们要对主流技术应保持一颗积极探索的心。</p> <p>　　本章节开始对Dockers领域的技术探索之路开始总结，之前身处项目，没有太多精力对它进行全面总结，但是，软件开发人员对技术的研究和总结是应该保持的良好习惯。</p> <p><img fetchpriority="high" decoding="async" src="http://img.555519.xyz/uploads3/20220510/d72ed661bf3abdf1f95ed73c630e412a.jpg" alt="企业应用架构研究系列十九：Docker开发环境"></p> <p>&nbsp;　　闲话少说，开始Docker 探索的的一个步骤，Docker 环境的搭建。首先我们需要在本地开发环境安装Docker 的运行环境，我的开发环境是Windows 10 ，开发工具使用的是VS2022。</p> <p>　　第一步安装&nbsp;Docker Desktop for Windows, 可以从官网（https://www.docker.com/get-started）直接下载，Windows10 需要最新的企业版本或专业版本，安装的过程中需要安装WSL2(它支持适用于 Linux 的 Windows 子系统在 Windows 上运行 ELF64 Linux 二进制文件)。安装过程基本比较简单，都是One By One. 此处就省略了，特别强调一点，第一次启动的时候特别慢，不要担心，是Docker Desktop 进行更新和检查所需组件，并进行相关的自动配置。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/0efdb983973499c987a1a5c775284a5a.jpg" alt="企业应用架构研究系列十九：Docker开发环境"></p> <p>　　安装完毕后，启动界面如上图，就可以在本地进行开心的玩耍Docker了。本篇文章不再对docker 的专业名词进行解释，可以自行进行度娘。如果你有Linux环境，最后使用Linux环境进行搭建，安装过程也是非常简单，此处不再描述了。Docker Desktop 工具有一个可视化的界面，左侧菜单分别为容器、镜像、卷标三大常规操作提供界面，适合初学者，但，不建议开发人员使用该界面，而是建议大家使用Powershell进行操作。由于安装了WSL2 和Docker 环境，Powershell 里面就可以使用Bush风格的命令了，其实就是Bush操作命令。在Powershell 运行&nbsp;docker run -d -p 80:80 docker/getting-started 命令就可以下载并允许了你的第一个Docker 容器了。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/364113bf68fd7ca24ba3890b0f60c26b.jpg" alt="企业应用架构研究系列十九：Docker开发环境"></p> <p>　　开发环境正常运行起来了，我们后续就可以将自己的代码打包成Docker镜像，发布到本地的环境，我们也可以将开发好的镜像发布到DockerHub 上面或者Azure 上面的企业自己的容器注册表，可参考文档：https://docs.microsoft.com/zh-cn/azure/container-registry。</p> <p><img loading="lazy" decoding="async" src="http://img.555519.xyz/uploads3/20220510/d7afec5c5f0a39fdb33cfb0e337185e3.jpg" alt="企业应用架构研究系列十九：Docker开发环境"></p> <p>　　Docker Desktop 工具是对个人和小型企业免费的，我们也可以使用Docker Desktop 进行K8s 环境在本地搭建，后续文章我对K8s 的搭建和配置进行详细描述，本章节只先粗略的对本地dockers开发环境搭建进行了描述，希望能够帮助你开启dockers开心研究之旅。</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-47962.htm">VUE多选按钮变色</a></p>
+                                        <p>下一个：<a href="/news/article-48355.htm">宠物粮***（宠物粮***格）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-21109.htm" title="美迪青储机3300价格（美迪青储机报价）">美迪青储机3300价格（美迪青储机报价）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-16-node-share.htm" title="1月16日→22.5M/S|2025年最新免费节点Free Stash Node订阅链接地址">1月16日→22.5M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-21-node-share.htm" title="1月21日→19.8M/S|2025年最新免费节点Free Stash Node订阅链接地址">1月21日→19.8M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-45005.htm" title="小猫要跟主人睡一个房间吗（小猫咪一定要和主人在一个房间）">小猫要跟主人睡一个房间吗（小猫咪一定要和主人在一个房间）</a></li>
+                        <li class="py-2"><a href="/news/article-22483.htm" title="动物疫苗怎么卖钱的（动物疫苗经销商）">动物疫苗怎么卖钱的（动物疫苗经销商）</a></li>
+                        <li class="py-2"><a href="/news/article-24316.htm" title="win11系统如何添加pdf虚拟打印机">win11系统如何添加pdf虚拟打印机</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-4-clash-stash-node.htm" title="1月4日→20.1M/S|2025年最新免费节点Free Stash Node订阅链接地址">1月4日→20.1M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-29922.htm" title="附近有没有领养小猫的（附近的领养宠物店）">附近有没有领养小猫的（附近的领养宠物店）</a></li>
+                        <li class="py-2"><a href="/news/article-19734.htm" title="宠物买卖法律责任（关于宠物交易的法律）">宠物买卖法律责任（关于宠物交易的法律）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-3-share-clash-stash.htm" title="12月3日→22.8M/S|2024年最新免费节点Free Stash Node订阅链接地址">12月3日→22.8M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- about-section end -->
+                <!-- main-footer -->
+        <footer class="main-footer">
+            <div class="footer-bottom">
+                <div class="auto-container">
+                    <div class="inner-box clearfix">
+                        <div class="copyright pull-left">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <p>
+                                <a href="/">Free Stash Node免费机场节点分享官网</a> 版权所有 Powered by WordPress
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- main-footer end -->
+        <!--Scroll to top-->
+        <button class="scroll-top scroll-to-target" data-target="html">
+            <span class="fa fa-arrow-up"></span>
+        </button>
+        <!-- jequery plugins -->
+        <script src="/assets/website/js/frontend/freestashnode/jquery.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/popper.min.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/owl.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/wow.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/validation.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/jquery.fancybox.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/appear.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/scrollbar.js"></script>
+        <!-- main-js -->
+        <script src="/assets/website/js/frontend/freestashnode/script.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+</body><!-- End of .page_wrapper -->
+
+</html>
