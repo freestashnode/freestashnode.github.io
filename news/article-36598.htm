@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://freestashnode.github.io/news/article-36598.htm" />
@@ -9,6 +9,34 @@
     <title>Vue3实践setup函数详解</title>
         <meta name="description" content="setup() 函数是Vue3.0中，专门为组件提供的新属性。它为基于Composition API 的新特性提供了统一的入口。 在Vue3中，定义methods、watch、computed、dat" />
         <link rel="icon" href="/assets/website/img/freestashnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Stash Node免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freestashnode.github.io/news/article-36598.htm" />
+    <meta property="og:site_name" content="Free Stash Node免费机场节点分享官网" />
+    <meta property="og:title" content="Vue3实践setup函数详解" />
+    <meta property="og:image" content="https://freestashnode.github.io/uploads/20240919/c2084b0e086576b38263adf74c5ca2dd.webp" />
+        <meta property="og:release_date" content="2025-01-06T09:50:23" />
+    <meta property="og:updated_time" content="2025-01-06T09:50:23" />
+        <meta property="og:description" content="setup() 函数是Vue3.0中，专门为组件提供的新属性。它为基于Composition API 的新特性提供了统一的入口。 在Vue3中，定义methods、watch、computed、dat" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Vue3实践setup函数详解">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <!-- Stylesheets -->
@@ -147,16 +175,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-11-21-free-node-subscribe.htm" title="11月21日→19.3M/S|2024年最新免费节点Free Stash Node订阅链接地址">11月21日→19.3M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-36243.htm" title="动物防疫站打疫苗吗 动物防疫站打疫苗吗要钱吗">动物防疫站打疫苗吗 动物防疫站打疫苗吗要钱吗</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-28-free-clash-stash.htm" title="12月28日→22.6M/S|2024年最新免费节点Free Stash Node订阅链接地址">12月28日→22.6M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-37083.htm" title="宠物粮食生意怎么样啊赚钱吗现在（宠物粮食利润大吗）">宠物粮食生意怎么样啊赚钱吗现在（宠物粮食利润大吗）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-28-free-high-speed-nodes.htm" title="10月28日→18.8M/S|2024年最新免费节点Free Stash Node订阅链接地址">10月28日→18.8M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-13-clash-stash-node.htm" title="10月13日→20.4M/S|2024年最新免费节点Free Stash Node订阅链接地址">10月13日→20.4M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-33730.htm" title="济南 宠物领养 济南宠物领养">济南 宠物领养 济南宠物领养</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-15-free-high-speed-nodes.htm" title="10月15日→19M/S|2024年最新免费节点Free Stash Node订阅链接地址">10月15日→19M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-19733.htm" title="Goland内置类型error报红问题解决（Unresolved type ‘error‘）">Goland内置类型error报红问题解决（Unresolved type ‘error‘）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-29-free-node-subscribe.htm" title="10月29日→22.9M/S|2024年最新免费节点Free Stash Node订阅链接地址">10月29日→22.9M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-43020.htm" title="怀孕让猫抓破了会影响孩子吗（怀孕让猫挠了怎么办）">怀孕让猫抓破了会影响孩子吗（怀孕让猫挠了怎么办）</a></li>
+                        <li class="py-2"><a href="/news/article-44014.htm" title="成都宠物领养中心有哪些地方好（成都宠物领养中心有哪些地方好一点）">成都宠物领养中心有哪些地方好（成都宠物领养中心有哪些地方好一点）</a></li>
+                        <li class="py-2"><a href="/news/article-27115.htm" title="宠物粮食排行榜前十 宠物粮食排行榜前十名">宠物粮食排行榜前十 宠物粮食排行榜前十名</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-24-free-node-subscribe.htm" title="1月24日→20.9M/S|2025年最新免费节点Free Stash Node订阅链接地址">1月24日→20.9M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-31265.htm" title="瑞派宠物医院是24小时的吗（瑞派宠物医院待遇怎么样）">瑞派宠物医院是24小时的吗（瑞派宠物医院待遇怎么样）</a></li>
+                        <li class="py-2"><a href="/news/article-29446.htm" title="正规宠物领养机构排名（宠物领养中心app）">正规宠物领养机构排名（宠物领养中心app）</a></li>
+                        <li class="py-2"><a href="/news/article-38075.htm" title="兽药厂排行榜前三十名（兽药厂排行榜前三十名企业）">兽药厂排行榜前三十名（兽药厂排行榜前三十名企业）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-11-free-node-subscribe.htm" title="1月11日→18.9M/S|2025年最新免费节点Free Stash Node订阅链接地址">1月11日→18.9M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-6-linux-clash-stash.htm" title="12月6日→23M/S|2024年最新免费节点Free Stash Node订阅链接地址">12月6日→23M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-49461.htm" title="收购土狗联系方式（收购土狗联系方式长治）">收购土狗联系方式（收购土狗联系方式长治）</a></li>
                     </ul>
     </div>
 </div>
@@ -168,16 +196,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">24</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://freestashnode.github.io/news/article-28969.htm" />
@@ -9,6 +9,34 @@
     <title>vue+element+oss实现前端分片上传和断点续传</title>
         <meta name="description" content="纯前端实现：切片上传断点续传 。断点续传需要在切上上传的基础上实现 前端之前上传OSS，无需后端提供接口。先上完整代码，直接复制，将new OSS里的参数修改成自己公司OSS相关信息后可用，如遇问题，" />
         <link rel="icon" href="/assets/website/img/freestashnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Stash Node免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freestashnode.github.io/news/article-28969.htm" />
+    <meta property="og:site_name" content="Free Stash Node免费机场节点分享官网" />
+    <meta property="og:title" content="vue+element+oss实现前端分片上传和断点续传" />
+    <meta property="og:image" content="https://freestashnode.github.io/uploads/20240919/39fdfbec75dc7acc7a284425f589d663.webp" />
+        <meta property="og:release_date" content="2024-12-21T10:10:27" />
+    <meta property="og:updated_time" content="2024-12-21T10:10:27" />
+        <meta property="og:description" content="纯前端实现：切片上传断点续传 。断点续传需要在切上上传的基础上实现 前端之前上传OSS，无需后端提供接口。先上完整代码，直接复制，将new OSS里的参数修改成自己公司OSS相关信息后可用，如遇问题，" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="vue+element+oss实现前端分片上传和断点续传">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <!-- Stylesheets -->
@@ -147,16 +175,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-23390.htm" title="动物疫苗接种简报内容范文（动物疫苗接种简报内容范文大全）">动物疫苗接种简报内容范文（动物疫苗接种简报内容范文大全）</a></li>
+                        <li class="py-2"><a href="/news/article-44510.htm" title="安泰动物诊所怎么样 安泰动物诊所怎么样啊">安泰动物诊所怎么样 安泰动物诊所怎么样啊</a></li>
                         <li class="py-2"><a href="/news/article-20192.htm" title="在我的城市有一家宠物医院的英语翻译（在我的城市里有一家宠物医院用英语怎么写）">在我的城市有一家宠物医院的英语翻译（在我的城市里有一家宠物医院用英语怎么写）</a></li>
-                        <li class="py-2"><a href="/news/article-22018.htm" title="做猫粮的机器（做猫粮的机器多少钱）">做猫粮的机器（做猫粮的机器多少钱）</a></li>
-                        <li class="py-2"><a href="/news/article-22482.htm" title="动物疫苗公司产量排名榜前十名（动物疫苗行业排名）">动物疫苗公司产量排名榜前十名（动物疫苗行业排名）</a></li>
-                        <li class="py-2"><a href="/news/article-31264.htm" title="动物医院办理条件是什么（动物医院手续）">动物医院办理条件是什么（动物医院手续）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-1-node-share.htm" title="10月1日→19.1M/S|2024年最新免费节点Free Stash Node订阅链接地址">10月1日→19.1M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-23-node-share-links.htm" title="10月23日→20.3M/S|2024年最新免费节点Free Stash Node订阅链接地址">10月23日→20.3M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-21-node-share-links.htm" title="10月21日→18.7M/S|2024年最新免费节点Free Stash Node订阅链接地址">10月21日→18.7M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-30-clash-stash-node.htm" title="9月30日→20.1M/S|2024年最新免费节点Free Stash Node订阅链接地址">9月30日→20.1M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-29-linux-clash-stash.htm" title="9月29日→21.9M/S|2024年最新免费节点Free Stash Node订阅链接地址">9月29日→21.9M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-18-free-node-subscribe-links.htm" title="10月18日→18.9M/S|2024年最新免费节点Free Stash Node订阅链接地址">10月18日→18.9M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-26200.htm" title="动物医院资质级别有哪些类型标准 动物医院资质级别有哪些类型标准要求">动物医院资质级别有哪些类型标准 动物医院资质级别有哪些类型标准要求</a></li>
+                        <li class="py-2"><a href="/news/article-32780.htm" title="塞尔达海拉鲁地区神庙位置（塞尔达海拉鲁世界全地图）">塞尔达海拉鲁地区神庙位置（塞尔达海拉鲁世界全地图）</a></li>
+                        <li class="py-2"><a href="/news/article-49991.htm" title="宠物粮食加工厂设备生产厂家有哪些呢图片（生产宠物粮的工厂有哪些）">宠物粮食加工厂设备生产厂家有哪些呢图片（生产宠物粮的工厂有哪些）</a></li>
+                        <li class="py-2"><a href="/news/article-44508.htm" title="宠物粮食店铺起名大全集（宠物粮卖点）">宠物粮食店铺起名大全集（宠物粮卖点）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-24-free-stash-node.htm" title="11月24日→19.7M/S|2024年最新免费节点Free Stash Node订阅链接地址">11月24日→19.7M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-20653.htm" title="济南宠物免费领养中心在哪里（济南宠物救助领养中心地址）">济南宠物免费领养中心在哪里（济南宠物救助领养中心地址）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-22-free-subscribe-node.htm" title="1月22日→18.1M/S|2025年最新免费节点Free Stash Node订阅链接地址">1月22日→18.1M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
                     </ul>
     </div>
 </div>
@@ -168,19 +196,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">12</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>
