@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freestashnode.github.io/news/article-58116.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>@Valid 参数校验不生效问题解决</title>
+        <meta name="description" content="@Valid 参数校验不生效问题解决  问题现象 手动检查 不生效原因    import lombok.Data;  import javax.validation.constraints.NotN" />
+        <link rel="icon" href="/assets/website/img/freestashnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Stash Node免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freestashnode.github.io/news/article-58116.htm" />
+    <meta property="og:site_name" content="Free Stash Node免费机场节点分享官网" />
+    <meta property="og:title" content="@Valid 参数校验不生效问题解决" />
+    <meta property="og:image" content="https://freestashnode.github.io/uploads/20240919/376c5d609a493e56ab17209ac92a5a64.webp" />
+        <meta property="og:release_date" content="2025-02-17T09:57:30" />
+    <meta property="og:updated_time" content="2025-02-17T09:57:30" />
+        <meta property="og:description" content="@Valid 参数校验不生效问题解决  问题现象 手动检查 不生效原因    import lombok.Data;  import javax.validation.constraints.NotN" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="@Valid 参数校验不生效问题解决">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <!-- Stylesheets -->
+    <link href="/assets/website/css/freestashnode/font-awesome-all.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/flaticon.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/owl.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/bootstrap.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/animate.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/color.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/style.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/responsive.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YXFDLQYLFV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YXFDLQYLFV');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+<!-- page wrapper -->
+
+<body data-page="detail">
+    <div class="boxed_wrapper">
+                <!-- preloader -->
+        <div class="preloader"></div>
+        <!-- preloader -->
+        <!-- main header -->
+        <header class="main-header style-one">
+            <!-- header-lower -->
+            <div class="header-lower">
+                <div class="outer-box">
+                    <div class="logo-box">
+                        <figure class="logo">
+                            <a href="/">
+                                                        <span>Free Stash Node</span>
+                                                        </a>
+                        </figure>
+                    </div>
+                    <div class="menu-area">
+                        <!--Mobile Navigation Toggler-->
+                        <div class="mobile-nav-toggler">
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                        </div>
+                        <nav class="main-menu navbar-expand-md navbar-light">
+                            <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+                                <ul class="navigation clearfix">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/client.htm">客户端</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                    </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!--sticky Header-->
+            <div class="sticky-header">
+                <div class="outer-box">
+                    <div class="logo-box">
+                        <figure class="logo">
+                            <a href="/">
+                                <span>Free Stash Node</span>
+                            </a>
+                        </figure>
+                    </div>
+                    <div class="menu-area">
+                        <nav class="main-menu clearfix">
+                            <!--Keep This Empty / Menu will come through Javascript-->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- main-header end -->
+        <!-- Mobile Menu  -->
+        <div class="mobile-menu">
+            <div class="menu-backdrop"></div>
+            <div class="close-btn"><i class="fas fa-times"></i></div>
+            <nav class="menu-box">
+                <div class="menu-outer">
+                    <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
+                </div>
+                <div class="social-links">
+                    <ul class="clearfix">
+                        <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+                        <li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+                        <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
+                        <li><a href="#"><span class="fab fa-instagram"></span></a></li>
+                        <li><a href="#"><span class="fab fa-youtube"></span></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div><!-- End Mobile Menu -->
+        <!-- Page Title -->
+        <section class="page-title centred" style="background-image: url(/assets/website/img/freestashnode/background/page-title.jpg);">
+            <div class="auto-container">
+                <div class="content-box">
+                    <div class="title">
+                        <h1>@Valid 参数校验不生效问题解决</h1>
+                    </div>
+                    <ul class="bread-crumb clearfix">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- End Page Title -->
+        <!-- about-section -->
+        <section class="about-section">
+            <div class="auto-container">
+                <div class="row clearfix">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="StashNode免费订阅官网" data-url="https://stashnode.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <div class="toc"> <h3>@Valid 参数校验不生效问题解决</h3> <ul> <li><a href="#_2" rel="nofollow">问题现象</a></li> <li><a href="#_45" rel="nofollow">手动检查</a></li> <li><a href="#_92" rel="nofollow">不生效原因</a></li> </ul> </div> </h1> <pre><code class="prism language-java"><span class="token keyword">import</span> lombok<span class="token punctuation">.</span>Data<span class="token punctuation">;</span>  <span class="token keyword">import</span> javax<span class="token punctuation">.</span>validation<span class="token punctuation">.</span>constraints<span class="token punctuation">.</span>NotNull<span class="token punctuation">;</span>  <span class="token annotation punctuation">@Data</span> <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">IDDTO</span> <span class="token punctuation">{<!-- --></span>      <span class="token annotation punctuation">@NotNull</span>     <span class="token keyword">private</span> Long id<span class="token punctuation">;</span> <span class="token punctuation">}</span> </code></pre> <pre><code class="prism language-java"><span class="token annotation punctuation">@Slf4j</span> <span class="token annotation punctuation">@Controller</span> <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/example"</span><span class="token punctuation">)</span> <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ExampleController</span> <span class="token punctuation">{<!-- --></span>      <span class="token annotation punctuation">@POSTMapping</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"/valid"</span><span class="token punctuation">)</span>     <span class="token keyword">public</span> BaseResponseVO <span class="token function">valid</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Valid</span> IDDTO idDTO<span class="token punctuation">,</span> BindingResult bindingResult<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>         <span class="token keyword">if</span><span class="token punctuation">(</span>bindingResult<span class="token punctuation">.</span><span class="token function">hasErrors</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>             log<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"what fuck"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token punctuation">}</span>         <span class="token keyword">return</span> BaseResponseVO<span class="token punctuation">.</span><span class="token function">success</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span>  <span class="token punctuation">}</span> </code></pre> <p>看起来像不像会打印<code>what fuck</code>，实际上居然不会。实际上是因为Valid Property 会在json序列化构建Java Bean的时候，所以这里的Post请求还必须是<code>application/json</code> 即：</p> <pre><code class="prism language-java">    <span class="token annotation punctuation">@POSTMapping</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"/valid"</span><span class="token punctuation">)</span>     <span class="token keyword">public</span> BaseResponseVO <span class="token function">valid</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Valid</span> <span class="token annotation punctuation">@RequestBody</span> IDDTO idDTO<span class="token punctuation">,</span> BindingResult bindingResult<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>         <span class="token keyword">if</span><span class="token punctuation">(</span>bindingResult<span class="token punctuation">.</span><span class="token function">hasErrors</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>             log<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"what fuck"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token punctuation">}</span>         <span class="token keyword">return</span> BaseResponseVO<span class="token punctuation">.</span><span class="token function">success</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span> </code></pre> </h1> <p>如果有其他情况发现<code>@Valid</code>不生效，提供一个手动检查的方案</p> <pre><code class="prism language-java"><span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>commons<span class="token punctuation">.</span>collections<span class="token punctuation">.</span>CollectionUtils<span class="token punctuation">;</span>  <span class="token keyword">import</span> javax<span class="token punctuation">.</span>validation<span class="token punctuation">.</span>ConstraintViolation<span class="token punctuation">;</span> <span class="token keyword">import</span> javax<span class="token punctuation">.</span>validation<span class="token punctuation">.</span>Validation<span class="token punctuation">;</span> <span class="token keyword">import</span> javax<span class="token punctuation">.</span>validation<span class="token punctuation">.</span>Validator<span class="token punctuation">;</span> <span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>HashMap<span class="token punctuation">;</span> <span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Map<span class="token punctuation">;</span> <span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Set<span class="token punctuation">;</span>  <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ValidateUtil</span> <span class="token punctuation">{<!-- --></span>     <span class="token keyword">private</span> <span class="token keyword">static</span> Validator validator <span class="token operator">=</span> Validation<span class="token punctuation">.</span><span class="token function">buildDefaultValidatorFactory</span><span class="token punctuation">(</span><span class="token punctuation">)</span>             <span class="token punctuation">.</span><span class="token function">getValidator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">beanValidate</span><span class="token punctuation">(</span>Object obj<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>         Map<span class="token generics function"><span class="token punctuation">&lt;</span>String<span class="token punctuation">,</span> String<span class="token punctuation">&gt;</span></span> validatedMsg <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token operator">&lt;</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         Set<span class="token operator">&lt;</span>ConstraintViolation<span class="token generics function"><span class="token punctuation">&lt;</span>Object<span class="token punctuation">&gt;</span></span><span class="token operator">&gt;</span> constraintViolations <span class="token operator">=</span> validator<span class="token punctuation">.</span><span class="token function">validate</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token keyword">for</span> <span class="token punctuation">(</span>ConstraintViolation<span class="token generics function"><span class="token punctuation">&lt;</span>Object<span class="token punctuation">&gt;</span></span> c <span class="token operator">:</span> constraintViolations<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>             validatedMsg<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>c<span class="token punctuation">.</span><span class="token function">getPropertyPath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> c<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token punctuation">}</span>         <span class="token keyword">if</span> <span class="token punctuation">(</span>CollectionUtils<span class="token punctuation">.</span><span class="token function">isNotEmpty</span><span class="token punctuation">(</span>constraintViolations<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>             <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Exception</span><span class="token punctuation">(</span>validatedMsg<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token punctuation">}</span>      <span class="token punctuation">}</span>  <span class="token punctuation">}</span> </code></pre> <p>即：</p> <pre><code class="prism language-java"><span class="token annotation punctuation">@Slf4j</span> <span class="token annotation punctuation">@Controller</span> <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/example"</span><span class="token punctuation">)</span> <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ExampleController</span> <span class="token punctuation">{<!-- --></span>      <span class="token annotation punctuation">@POSTMapping</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"/valid"</span><span class="token punctuation">)</span>     <span class="token keyword">public</span> BaseResponseVO <span class="token function">valid</span><span class="token punctuation">(</span>IDDTO idDTO<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>         ValidateUtil<span class="token punctuation">.</span><span class="token function">beanValidate</span><span class="token punctuation">(</span>idDTO<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token keyword">return</span> BaseResponseVO<span class="token punctuation">.</span><span class="token function">success</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span>  <span class="token punctuation">}</span> </code></pre> </h1> <p>笔者在开发过程中发现有如下一段日志，应该可以定位为什么<code>@Valid</code>不生效，笔者暂时比较忙，稍后再补充分析。如果有同学有兴趣，可以先自行分析。</p> <pre><code>2020-07-11 11:44:20,468 [main] DEBUG (OptionalValidatorFactoryBean:43) - Failed to set up a Bean Validation provider javax.validation.ValidationException: Unable to create a Configuration, because no Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath. 	at javax.validation.Validation$GenericBootstrapImpl.configure(Validation.java:271) ~[validation-api-1.1.0.Final.jar:?] 	at org.springframework.validation.beanvalidation.LocalValidatorFactoryBean.afterPropertiesSet(LocalValidatorFactoryBean.java:255) ~[spring-context-4.3.17.RELEASE.jar:4.3.17.RELEASE] 	at org.springframework.validation.beanvalidation.OptionalValidatorFactoryBean.afterPropertiesSet(OptionalValidatorFactoryBean.java:40) [spring-context-4.3.17.RELEASE.jar:4.3.17.RELEASE] 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1692) [spring-beans-4.3.17.RELEASE.jar:4.3.17.RELEASE] 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1630) [spring-beans-4.3.17.RELEASE.jar:4.3.17.RELEASE] 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:555) [spring-beans-4.3.17.RELEASE.jar:4.3.17.RELEASE] 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483) [spring-beans-4.3.17.RELEASE.jar:4.3.17.RELEASE] 	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:312) [spring-beans-4.3.17.RELEASE.jar:4.3.17.RELEASE] 	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) [spring-beans-4.3.17.RELEASE.jar:4.3.17.RELEASE] 	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:308) [spring-beans-4.3.17.RELEASE.jar:4.3.17.RELEASE] 	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197) [spring-beans-4.3.17.RELEASE.jar:4.3.17.RELEASE] 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761) [spring-beans-4.3.17.RELEASE.jar:4.3.17.RELEASE] 	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:867) [spring-context-4.3.17.RELEASE.jar:4.3.17.RELEASE] 	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:543) [spring-context-4.3.17.RELEASE.jar:4.3.17.RELEASE] 	at org.springframework.web.servlet.FrameworkServlet.configureAndRefreshWebApplicationContext(FrameworkServlet.java:668) [spring-webmvc-4.3.17.RELEASE.jar:4.3.17.RELEASE] 	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:634) [spring-webmvc-4.3.17.RELEASE.jar:4.3.17.RELEASE] 	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:682) [spring-webmvc-4.3.17.RELEASE.jar:4.3.17.RELEASE] 	at org.springframework.web.servlet.FrameworkServlet.initWebApplicationContext(FrameworkServlet.java:553) [spring-webmvc-4.3.17.RELEASE.jar:4.3.17.RELEASE] 	at org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:494) [spring-webmvc-4.3.17.RELEASE.jar:4.3.17.RELEASE] 	at org.springframework.web.servlet.HttpServletBean.init(HttpServletBean.java:171) [spring-webmvc-4.3.17.RELEASE.jar:4.3.17.RELEASE] 	at javax.servlet.GenericServlet.init(GenericServlet.java:244) [javax.servlet-3.0.0.v201112011016.jar:?]  </code></pre> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-57545.htm">动物疫苗要打几针的疫苗有效（动物疫苗要打几针的疫苗有效呢）</a></p>
+                                        <p>下一个：<a href="/news/article-58117.htm">详谈GoLang的panic和error</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-33728.htm" title="宠物领养网官网电话（宠物领养网官网电话）">宠物领养网官网电话（宠物领养网官网电话）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-22-share-clash-stash.htm" title="12月22日→19.3M/S|2024年最新免费节点Free Stash Node订阅链接地址">12月22日→19.3M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-27-free-stash-node.htm" title="1月27日→18.2M/S|2025年最新免费节点Free Stash Node订阅链接地址">1月27日→18.2M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-30880.htm" title="宠物店最怕什么投诉才会退款 宠物买卖纠纷找哪个部门协调">宠物店最怕什么投诉才会退款 宠物买卖纠纷找哪个部门协调</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-31-free-high-speed-nodes.htm" title="12月31日→20M/S|2025年最新免费节点Free Stash Node订阅链接地址">12月31日→20M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-40042.htm" title="宠物店猫疫苗多少钱一针（宠物店猫疫苗多少钱一针打）">宠物店猫疫苗多少钱一针（宠物店猫疫苗多少钱一针打）</a></li>
+                        <li class="py-2"><a href="/news/article-30394.htm" title="宠物粮食加工厂设备生产厂家排名榜最新 宠物粮食加工厂设备生产厂家排名榜最新">宠物粮食加工厂设备生产厂家排名榜最新 宠物粮食加工厂设备生产厂家排名榜最新</a></li>
+                        <li class="py-2"><a href="/news/article-27114.htm" title="国内动物疫苗生产企业有多少家（国内动物疫苗龙头企业）">国内动物疫苗生产企业有多少家（国内动物疫苗龙头企业）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-3-share-clash-stash.htm" title="12月3日→22.8M/S|2024年最新免费节点Free Stash Node订阅链接地址">12月3日→22.8M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-19-free-stash-node.htm" title="11月19日→22.7M/S|2024年最新免费节点Free Stash Node订阅链接地址">11月19日→22.7M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- about-section end -->
+                <!-- main-footer -->
+        <footer class="main-footer">
+            <div class="footer-bottom">
+                <div class="auto-container">
+                    <div class="inner-box clearfix">
+                        <div class="copyright pull-left">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <p>
+                                <a href="/">Free Stash Node免费机场节点分享官网</a> 版权所有 Powered by WordPress
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- main-footer end -->
+        <!--Scroll to top-->
+        <button class="scroll-top scroll-to-target" data-target="html">
+            <span class="fa fa-arrow-up"></span>
+        </button>
+        <!-- jequery plugins -->
+        <script src="/assets/website/js/frontend/freestashnode/jquery.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/popper.min.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/owl.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/wow.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/validation.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/jquery.fancybox.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/appear.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/scrollbar.js"></script>
+        <!-- main-js -->
+        <script src="/assets/website/js/frontend/freestashnode/script.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+</body><!-- End of .page_wrapper -->
+
+</html>
