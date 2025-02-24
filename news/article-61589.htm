@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freestashnode.github.io/news/article-61589.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>解决：“/****/kafka_2.13-3.0.0/bin/kafka-run-class.sh: line 342: exec: java: not found ”问题</title>
+        <meta name="description" content="启动zookeeper失败，查看状态日志，如下图：   kafka运行依赖java环境，而本机已安装java环境  查看java环境变量  &nbsp;查看kafka环境变量  回到问题本身，我们看一" />
+        <link rel="icon" href="/assets/website/img/freestashnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Stash Node免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freestashnode.github.io/news/article-61589.htm" />
+    <meta property="og:site_name" content="Free Stash Node免费机场节点分享官网" />
+    <meta property="og:title" content="解决：“/****/kafka_2.13-3.0.0/bin/kafka-run-class.sh: line 342: exec: java: not found ”问题" />
+    <meta property="og:image" content="https://freestashnode.github.io/uploads/20240919/b577e9eceae35bf994a472df3272323d.webp" />
+        <meta property="og:release_date" content="2025-02-23T09:46:35" />
+    <meta property="og:updated_time" content="2025-02-23T09:46:35" />
+        <meta property="og:description" content="启动zookeeper失败，查看状态日志，如下图：   kafka运行依赖java环境，而本机已安装java环境  查看java环境变量  &nbsp;查看kafka环境变量  回到问题本身，我们看一" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="解决：“/****/kafka_2.13-3.0.0/bin/kafka-run-class.sh: line 342: exec: java: not found ”问题">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <!-- Stylesheets -->
+    <link href="/assets/website/css/freestashnode/font-awesome-all.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/flaticon.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/owl.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/bootstrap.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/animate.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/color.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/style.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/responsive.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YXFDLQYLFV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YXFDLQYLFV');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+<!-- page wrapper -->
+
+<body data-page="detail">
+    <div class="boxed_wrapper">
+                <!-- preloader -->
+        <div class="preloader"></div>
+        <!-- preloader -->
+        <!-- main header -->
+        <header class="main-header style-one">
+            <!-- header-lower -->
+            <div class="header-lower">
+                <div class="outer-box">
+                    <div class="logo-box">
+                        <figure class="logo">
+                            <a href="/">
+                                                        <span>Free Stash Node</span>
+                                                        </a>
+                        </figure>
+                    </div>
+                    <div class="menu-area">
+                        <!--Mobile Navigation Toggler-->
+                        <div class="mobile-nav-toggler">
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                        </div>
+                        <nav class="main-menu navbar-expand-md navbar-light">
+                            <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+                                <ul class="navigation clearfix">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/client.htm">客户端</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                    </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!--sticky Header-->
+            <div class="sticky-header">
+                <div class="outer-box">
+                    <div class="logo-box">
+                        <figure class="logo">
+                            <a href="/">
+                                <span>Free Stash Node</span>
+                            </a>
+                        </figure>
+                    </div>
+                    <div class="menu-area">
+                        <nav class="main-menu clearfix">
+                            <!--Keep This Empty / Menu will come through Javascript-->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- main-header end -->
+        <!-- Mobile Menu  -->
+        <div class="mobile-menu">
+            <div class="menu-backdrop"></div>
+            <div class="close-btn"><i class="fas fa-times"></i></div>
+            <nav class="menu-box">
+                <div class="menu-outer">
+                    <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
+                </div>
+                <div class="social-links">
+                    <ul class="clearfix">
+                        <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+                        <li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+                        <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
+                        <li><a href="#"><span class="fab fa-instagram"></span></a></li>
+                        <li><a href="#"><span class="fab fa-youtube"></span></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div><!-- End Mobile Menu -->
+        <!-- Page Title -->
+        <section class="page-title centred" style="background-image: url(/assets/website/img/freestashnode/background/page-title.jpg);">
+            <div class="auto-container">
+                <div class="content-box">
+                    <div class="title">
+                        <h1>解决：“/****/kafka_2.13-3.0.0/bin/kafka-run-class.sh: line 342: exec: java: not found ”问题</h1>
+                    </div>
+                    <ul class="bread-crumb clearfix">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- End Page Title -->
+        <!-- about-section -->
+        <section class="about-section">
+            <div class="auto-container">
+                <div class="row clearfix">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="StashNode免费订阅官网" data-url="https://stashnode.github.io">
+                  				  				  				<div id="content_views" class="htmledit_views"> </h1> <p>启动zookeeper失败，查看状态日志，如下图：</p> <p><img fetchpriority="high" decoding="async" alt="" height="296" src="http://img.555519.xyz/uploads3/20220821/7c100c5db0595567d6b14f12e15e01b3.jpg"></p> </h1> <p>kafka运行依赖java环境，而本机已安装java环境</p> <p><img decoding="async" alt="" height="116" src="http://img.555519.xyz/uploads3/20220821/3d796ee06348818815842f829706e708.jpg"></p> <p>查看java环境变量</p> <p><img decoding="async" alt="" height="83" src="http://img.555519.xyz/uploads3/20220821/8702470f7597fab8bca2d62e438fa91b.jpg"></p> <p>&nbsp;查看kafka环境变量</p> <p><img loading="lazy" decoding="async" alt="" height="75" src="http://img.555519.xyz/uploads3/20220821/ce48035ca7551975e73430713f83b9db.jpg"></p> <p>回到问题本身，我们看一下kafka-run-class.sh脚本的342行内容：</p> <p><img loading="lazy" decoding="async" alt="" height="210" src="http://img.555519.xyz/uploads3/20220821/e5c4010acf37e3bcab2cdb75b88f3e18.jpg"></p> <p>这里网上搜了很久，获悉kafka默认引用的java路径：/user/bin/java，这个与我们实际配置的java的环境变量$JAVA_HOME/bin路径不一致。</p> <p>这里，借鉴一下前辈的办法：</p> <ol> <li>修改java环境变量配置(修改java环境变量可能会引入新的环境配置问题，不推荐)</li> <li>设置软连接指向/user/bin/java这个路径(推荐)</li> </ol> <pre><code class="language-bash">[root@node03 ~]# echo $JAVA_HOME /root/jdk/jdk1.8.0_221 [root@node03 ~]#  [root@node03 ~]# ln -s $JAVA_HOME/bin/java user/bin/java [root@node03 ~]#</code></pre> <p>reboot -f 重启即可</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-61588.htm">在Vue项目中使用mock假数据模拟后端接口</a></p>
+                                        <p>下一个：<a href="/news/article-62180.htm">vuex数据共享与多模块化</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-28970.htm" title="猫到底打不打疫苗（猫该不该打疫苗）">猫到底打不打疫苗（猫该不该打疫苗）</a></li>
+                        <li class="py-2"><a href="/news/article-31265.htm" title="瑞派宠物医院是24小时的吗（瑞派宠物医院待遇怎么样）">瑞派宠物医院是24小时的吗（瑞派宠物医院待遇怎么样）</a></li>
+                        <li class="py-2"><a href="/news/article-56437.htm" title="宠物粮食公司简介 宠物粮食公司简介怎么写">宠物粮食公司简介 宠物粮食公司简介怎么写</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-8-linux-clash-stash.htm" title="12月8日→20.1M/S|2024年最新免费节点Free Stash Node订阅链接地址">12月8日→20.1M/S|2024年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-27575.htm" title="1688兽药批发网药品价格查询（兽药批发网下载安装）">1688兽药批发网药品价格查询（兽药批发网下载安装）</a></li>
+                        <li class="py-2"><a href="/news/article-23857.htm" title="数据结构——C语言实现带头双向循环链表">数据结构——C语言实现带头双向循环链表</a></li>
+                        <li class="py-2"><a href="/news/article-38072.htm" title="兽用疫苗经营许可证需要什么条件（兽用疫苗销售资质）">兽用疫苗经营许可证需要什么条件（兽用疫苗销售资质）</a></li>
+                        <li class="py-2"><a href="/news/article-52607.htm" title="动物疫苗价格查询官网网址是什么呢 动物疫苗价格查询官网网址是什么呢">动物疫苗价格查询官网网址是什么呢 动物疫苗价格查询官网网址是什么呢</a></li>
+                        <li class="py-2"><a href="/news/article-18839.htm" title="Java开发日志EasyExcel自定义类型转换、Excel表头字段问题">Java开发日志EasyExcel自定义类型转换、Excel表头字段问题</a></li>
+                        <li class="py-2"><a href="/news/article-34678.htm" title="狗粮厂家电话号码多少（狗粮厂家电话号码多少啊）">狗粮厂家电话号码多少（狗粮厂家电话号码多少啊）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">72</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- about-section end -->
+                <!-- main-footer -->
+        <footer class="main-footer">
+            <div class="footer-bottom">
+                <div class="auto-container">
+                    <div class="inner-box clearfix">
+                        <div class="copyright pull-left">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <p>
+                                <a href="/">Free Stash Node免费机场节点分享官网</a> 版权所有 Powered by WordPress
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- main-footer end -->
+        <!--Scroll to top-->
+        <button class="scroll-top scroll-to-target" data-target="html">
+            <span class="fa fa-arrow-up"></span>
+        </button>
+        <!-- jequery plugins -->
+        <script src="/assets/website/js/frontend/freestashnode/jquery.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/popper.min.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/owl.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/wow.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/validation.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/jquery.fancybox.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/appear.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/scrollbar.js"></script>
+        <!-- main-js -->
+        <script src="/assets/website/js/frontend/freestashnode/script.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+</body><!-- End of .page_wrapper -->
+
+</html>
