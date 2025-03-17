@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freestashnode.github.io/news/article-74971.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>【nodejs】【mongo】nodejs数据查询【mongo】</title>
+        <meta name="description" content="0.经常使用的网址： mongoDB:		https://docs.mongodb.com/v3.6/reference/operator/aggregation/match/#pipe._S_mat" />
+        <link rel="icon" href="/assets/website/img/freestashnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Stash Node免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freestashnode.github.io/news/article-74971.htm" />
+    <meta property="og:site_name" content="Free Stash Node免费机场节点分享官网" />
+    <meta property="og:title" content="【nodejs】【mongo】nodejs数据查询【mongo】" />
+    <meta property="og:image" content="https://freestashnode.github.io/uploads/20240919/26337acbcb5db6abb7b518cd50b48037.webp" />
+        <meta property="og:release_date" content="2025-03-16T10:29:23" />
+    <meta property="og:updated_time" content="2025-03-16T10:29:23" />
+        <meta property="og:description" content="0.经常使用的网址： mongoDB:		https://docs.mongodb.com/v3.6/reference/operator/aggregation/match/#pipe._S_mat" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="【nodejs】【mongo】nodejs数据查询【mongo】">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <!-- Stylesheets -->
+    <link href="/assets/website/css/freestashnode/font-awesome-all.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/flaticon.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/owl.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/bootstrap.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/animate.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/color.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/style.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/responsive.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YXFDLQYLFV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YXFDLQYLFV');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+<!-- page wrapper -->
+
+<body data-page="detail">
+    <div class="boxed_wrapper">
+                <!-- preloader -->
+        <div class="preloader"></div>
+        <!-- preloader -->
+        <!-- main header -->
+        <header class="main-header style-one">
+            <!-- header-lower -->
+            <div class="header-lower">
+                <div class="outer-box">
+                    <div class="logo-box">
+                        <figure class="logo">
+                            <a href="/">
+                                                        <span>Free Stash Node</span>
+                                                        </a>
+                        </figure>
+                    </div>
+                    <div class="menu-area">
+                        <!--Mobile Navigation Toggler-->
+                        <div class="mobile-nav-toggler">
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                        </div>
+                        <nav class="main-menu navbar-expand-md navbar-light">
+                            <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+                                <ul class="navigation clearfix">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/client.htm">客户端</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                    </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!--sticky Header-->
+            <div class="sticky-header">
+                <div class="outer-box">
+                    <div class="logo-box">
+                        <figure class="logo">
+                            <a href="/">
+                                <span>Free Stash Node</span>
+                            </a>
+                        </figure>
+                    </div>
+                    <div class="menu-area">
+                        <nav class="main-menu clearfix">
+                            <!--Keep This Empty / Menu will come through Javascript-->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- main-header end -->
+        <!-- Mobile Menu  -->
+        <div class="mobile-menu">
+            <div class="menu-backdrop"></div>
+            <div class="close-btn"><i class="fas fa-times"></i></div>
+            <nav class="menu-box">
+                <div class="menu-outer">
+                    <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
+                </div>
+                <div class="social-links">
+                    <ul class="clearfix">
+                        <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+                        <li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+                        <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
+                        <li><a href="#"><span class="fab fa-instagram"></span></a></li>
+                        <li><a href="#"><span class="fab fa-youtube"></span></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div><!-- End Mobile Menu -->
+        <!-- Page Title -->
+        <section class="page-title centred" style="background-image: url(/assets/website/img/freestashnode/background/page-title.jpg);">
+            <div class="auto-container">
+                <div class="content-box">
+                    <div class="title">
+                        <h1>【nodejs】【mongo】nodejs数据查询【mongo】</h1>
+                    </div>
+                    <ul class="bread-crumb clearfix">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- End Page Title -->
+        <!-- about-section -->
+        <section class="about-section">
+            <div class="auto-container">
+                <div class="row clearfix">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="StashNode免费订阅官网" data-url="https://stashnode.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-tomorrow-night"> </h1> <h2> <a id="0_1" rel="nofollow"></a>0.经常使用的网址：</h2> <pre><code>mongoDB:		https://docs.mongodb.com/v3.6/reference/operator/aggregation/match/#pipe._S_match monk:			https://automattic.github.io/monk/docs/collection/aggregate.html 菜鸟教程:		https://www.runoob.com/mongodb/mongodb-databases-documents-collections.html </code></pre> <h3> <a id="1install_monk_5" rel="nofollow"></a>1.install monk:</h3> <pre><code>npm intall monk </code></pre> <h3> <a id="2mongoUtilsjs_7" rel="nofollow"></a>2.mongoUtils.js封装:</h3> <pre><code>const monk = require('monk'); //monk带密码连接mongo，不加authSource=admin可能会导致连接失败 const db = monk('root:pwd@192.168.31.136:27017/app?authSource=admin');  module.exports = {     save: function (data, collectionName, callback) {         //获得指定的集合         const collection = db.collection(collectionName);         collection.insert(data)             .then((docs) =&gt; {                 callback(null, docs)             }).catch((err) =&gt; {             callback(err, null)         });     },      find: function (where, set, collectionName, callback) {         const collection = db.collection(collectionName);         collection.find(where, set) .then((docs) =&gt; {             callback(null, docs)         }).catch((err) =&gt; {             callback(err, null)         });     },     findAll: function (collectionName, callback) {         const collection = db.collection(collectionName);         collection.find()             .then((docs) =&gt; {                 callback(null, docs)             }).catch((err) =&gt; {             callback(err, null)         });     },     findOne: function (where, set, collectionName, callback) {         const collection = db.collection(collectionName);         collection.findOne(where, set).then((docs) =&gt; {             callback(null, docs)         }).catch((err) =&gt; {             callback(err, null)         });     },     del: function (where, collectionName, callback) {         const collection = db.collection(collectionName);         collection.remove(where).then((docs) =&gt; {             callback(null, docs)         }).catch((err) =&gt; {             callback(err, null)         });     },     count: function (where, collectionName, callback) {         const collection = db.collection(collectionName);         collection.count(where).then((docs) =&gt; {             callback(null, docs)         }).catch((err) =&gt; {             callback(err, null)         });     },     update: function (where, set, collectionName, callback) {         const collection = db.collection(collectionName);         collection.update(where, set).then((docs) =&gt; {             callback(null, docs)         }).catch((err) =&gt; {             callback(err, null)         });     },     findOneAndUpdate: function (where, set, collectionName, callback) {         const collection = db.collection(collectionName);         collection.findOneAndUpdate(where, set).then((docs) =&gt; {             callback(null, docs)         }).catch((err) =&gt; {             callback(err, null)         });     },     aggregate: function (where, collectionName, callback) {         const collection = db.collection(collectionName);         collection.aggregate(where).then((docs) =&gt; {             callback(null, docs)         }).catch((err) =&gt; {             callback(err, null)         });     },     drop: function (collectionName, callback) {         const collection = db.collection(collectionName);         collection.drop().then((docs) =&gt; {             callback(null, docs)         }).catch((err) =&gt; {             callback(err, null)         });     }, }; </code></pre> <h3> <a id="3testjs_99" rel="nofollow"></a>3.test.js测试使用【仅列举一些常用的】：</h3> <pre><code>const mongo = require("../utils/mongoUtils"); </code></pre> <h6> <a id="31_102" rel="nofollow"></a>3.1【查询全部文档】</h6> <pre><code>mongo.findAll(【collectionName】, (err, data) =&gt; {     if (data &amp;&amp; data.length &gt; 0) {         data.forEach((v, i) =&gt; {             ...         });     } }); </code></pre> <h6> <a id="32_111" rel="nofollow"></a>3.2【根据条件删除文档】</h6> <pre><code>mongo.del({_id: id}, 【collectionName】, (err, data) =&gt; { }) </code></pre> <h6> <a id="33_drop_114" rel="nofollow"></a>3.3 【drop删除集合的文档，删除集合本身，删除在集合上创建的索引。】</h6> <pre><code> mongo.drop(【collectionName】); </code></pre> <h6> <a id="34_117" rel="nofollow"></a>3.4【添加文档】</h6> <pre><code> mongo.save(【jsonObj】,【collectionName】, (err, data) =&gt; { }) </code></pre> <h6> <a id="35_120" rel="nofollow"></a>3.5【根据主键，修改局部内容】</h6> <pre><code>mongo.update({_id: id}, {$set: {"isUse": isUse}}, 【collectionName】, (err, data) =&gt; { }) </code></pre> <h6> <a id="36findOnearrayarray0_123" rel="nofollow"></a>3.6【查询一条数据，也可以使用findOne，此处插寻结果为array需要取array[0]】</h6> <pre><code>mongo.find({_id: id}, null, 【collectionName】, (err, data) =&gt; {}) </code></pre> <h6> <a id="37in_126" rel="nofollow"></a>3.7【in】查询多条数据</h6> <pre><code>let array = []; mongo.find({"_id": {$in: array}}, null, 【collectionName】, (err, data) =&gt; {}) </code></pre> <h6> <a id="38_130" rel="nofollow"></a>3.8【分页，排序，模糊匹配查询，获取指定字段】</h6> <pre><code>//示例格式：等同于以下sql查询： (id = 444 or id like %444%) 此种方式是为了在不知道该数据类型时使用 //【mysql语句】 //select   id,org_code,stu_code,pk_price，create_time //from xxx  //where (id = 444 or id like %444%) and (pk_price=111.01 or pk_price like %111.01%) // and create_time&gt;="xxx" and create_time&lt;="xxx"  //order by _id desc limit 0,10 //【对应的mongo语句】 wheres = { "$and": [{ 	"$or": [{ 		"id": 444 	}, { 		"id": 444 	}, { 		"id": { 			"$regex": ".*?444.*" 		} 	}] }, { 	"$or": [{ 		"pk_price": 111.01 	}, { 		"pk_price": 111.01 	}, { 		"pk_price": { 			"$regex": ".*?111.01.*" 		} 	}] }, { 	"create_time": { 		"$gte": "2019-10-31T16:00:00.000Z", 		"$lte": "2019-11-05T15:00:00.000Z" 	} }] } { 	"projection": { 		"id": 1, 		"org_code": 1, 		"stu_code": 1, 		"pk_price": 1, 		"create_time": 1 	}, 	"skip": 0, 	"limit": 10, 	"sort": { 		"_id": -1 	} } let wheres = {}; wheres.isUse = isUse; wheres.confName = {$regex: '.*?' + confName + '.*'}; //如果此处需要添加动态属性，则使用wheres[xxx]进行属性填充 let x1 = "动态属性1"; let x2 = "动态属性2"; wheres[x1] = "内容1"; wheres[x2] = "内容2" mongo.find(wheres, { 	//projection是获取指定字段关键字，confId是字段名称，1表示仅查询此字段，结果中会含有_id 	projection: {"confId":1},     skip: (pageNum - 1) * pageSize,     limit: pageSize,     sort: {"createDate": -1} }, 【collectionName】, (err, data) =&gt; { }) </code></pre> <h6> <a id="39_196" rel="nofollow"></a>3.9【查询列和】：</h6> <pre><code>let ss = "111.01"; require1.aggregate( [     { $match : {$or: [ {"pk_price" : ss},{"pk_price" : +ss},{"pk_price" : {$regex: '.*?' + ss + '.*'}}]}},     // { $match : {"pk_price" : {$regex: '.*?' + ss + '.*'}}},     { $group : { _id : null, "id" : {$sum : "$id"}, "pk_price" : {$sum : "$pk_price"} }} ],【collectionName】,(err,data) =&gt; {     console.error(err);     console.error(data); }); </code></pre> <h6> <a id="40_207" rel="nofollow"></a>4.0【文档计数】：</h6> <pre><code>// require1.count({id:"1100000"},【collectionName】,(err,data) =&gt; { //     console.error(err); //     console.error(data); // }); </code></pre> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-74278.htm">动物疫苗企业排名榜前十名 动物疫苗企业排名榜前十名有哪些</a></p>
+                                        <p>下一个：<a href="/news/article-74972.htm">非泼罗尼和阿维菌素哪一个驱虫好用（阿维菌素透皮溶液和非泼罗尼滴剂哪个更合适泰迪幼崽）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-1-19-share-clash-stash.htm" title="1月19日→18.3M/S|2025年最新免费节点Free Stash Node订阅链接地址">1月19日→18.3M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-21-node-share.htm" title="1月21日→19.8M/S|2025年最新免费节点Free Stash Node订阅链接地址">1月21日→19.8M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-23-share-clash-stash.htm" title="2月23日→18.4M/S|2025年最新免费节点Free Stash Node订阅链接地址">2月23日→18.4M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-11-free-stash-node.htm" title="3月11日→19.7M/S|2025年最新免费节点Free Stash Node订阅链接地址">3月11日→19.7M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-72290.htm" title="宠物粮价格及图片（宠物粮go）">宠物粮价格及图片（宠物粮go）</a></li>
+                        <li class="py-2"><a href="/news/article-51037.htm" title="武汉哪家宠物医院好（武汉哪家宠物医院好点）">武汉哪家宠物医院好（武汉哪家宠物医院好点）</a></li>
+                        <li class="py-2"><a href="/news/article-68392.htm" title="猫粮机器设备（猫粮机器设备厂家排名）">猫粮机器设备（猫粮机器设备厂家排名）</a></li>
+                        <li class="py-2"><a href="/news/article-39568.htm" title="一文搞懂js中的typeof用法_在线工具">一文搞懂js中的typeof用法_在线工具</a></li>
+                        <li class="py-2"><a href="/news/article-73623.htm" title="动物打了疫苗了被抓还要打针吗多少钱一次（动物打疫苗后的不良反应）">动物打了疫苗了被抓还要打针吗多少钱一次（动物打疫苗后的不良反应）</a></li>
+                        <li class="py-2"><a href="/news/article-38072.htm" title="兽用疫苗经营许可证需要什么条件（兽用疫苗销售资质）">兽用疫苗经营许可证需要什么条件（兽用疫苗销售资质）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">51</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- about-section end -->
+                <!-- main-footer -->
+        <footer class="main-footer">
+            <div class="footer-bottom">
+                <div class="auto-container">
+                    <div class="inner-box clearfix">
+                        <div class="copyright pull-left">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <p>
+                                <a href="/">Free Stash Node免费机场节点分享官网</a> 版权所有 Powered by WordPress
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- main-footer end -->
+        <!--Scroll to top-->
+        <button class="scroll-top scroll-to-target" data-target="html">
+            <span class="fa fa-arrow-up"></span>
+        </button>
+        <!-- jequery plugins -->
+        <script src="/assets/website/js/frontend/freestashnode/jquery.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/popper.min.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/owl.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/wow.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/validation.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/jquery.fancybox.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/appear.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/scrollbar.js"></script>
+        <!-- main-js -->
+        <script src="/assets/website/js/frontend/freestashnode/script.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+</body><!-- End of .page_wrapper -->
+
+</html>
