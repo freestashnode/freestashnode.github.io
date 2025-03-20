@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freestashnode.github.io/news/article-77690.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>netty系列之:netty中的核心MessageToMessage编码器</title>
+        <meta name="description" content="目录  简介 框架简介 MessageToMessageEncoder MessageToMessageDecoder MessageToMessageCodec 总结    在netty中我们需要传" />
+        <link rel="icon" href="/assets/website/img/freestashnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Stash Node免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freestashnode.github.io/news/article-77690.htm" />
+    <meta property="og:site_name" content="Free Stash Node免费机场节点分享官网" />
+    <meta property="og:title" content="netty系列之:netty中的核心MessageToMessage编码器" />
+    <meta property="og:image" content="https://freestashnode.github.io/uploads/20240919/ad8989ee76494af68a204e5cba9f1336.webp" />
+        <meta property="og:release_date" content="2025-03-20T10:01:41" />
+    <meta property="og:updated_time" content="2025-03-20T10:01:41" />
+        <meta property="og:description" content="目录  简介 框架简介 MessageToMessageEncoder MessageToMessageDecoder MessageToMessageCodec 总结    在netty中我们需要传" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="netty系列之:netty中的核心MessageToMessage编码器">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <!-- Stylesheets -->
+    <link href="/assets/website/css/freestashnode/font-awesome-all.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/flaticon.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/owl.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/bootstrap.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/animate.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/color.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/style.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/responsive.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YXFDLQYLFV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YXFDLQYLFV');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+<!-- page wrapper -->
+
+<body data-page="detail">
+    <div class="boxed_wrapper">
+                <!-- preloader -->
+        <div class="preloader"></div>
+        <!-- preloader -->
+        <!-- main header -->
+        <header class="main-header style-one">
+            <!-- header-lower -->
+            <div class="header-lower">
+                <div class="outer-box">
+                    <div class="logo-box">
+                        <figure class="logo">
+                            <a href="/">
+                                                        <span>Free Stash Node</span>
+                                                        </a>
+                        </figure>
+                    </div>
+                    <div class="menu-area">
+                        <!--Mobile Navigation Toggler-->
+                        <div class="mobile-nav-toggler">
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                        </div>
+                        <nav class="main-menu navbar-expand-md navbar-light">
+                            <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+                                <ul class="navigation clearfix">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/client.htm">客户端</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                    </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!--sticky Header-->
+            <div class="sticky-header">
+                <div class="outer-box">
+                    <div class="logo-box">
+                        <figure class="logo">
+                            <a href="/">
+                                <span>Free Stash Node</span>
+                            </a>
+                        </figure>
+                    </div>
+                    <div class="menu-area">
+                        <nav class="main-menu clearfix">
+                            <!--Keep This Empty / Menu will come through Javascript-->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- main-header end -->
+        <!-- Mobile Menu  -->
+        <div class="mobile-menu">
+            <div class="menu-backdrop"></div>
+            <div class="close-btn"><i class="fas fa-times"></i></div>
+            <nav class="menu-box">
+                <div class="menu-outer">
+                    <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
+                </div>
+                <div class="social-links">
+                    <ul class="clearfix">
+                        <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+                        <li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+                        <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
+                        <li><a href="#"><span class="fab fa-instagram"></span></a></li>
+                        <li><a href="#"><span class="fab fa-youtube"></span></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div><!-- End Mobile Menu -->
+        <!-- Page Title -->
+        <section class="page-title centred" style="background-image: url(/assets/website/img/freestashnode/background/page-title.jpg);">
+            <div class="auto-container">
+                <div class="content-box">
+                    <div class="title">
+                        <h1>netty系列之:netty中的核心MessageToMessage编码器</h1>
+                    </div>
+                    <ul class="bread-crumb clearfix">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- End Page Title -->
+        <!-- about-section -->
+        <section class="about-section">
+            <div class="auto-container">
+                <div class="row clearfix">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="StashNode免费订阅官网" data-url="https://stashnode.github.io">
+                  				  				  				<div class="toc"> <div class="toc-container-header">目录</div> <ul> <li><a href="#%E7%AE%80%E4%BB%8B" rel="nofollow">简介</a></li> <li><a href="#%E6%A1%86%E6%9E%B6%E7%AE%80%E4%BB%8B" rel="nofollow">框架简介</a></li> <li><a href="#messagetomessageencoder" rel="nofollow">MessageToMessageEncoder</a></li> <li><a href="#messagetomessagedecoder" rel="nofollow">MessageToMessageDecoder</a></li> <li><a href="#messagetomessagecodec" rel="nofollow">MessageToMessageCodec</a></li> <li><a href="#%E6%80%BB%E7%BB%93" rel="nofollow">总结</a></li> </ul> </div> </h1> <p>在netty中我们需要传递各种类型的消息，这些message可以是字符串，可以是数组，也可以是自定义的对象。不同的对象之间可能需要互相转换，这样就需要一个可以自由进行转换的转换器，为了统一编码规则和方便用户的扩展，netty提供了一套消息之间进行转换的框架。本文将会讲解这个框架的具体实现。</p> </h1> <p>netty为消息和消息之间的转换提供了三个类，这三个类都是抽象类，分别是MessageToMessageDecoder,MessageToMessageEncoder和MessageToMessageCodec。</p> <p>先来看下他们的定义：</p> <pre><code>public abstract class MessageToMessageEncoder&lt;I&gt; extends ChannelOutboundHandlerAdapter</code></pre> <pre><code>public abstract class MessageToMessageDecoder&lt;I&gt; extends ChannelInboundHandlerAdapter</code></pre> <pre><code>public abstract class MessageToMessageCodec&lt;INBOUND_IN, OUTBOUND_IN&gt; extends ChannelDuplexHandler</code></pre> <p>MessageToMessageEncoder继承自ChannelOutboundHandlerAdapter，负责向channel中写消息。</p> <p>MessageToMessageDecoder继承自ChannelInboundHandlerAdapter，负责从channel中读取消息。</p> <p>MessageToMessageCodec继承自ChannelDuplexHandler，它是一个双向的handler，可以从channel中读取消息，也可以向channel中写入消息。</p> <p>有了这三个抽象类，我们再看下这三个类的具体实现。</p> </h1> <p>先看一下消息的编码器MessageToMessageEncoder，编码器中最重要的方法就是write,看下write的实现：</p> <pre><code>    public void write(ChannelHandlerContext ctx, Object msg, ChannelPromise promise) throws Exception {         CodecOutputList out = null;         try {             if (acceptOutboundMessage(msg)) {                 out = CodecOutputList.newInstance();                 @SuppressWarnings("unchecked")                 I cast = (I) msg;                 try {                     encode(ctx, cast, out);                 } finally {                     ReferenceCountUtil.release(cast);                 }                  if (out.isEmpty()) {                     throw new EncoderException(                             StringUtil.simpleClassName(this) + " must produce at least one message.");                 }             } else {                 ctx.write(msg, promise);             }         } catch (EncoderException e) {             throw e;         } catch (Throwable t) {             throw new EncoderException(t);         } finally {             if (out != null) {                 try {                     final int sizeMinusOne = out.size() - 1;                     if (sizeMinusOne == 0) {                         ctx.write(out.getUnsafe(0), promise);                     } else if (sizeMinusOne &gt; 0) {                         if (promise == ctx.voidPromise()) {                             writeVoidPromise(ctx, out);                         } else {                             writePromiseCombiner(ctx, out, promise);                         }                     }                 } finally {                     out.recycle();                 }             }         }     }</code></pre> <p>write方法接受一个需要转换的原始对象msg，和一个表示channel读写进度的ChannelPromise。</p> <p>首先会对msg进行一个类型判断，这个判断方法是在acceptOutboundMessage中实现的。</p> <pre><code>    public boolean acceptOutboundMessage(Object msg) throws Exception {         return matcher.match(msg);     }</code></pre> <p>这里的matcher是一个TypeParameterMatcher对象，它是一个在MessageToMessageEncoder构造函数中初始化的属性：</p> <pre><code>    protected MessageToMessageEncoder() {         matcher = TypeParameterMatcher.find(this, MessageToMessageEncoder.class, "I");     }</code></pre> <p>这里的I就是要匹配的msg类型。</p> <p>如果不匹配，则继续调用<code>ctx.write(msg, promise);</code> 将消息不做任何转换的写入到channel中，供下一个handler调用。</p> <p>如果匹配成功，则会调用核心的encode方法:<code>encode(ctx, cast, out);</code></p> <p>注意，encode方法在MessageToMessageEncoder中是一个抽象方法，需要用户在继承类中自行扩展。</p> <p>encode方法实际上是将msg对象转换成为要转换的对象，然后添加到out中。这个out是一个list对象，具体而言是一个CodecOutputList对象，作为一个list，out是一个可以存储多个对象的列表。</p> <p>那么out是什么时候写入到channel中去的呢？</p> <p>别急，在write方法中最后有一个finally代码块，在这个代码块中，会将out写入到channel里面。</p> <p>因为out是一个List，可能会出现out中的对象部分写成功的情况，所以这里需要特别处理。</p> <p>首先判断out中是否只有一个对象，如果是一个对象，那么直接写到channel中即可。如果out中多于一个对象，那么又分成两种情况，第一种情况是传入的promise是一个voidPromise，那么调用writeVoidPromise方法。</p> <p>什么是voidPromise呢?</p> <p>我们知道Promise有多种状态，可以通过promise的状态变化了解到数据写入的情况。对于voidPromise来说，它只关心一种失败的状态，其他的状态都不关心。</p> <p>如果用户关心promise的其他状态，则会调用writePromiseCombiner方法，将多个对象的状态合并为一个promise返回。</p> <p>事实上，在writeVoidPromise和writePromiseCombiner中，out中的对象都是一个一个的取出来，写入到channel中的,所以才会生成多个promise和需要将promise进行合并的情况：</p> <pre><code>    private static void writeVoidPromise(ChannelHandlerContext ctx, CodecOutputList out) {         final ChannelPromise voidPromise = ctx.voidPromise();         for (int i = 0; i &lt; out.size(); i++) {             ctx.write(out.getUnsafe(i), voidPromise);         }     }      private static void writePromiseCombiner(ChannelHandlerContext ctx, CodecOutputList out, ChannelPromise promise) {         final PromiseCombiner combiner = new PromiseCombiner(ctx.executor());         for (int i = 0; i &lt; out.size(); i++) {             combiner.add(ctx.write(out.getUnsafe(i)));         }         combiner.finish(promise);     }</code></pre> </h1> <p>和encoder对应的就是decoder了，MessageToMessageDecoder的逻辑和MessageToMessageEncoder差不多。</p> <p>首先也是需要判断读取的消息类型，这里也定义了一个TypeParameterMatcher对象，用来检测传入的消息类型：</p> <pre><code>    protected MessageToMessageDecoder() {         matcher = TypeParameterMatcher.find(this, MessageToMessageDecoder.class, "I");     }</code></pre> <p>decoder中重要的方法是channelRead方法，我们看下它的实现：</p> <pre><code>    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {         CodecOutputList out = CodecOutputList.newInstance();         try {             if (acceptInboundMessage(msg)) {                 @SuppressWarnings("unchecked")                 I cast = (I) msg;                 try {                     decode(ctx, cast, out);                 } finally {                     ReferenceCountUtil.release(cast);                 }             } else {                 out.add(msg);             }         } catch (DecoderException e) {             throw e;         } catch (Exception e) {             throw new DecoderException(e);         } finally {             try {                 int size = out.size();                 for (int i = 0; i &lt; size; i++) {                     ctx.fireChannelRead(out.getUnsafe(i));                 }             } finally {                 out.recycle();             }         }     }</code></pre> <p>首先检测msg的类型，只有接受的类型才进行decode处理，否则将msg加入到CodecOutputList中。</p> <p>最后在finally代码块中将out中的对象一个个取出来，调用ctx.fireChannelRead进行读取。</p> <p>消息转换的关键方法是decode，这个方法也是一个抽象方法，需要在继承类中实现具体的功能。</p> </h1> <p>前面讲解了一个编码器和一个解码器，他们都是单向的。最后要讲解的codec叫做MessageToMessageCodec，这个codec是一个双向的，即可以接收消息，也可以发送消息。</p> <p>先看下它的定义：</p> <pre><code>public abstract class MessageToMessageCodec&lt;INBOUND_IN, OUTBOUND_IN&gt; extends ChannelDuplexHandler</code></pre> <p>MessageToMessageCodec继承自ChannelDuplexHandler，接收两个泛型参数分别是INBOUND_IN和OUTBOUND_IN。</p> <p>它定义了两个TypeParameterMatcher，分别用来过滤inboundMsg和outboundMsg:</p> <pre><code>    protected MessageToMessageCodec() {         inboundMsgMatcher = TypeParameterMatcher.find(this, MessageToMessageCodec.class, "INBOUND_IN");         outboundMsgMatcher = TypeParameterMatcher.find(this, MessageToMessageCodec.class, "OUTBOUND_IN");     }</code></pre> <p>分别实现了channelRead和write方法，用来读写消息：</p> <pre><code>    @Override     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {         decoder.channelRead(ctx, msg);     }      @Override     public void write(ChannelHandlerContext ctx, Object msg, ChannelPromise promise) throws Exception {         encoder.write(ctx, msg, promise);     }</code></pre> <p>这里的decoder和encoder实际上就是前面我们讲到的MessageToMessageDecoder和MessageToMessageEncoder:</p> <pre><code>    private final MessageToMessageEncoder&lt;Object&gt; encoder = new MessageToMessageEncoder&lt;Object&gt;() {          @Override         public boolean acceptOutboundMessage(Object msg) throws Exception {             return MessageToMessageCodec.this.acceptOutboundMessage(msg);         }          @Override         @SuppressWarnings("unchecked")         protected void encode(ChannelHandlerContext ctx, Object msg, List&lt;Object&gt; out) throws Exception {             MessageToMessageCodec.this.encode(ctx, (OUTBOUND_IN) msg, out);         }     };      private final MessageToMessageDecoder&lt;Object&gt; decoder = new MessageToMessageDecoder&lt;Object&gt;() {          @Override         public boolean acceptInboundMessage(Object msg) throws Exception {             return MessageToMessageCodec.this.acceptInboundMessage(msg);         }          @Override         @SuppressWarnings("unchecked")         protected void decode(ChannelHandlerContext ctx, Object msg, List&lt;Object&gt; out) throws Exception {             MessageToMessageCodec.this.decode(ctx, (INBOUND_IN) msg, out);         }     };</code></pre> <p>可以看到MessageToMessageCodec实际上就是对MessageToMessageDecoder和MessageToMessageEncoder的封装，如果需要对MessageToMessageCodec进行扩展的话，需要实现下面两个方法：</p> <pre><code>    protected abstract void encode(ChannelHandlerContext ctx, OUTBOUND_IN msg, List&lt;Object&gt; out)             throws Exception;      protected abstract void decode(ChannelHandlerContext ctx, INBOUND_IN msg, List&lt;Object&gt; out)             throws Exception;</code></pre> </h1> <p>netty中提供的MessageToMessage的编码框架是后面对编码解码器进行扩展的基础。只有深入了解其中的原理，我们对于新的编码解码器运用起来才能得心应手。</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-77002.htm">mysql 独立schema_详解MySQL中的数据类型和schema优化</a></p>
+                                        <p>下一个：<a href="/news/article-77691.htm">宠物用品批发零售（宠物用品批发连锁）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-63377.htm" title="宠物领养协议书范本大全最新版 宠物领养协议书范本大全最新版图片">宠物领养协议书范本大全最新版 宠物领养协议书范本大全最新版图片</a></li>
+                        <li class="py-2"><a href="/news/article-59829.htm" title="宠物领养有哪些平台好点（宠物领养的平台）">宠物领养有哪些平台好点（宠物领养的平台）</a></li>
+                        <li class="py-2"><a href="/news/article-74972.htm" title="非泼罗尼和阿维菌素哪一个驱虫好用（阿维菌素透皮溶液和非泼罗尼滴剂哪个更合适泰迪幼崽）">非泼罗尼和阿维菌素哪一个驱虫好用（阿维菌素透皮溶液和非泼罗尼滴剂哪个更合适泰迪幼崽）</a></li>
+                        <li class="py-2"><a href="/news/article-62778.htm" title="宠物粮生产厂家排名前十有哪些（宠物粮食厂家）">宠物粮生产厂家排名前十有哪些（宠物粮食厂家）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-8-node-share.htm" title="2月8日→22.7M/S|2025年最新免费节点Free Stash Node订阅链接地址">2月8日→22.7M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-19-free-subscribe-node.htm" title="3月19日→19.4M/S|2025年最新免费节点Free Stash Node订阅链接地址">3月19日→19.4M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-76333.htm" title="golang bufio解析">golang bufio解析</a></li>
+                        <li class="py-2"><a href="/news/article-58777.htm" title="动物疫苗经营交什么税种（动物疫苗经营许可）">动物疫苗经营交什么税种（动物疫苗经营许可）</a></li>
+                        <li class="py-2"><a href="/news/article-55320.htm" title="符合动物医院法定条件有哪些内容要求（动物医院资质级别有哪些）">符合动物医院法定条件有哪些内容要求（动物医院资质级别有哪些）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-30-clash-stash.htm" title="1月30日→19.7M/S|2025年最新免费节点Free Stash Node订阅链接地址">1月30日→19.7M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- about-section end -->
+                <!-- main-footer -->
+        <footer class="main-footer">
+            <div class="footer-bottom">
+                <div class="auto-container">
+                    <div class="inner-box clearfix">
+                        <div class="copyright pull-left">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <p>
+                                <a href="/">Free Stash Node免费机场节点分享官网</a> 版权所有 Powered by WordPress
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- main-footer end -->
+        <!--Scroll to top-->
+        <button class="scroll-top scroll-to-target" data-target="html">
+            <span class="fa fa-arrow-up"></span>
+        </button>
+        <!-- jequery plugins -->
+        <script src="/assets/website/js/frontend/freestashnode/jquery.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/popper.min.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/owl.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/wow.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/validation.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/jquery.fancybox.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/appear.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/scrollbar.js"></script>
+        <!-- main-js -->
+        <script src="/assets/website/js/frontend/freestashnode/script.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+</body><!-- End of .page_wrapper -->
+
+</html>
