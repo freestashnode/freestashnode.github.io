@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freestashnode.github.io/news/article-83940.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Python实现双X轴双Y轴绘图</title>
+        <meta name="description" content="诈尸人口回归。这一年忙着灌水忙到头都掉了，最近在女朋友的提醒下终于想起来博客的账号密码，正好今天灌水的时候需要画一个双X轴双Y轴的图，研究了两小时终于用Py实现了。找资料的过程中没有发现有系统的文章，" />
+        <link rel="icon" href="/assets/website/img/freestashnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Stash Node免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freestashnode.github.io/news/article-83940.htm" />
+    <meta property="og:site_name" content="Free Stash Node免费机场节点分享官网" />
+    <meta property="og:title" content="Python实现双X轴双Y轴绘图" />
+    <meta property="og:image" content="https://freestashnode.github.io/uploads/20240919/3b2341528fd88fc178e5343ee0f28498.webp" />
+        <meta property="og:release_date" content="2025-03-29T09:01:00" />
+    <meta property="og:updated_time" content="2025-03-29T09:01:00" />
+        <meta property="og:description" content="诈尸人口回归。这一年忙着灌水忙到头都掉了，最近在女朋友的提醒下终于想起来博客的账号密码，正好今天灌水的时候需要画一个双X轴双Y轴的图，研究了两小时终于用Py实现了。找资料的过程中没有发现有系统的文章，" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Python实现双X轴双Y轴绘图">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <!-- Stylesheets -->
+    <link href="/assets/website/css/freestashnode/font-awesome-all.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/flaticon.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/owl.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/bootstrap.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/animate.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/color.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/style.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/responsive.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YXFDLQYLFV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YXFDLQYLFV');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+<!-- page wrapper -->
+
+<body data-page="detail">
+    <div class="boxed_wrapper">
+                <!-- preloader -->
+        <div class="preloader"></div>
+        <!-- preloader -->
+        <!-- main header -->
+        <header class="main-header style-one">
+            <!-- header-lower -->
+            <div class="header-lower">
+                <div class="outer-box">
+                    <div class="logo-box">
+                        <figure class="logo">
+                            <a href="/">
+                                                        <span>Free Stash Node</span>
+                                                        </a>
+                        </figure>
+                    </div>
+                    <div class="menu-area">
+                        <!--Mobile Navigation Toggler-->
+                        <div class="mobile-nav-toggler">
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                        </div>
+                        <nav class="main-menu navbar-expand-md navbar-light">
+                            <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+                                <ul class="navigation clearfix">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/client.htm">客户端</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                    </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!--sticky Header-->
+            <div class="sticky-header">
+                <div class="outer-box">
+                    <div class="logo-box">
+                        <figure class="logo">
+                            <a href="/">
+                                <span>Free Stash Node</span>
+                            </a>
+                        </figure>
+                    </div>
+                    <div class="menu-area">
+                        <nav class="main-menu clearfix">
+                            <!--Keep This Empty / Menu will come through Javascript-->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- main-header end -->
+        <!-- Mobile Menu  -->
+        <div class="mobile-menu">
+            <div class="menu-backdrop"></div>
+            <div class="close-btn"><i class="fas fa-times"></i></div>
+            <nav class="menu-box">
+                <div class="menu-outer">
+                    <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
+                </div>
+                <div class="social-links">
+                    <ul class="clearfix">
+                        <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+                        <li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+                        <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
+                        <li><a href="#"><span class="fab fa-instagram"></span></a></li>
+                        <li><a href="#"><span class="fab fa-youtube"></span></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div><!-- End Mobile Menu -->
+        <!-- Page Title -->
+        <section class="page-title centred" style="background-image: url(/assets/website/img/freestashnode/background/page-title.jpg);">
+            <div class="auto-container">
+                <div class="content-box">
+                    <div class="title">
+                        <h1>Python实现双X轴双Y轴绘图</h1>
+                    </div>
+                    <ul class="bread-crumb clearfix">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- End Page Title -->
+        <!-- about-section -->
+        <section class="about-section">
+            <div class="auto-container">
+                <div class="row clearfix">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="StashNode免费订阅官网" data-url="https://stashnode.github.io">
+                  				  				  				<p>诈尸人口回归。这一年忙着灌水忙到头都掉了，最近<s>在女朋友的提醒下</s>终于想起来博客的账号密码，正好今天灌水的时候需要画一个双X轴双Y轴的图，研究了两小时终于用Py实现了。找资料的过程中没有发现有系统的文章，反正代码都整理出来了，我决定顺势水一篇。</p> <p>目前找到的plt实现双X轴双Y轴绘图方式有两种：</p> <ol> <li>使用<code>fig.add_subplot</code>方式将两对坐标系叠加在一个fig上实现双X轴双Y轴效果。所有调整均可完美实现，推荐该方式</li> <li>通过<code>axes.twinx().twiny()</code>方式实现双X轴双Y轴图形绘制。问题在于对于第二个Y轴的各种设置无效，label可以通过手动添加的方式创建并指定颜色，而tick颜色则无法修改。可能需要等待官方修复，或者尝试先使用<code>ax1=axes.twinx()</code>方式，从<code>ax1</code>中获取第二个Y轴，然后再使用<code>ax2.twiny()</code>创建第二个X轴。</li> </ol> <h2 id="figadd_subplot-方式实现双x轴双y轴绘图">fig.add_subplot 方式实现双X轴双Y轴绘图</h2> <pre><code class="language-python">""" 使用plt，通过fig.add_subplot方式将两对坐标系叠加在一个fig上实现双X轴双Y轴效果。 所有调整均可完美实现，推荐该方式 """ import matplotlib.pyplot as plt import numpy as np  """生成数据并设置绘图参数""" x = np.arange(1, 12, 4) y = np.arange(1, 4, 1) x2=x*10 y2=y**2 # 设置两种绘图颜色 c1='r' c2='b' # 设置字体大小 fontsize=12 # 设置画布大小 width,height=16,14 # 单位为cm；因为保存图片时使用 bbox_inches = 'tight' 可能使图片尺寸略微放大，所以此处宽度设置得略小 # 设置刻度线在坐标轴内 plt.rcParams['xtick.direction'] = 'in' plt.rcParams['ytick.direction'] = 'in' """绘图""" lns=[] # 用于存储绘图句柄以合并图例的list # 创建画布并设置大小 fig=plt.figure() fig.set_size_inches(width/2.54, height/2.54) # 因为画布输入大小为厘米，此处需转换为英寸，所以除以2.54 # 通过 add_subplot 方式创建两个坐标轴，相当于在同一个子图上叠加了两对坐标系 ax=fig.add_subplot(111, label="1") ax2=fig.add_subplot(111, label="2", frame_on=False) # 绘制图1并将绘图句柄返回，以便添加合并图例 lns1=ax.plot(x,y,color=c1,label=c1) lns=lns1 lns2=ax2.plot(x2,y2, color=c2,label=c2) lns+=lns2 """图形美化""" # 调整第二对坐标轴的label和tick位置，以实现双X轴双Y轴效果 ax2.xaxis.tick_top() ax2.yaxis.tick_right() ax2.xaxis.set_label_position('top') ax2.yaxis.set_label_position('right') # 设置坐标轴标注 ax.set_xlabel("X1", color=c1,fontsize=fontsize) ax.set_ylabel("Y1", color=c1,fontsize=fontsize) ax2.set_xlabel('X2', color=c2,fontsize=fontsize) ax2.set_ylabel('Y2', color=c2,fontsize=fontsize) # 设置图表标题 fig.suptitle("Title",fontsize=fontsize+2) # 设置坐标轴刻度颜色 ax.tick_params(axis='x', colors=c1) ax.tick_params(axis='y', colors=c1) ax2.tick_params(axis='x', colors=c2) ax2.tick_params(axis='y', colors=c2) # 设置坐标轴线颜色 ax.spines["left"].set_color("r") # 修改左侧颜色 ax.spines["right"].set_color("b") # 修改右侧颜色 ax.spines["top"].set_color("b") # 修改上边颜色 ax.spines["bottom"].set_color("r") # 修改下边颜色 # 添加图例 labs = [l.get_label() for l in lns] ax.legend(lns, labs, loc=0,fontsize=fontsize) plt.tight_layout() plt.show()</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/16734b41d69c4946f0b634b39efc88ef.jpg" alt="Python实现双X轴双Y轴绘图"></p> <h2 id="使用-axestwinxtwiny-方式实现双x轴双y轴绘图">使用 axes.twinx().twiny() 方式实现双X轴双Y轴绘图</h2> <pre><code class="language-python">""" 使用plt，通过 axes.twinx().twiny() 方式实现双X轴双Y轴图形绘制。 问题在于对于第二个Y轴的各种设置无效，label可以通过手动添加的方式创建并指定颜色，而tick颜色则无法修改 """ import matplotlib.pyplot as plt import numpy as np  """生成数据并设置绘图参数""" x = np.arange(1, 12, 4) y = np.arange(1, 4, 1) x2=x*10 y2=y**2 # 设置两种绘图颜色 c1='r' c2='b' # 设置字体大小 fontsize=12 # 设置刻度线在坐标轴内 plt.rcParams['xtick.direction'] = 'in' plt.rcParams['ytick.direction'] = 'in' """绘图""" lns=[] # 用于存储绘图句柄以合并图例的list # 创建画布 fig,axes=plt.subplots() fig.set_size_inches(10, 8) # 绘制图1并将绘图句柄返回，以便添加合并图例 lns1=axes.plot(x,y,color=c1,label=c1) lns=lns1 # 创建双x轴双y轴 twin_axes=axes.twinx().twiny() # 使用画布的初始坐标轴对象创建第二对坐标轴，类似于在双x轴的基础上叠加双y轴 # 绘制图2并将绘图句柄返回，以便添加合并图例 lns2=twin_axes.plot(x2,y2,color=c2,label=c2)  lns+=lns2 """图形美化""" # 设置坐标轴标注 axes.set_xlabel("X1",color=c1, fontsize=fontsize) axes.set_ylabel("Y1",color=c1, fontsize=fontsize) twin_axes.set_xlabel("X2",color=c2, fontsize=fontsize) twin_axes.set_ylabel("Y2",color=c2, fontsize=fontsize) # 第二个y轴设置标注无效 # 设置图表标题 fig.suptitle("Title",fontsize=fontsize+2) # 设置第二个y轴的label；由于set_ylabel无效，因此只能通过该种方式手动添加 loc_text_x=np.min(plt.xlim())+np.ptp(plt.xlim())*1.03 loc_text_y=np.min(plt.ylim())+np.ptp(plt.ylim())*0.5 str_text='Y2' twin_axes.text(loc_text_x, loc_text_y, str_text,rotation=90,color=c2,fontsize=fontsize) # 设置坐标轴刻度颜色 axes.tick_params('x', colors=c1) axes.tick_params('y', colors=c1) twin_axes.tick_params('x', colors=c2) twin_axes.tick_params('y', colors=c2) # 设置坐标轴线颜色 twin_axes.spines["left"].set_color("r") # 修改左侧颜色 twin_axes.spines["right"].set_color("b") # 修改右侧颜色；同第二个y轴的label设置一样，该设置也不起作用 twin_axes.spines["top"].set_color("b") # 修改上边颜色 twin_axes.spines["bottom"].set_color("r") # 修改下边颜色 # 添加图例 # lns = lns1+lns2 labs = [l.get_label() for l in lns] axes.legend(lns, labs, loc=0,fontsize=fontsize) plt.tight_layout() plt.show()</code></pre> <h2 id=""><img decoding="async" src="https://cdn.jsdelivr.net/gh/geoli91/ImageHosting/img/output.jpg" alt="Python实现双X轴双Y轴绘图"></h2> <p>本文参考：</p> <ol> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://stackoverflow.com/questions/12358890/matplotlib-using-twinx-and-twiny-together-like-twinxy"  target="_blank" rel="nofollow">matplotlib using twinx and twiny together (like twinxy)</a></li> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.delftstack.com/howto/matplotlib/matplotlib-twinx-and-twiny-python/"  target="_blank" rel="nofollow">twinx and twiny in Matplotlib</a></li> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/hqs_09/article/details/112975374"  target="_blank" rel="nofollow">matplotlib 双y轴绘制及合并图例</a></li> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.zhihu.com/question/412804652"  target="_blank" rel="nofollow">Python matplotlib怎么画双X轴和双Y轴</a></li> </ol> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-83237.htm">附近免费领养狗狗的地方 附近免费领养狗狗的地方在哪里?</a></p>
+                                        <p>下一个：<a href="/news/article-83941.htm">微服务与领域驱动设计，架构实践总结</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-1-30-clash-stash.htm" title="1月30日→19.7M/S|2025年最新免费节点Free Stash Node订阅链接地址">1月30日→19.7M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-38072.htm" title="兽用疫苗经营许可证需要什么条件（兽用疫苗销售资质）">兽用疫苗经营许可证需要什么条件（兽用疫苗销售资质）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-20-free-node-subscribe-links.htm" title="2月20日→19.8M/S|2025年最新免费节点Free Stash Node订阅链接地址">2月20日→19.8M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-27-node-share.htm" title="3月27日→19.5M/S|2025年最新免费节点Free Stash Node订阅链接地址">3月27日→19.5M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-37083.htm" title="宠物粮食生意怎么样啊赚钱吗现在（宠物粮食利润大吗）">宠物粮食生意怎么样啊赚钱吗现在（宠物粮食利润大吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-25-free-stash-node.htm" title="2月25日→21.3M/S|2025年最新免费节点Free Stash Node订阅链接地址">2月25日→21.3M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-13-free-clash-stash.htm" title="1月13日→22.4M/S|2025年最新免费节点Free Stash Node订阅链接地址">1月13日→22.4M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-57545.htm" title="动物疫苗要打几针的疫苗有效（动物疫苗要打几针的疫苗有效呢）">动物疫苗要打几针的疫苗有效（动物疫苗要打几针的疫苗有效呢）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-19-free-node-subscribe-links.htm" title="2月19日→22.2M/S|2025年最新免费节点Free Stash Node订阅链接地址">2月19日→22.2M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-14-free-clash-stash.htm" title="3月14日→18.4M/S|2025年最新免费节点Free Stash Node订阅链接地址">3月14日→18.4M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">87</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- about-section end -->
+                <!-- main-footer -->
+        <footer class="main-footer">
+            <div class="footer-bottom">
+                <div class="auto-container">
+                    <div class="inner-box clearfix">
+                        <div class="copyright pull-left">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <p>
+                                <a href="/">Free Stash Node免费机场节点分享官网</a> 版权所有 Powered by WordPress
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- main-footer end -->
+        <!--Scroll to top-->
+        <button class="scroll-top scroll-to-target" data-target="html">
+            <span class="fa fa-arrow-up"></span>
+        </button>
+        <!-- jequery plugins -->
+        <script src="/assets/website/js/frontend/freestashnode/jquery.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/popper.min.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/owl.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/wow.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/validation.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/jquery.fancybox.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/appear.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/scrollbar.js"></script>
+        <!-- main-js -->
+        <script src="/assets/website/js/frontend/freestashnode/script.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+</body><!-- End of .page_wrapper -->
+
+</html>
