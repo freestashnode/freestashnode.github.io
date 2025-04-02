@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freestashnode.github.io/news/article-85372.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>springboot过滤器与拦截器详解</title>
+        <meta name="description" content="参考网址:  https://mp.weixin.qq.com/s/0_94GzkKpc_x1ZTepSyXHQ   在讲Spring boot之前，我们先了解一下过滤器和拦截器。这两者在功能方面很类" />
+        <link rel="icon" href="/assets/website/img/freestashnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Stash Node免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freestashnode.github.io/news/article-85372.htm" />
+    <meta property="og:site_name" content="Free Stash Node免费机场节点分享官网" />
+    <meta property="og:title" content="springboot过滤器与拦截器详解" />
+    <meta property="og:image" content="https://freestashnode.github.io/uploads/20240919/39f7b9bd651bbe87101e9500aaef91c1.webp" />
+        <meta property="og:release_date" content="2025-03-31T08:41:19" />
+    <meta property="og:updated_time" content="2025-03-31T08:41:19" />
+        <meta property="og:description" content="参考网址:  https://mp.weixin.qq.com/s/0_94GzkKpc_x1ZTepSyXHQ   在讲Spring boot之前，我们先了解一下过滤器和拦截器。这两者在功能方面很类" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="springboot过滤器与拦截器详解">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <!-- Stylesheets -->
+    <link href="/assets/website/css/freestashnode/font-awesome-all.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/flaticon.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/owl.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/bootstrap.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/animate.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/color.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/style.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/responsive.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YXFDLQYLFV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YXFDLQYLFV');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+<!-- page wrapper -->
+
+<body data-page="detail">
+    <div class="boxed_wrapper">
+                <!-- preloader -->
+        <div class="preloader"></div>
+        <!-- preloader -->
+        <!-- main header -->
+        <header class="main-header style-one">
+            <!-- header-lower -->
+            <div class="header-lower">
+                <div class="outer-box">
+                    <div class="logo-box">
+                        <figure class="logo">
+                            <a href="/">
+                                                        <span>Free Stash Node</span>
+                                                        </a>
+                        </figure>
+                    </div>
+                    <div class="menu-area">
+                        <!--Mobile Navigation Toggler-->
+                        <div class="mobile-nav-toggler">
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                        </div>
+                        <nav class="main-menu navbar-expand-md navbar-light">
+                            <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+                                <ul class="navigation clearfix">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/client.htm">客户端</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                    </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!--sticky Header-->
+            <div class="sticky-header">
+                <div class="outer-box">
+                    <div class="logo-box">
+                        <figure class="logo">
+                            <a href="/">
+                                <span>Free Stash Node</span>
+                            </a>
+                        </figure>
+                    </div>
+                    <div class="menu-area">
+                        <nav class="main-menu clearfix">
+                            <!--Keep This Empty / Menu will come through Javascript-->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- main-header end -->
+        <!-- Mobile Menu  -->
+        <div class="mobile-menu">
+            <div class="menu-backdrop"></div>
+            <div class="close-btn"><i class="fas fa-times"></i></div>
+            <nav class="menu-box">
+                <div class="menu-outer">
+                    <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
+                </div>
+                <div class="social-links">
+                    <ul class="clearfix">
+                        <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+                        <li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+                        <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
+                        <li><a href="#"><span class="fab fa-instagram"></span></a></li>
+                        <li><a href="#"><span class="fab fa-youtube"></span></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div><!-- End Mobile Menu -->
+        <!-- Page Title -->
+        <section class="page-title centred" style="background-image: url(/assets/website/img/freestashnode/background/page-title.jpg);">
+            <div class="auto-container">
+                <div class="content-box">
+                    <div class="title">
+                        <h1>springboot过滤器与拦截器详解</h1>
+                    </div>
+                    <ul class="bread-crumb clearfix">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- End Page Title -->
+        <!-- about-section -->
+        <section class="about-section">
+            <div class="auto-container">
+                <div class="row clearfix">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="StashNode免费订阅官网" data-url="https://stashnode.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> </h1> <p>参考网址:</p> <blockquote> <p>https://mp.weixin.qq.com/s/0_94GzkKpc_x1ZTepSyXHQ</p> </blockquote> </h1> <p>在讲Spring boot之前，我们先了解一下过滤器和拦截器。这两者在功能方面很类似，但是在具体技术实现方面，差距还是比较大的。在分析两者的区别之前，我们先理解一下AOP的概念，AOP不是一种具体的技术，而是一种编程思想。在面向对象编程的过程中，我们很容易通过继承、多态来解决纵向扩展。</p> <p>但是对于横向的功能，比如，在所有的service方法中开启事务，或者统一记录日志等功能，面向对象的是无法解决的。所以AOP——面向切面编程其实是面向对象编程思想的一个补充。而我们今天讲的过滤器和拦截器都属于面向切面编程的具体实现。</p> <h4><a id="_14" rel="nofollow"></a>而两者的主要区别包括以下几个方面：</h4> <ul> <li>Filter是依赖于Servlet容器，属于Servlet规范的一部分，而拦截器则是独立存在的，可以在任何情况下使用。</li> <li>Filter的执行由Servlet容器回调完成，而拦截器通常通过动态代理的方式来执行。</li> <li>Filter的生命周期由Servlet容器管理，而拦截器则可以通过IoC容器来管理，因此可以通过注入等方式来获取其他Bean的实例，因此使用会更方便。</li> </ul> </h1> </h1> <p>现在我们通过过滤器来实现记录请求执行时间的功能，其实现如下：</p> <pre><code class="prism language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>shaoming<span class="token punctuation">.</span>filter<span class="token punctuation">;</span><span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>*<span class="token punctuation">;</span><span class="token keyword">import</span> java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>IOException<span class="token punctuation">;</span><span class="token comment">/**  * @author shaoming  * @Date: 2021/3/2 15:14  * @Description:  */</span><span class="token keyword">public</span><span class="token keyword">class</span><span class="token class-name">LogCostFilter</span><span class="token keyword">implements</span><span class="token class-name">Filter</span><span class="token punctuation">{<!-- --></span><span class="token annotation punctuation">@Override</span><span class="token keyword">public</span><span class="token keyword">void</span><span class="token function">init</span><span class="token punctuation">(</span>FilterConfig filterConfig<span class="token punctuation">)</span><span class="token keyword">throws</span> ServletException<span class="token punctuation">{<!-- --></span><span class="token punctuation">}</span><span class="token annotation punctuation">@Override</span><span class="token keyword">public</span><span class="token keyword">void</span><span class="token function">doFilter</span><span class="token punctuation">(</span>ServletRequest servletRequest<span class="token punctuation">,</span>ServletResponse servletResponse<span class="token punctuation">,</span>FilterChain filterChain<span class="token punctuation">)</span><span class="token keyword">throws</span> IOException<span class="token punctuation">,</span>ServletException<span class="token punctuation">{<!-- --></span><span class="token keyword">long</span> start<span class="token operator">=</span> System<span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         filterChain<span class="token punctuation">.</span><span class="token function">doFilter</span><span class="token punctuation">(</span>servletRequest<span class="token punctuation">,</span> servletResponse<span class="token punctuation">)</span><span class="token punctuation">;</span>         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Execute cost="</span><span class="token operator">+</span><span class="token punctuation">(</span>System<span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span> start<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token annotation punctuation">@Override</span><span class="token keyword">public</span><span class="token keyword">void</span><span class="token function">destroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre> <p>这段代码的逻辑比较简单，就是在方法执行前先记录时间戳，然后通过过滤器链完成请求的执行，在返回结果之间计算执行的时间。这里需要主要，这个类必须继承Filter类，这个是Servlet的规范，这个跟以前的Web项目没区别。</p> <p>但是，有了过滤器类以后，以前的web项目可以在web.xml中进行配置，但是spring boot项目并没有web.xml这个文件，那怎么配置？在Spring boot中，我们需要FilterRegistrationBean来完成配置。其实现过程如下：</p> <pre><code class="prism language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>shaoming<span class="token punctuation">.</span>config<span class="token punctuation">;</span><span class="token keyword">import</span> com<span class="token punctuation">.</span>shaoming<span class="token punctuation">.</span>filter<span class="token punctuation">.</span>LogCostFilter<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token punctuation">.</span>web<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>FilterRegistrationBean<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Bean<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Configuration<span class="token punctuation">;</span><span class="token comment">/**  * @author shaoming  * @Date: 2021/3/2 15:17  * @Description:  */</span><span class="token annotation punctuation">@Configuration</span><span class="token keyword">public</span><span class="token keyword">class</span><span class="token class-name">FilterConfig</span><span class="token punctuation">{<!-- --></span><span class="token annotation punctuation">@Bean</span><span class="token keyword">public</span> FilterRegistrationBean<span class="token function">registFilter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>         FilterRegistrationBean registration<span class="token operator">=</span><span class="token keyword">new</span><span class="token class-name">FilterRegistrationBean</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         registration<span class="token punctuation">.</span><span class="token function">setFilter</span><span class="token punctuation">(</span><span class="token keyword">new</span><span class="token class-name">LogCostFilter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         registration<span class="token punctuation">.</span><span class="token function">addUrlPatterns</span><span class="token punctuation">(</span><span class="token string">"/*"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         registration<span class="token punctuation">.</span><span class="token function">setName</span><span class="token punctuation">(</span><span class="token string">"LogCostFilter"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         registration<span class="token punctuation">.</span><span class="token function">setOrder</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">return</span> registration<span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre> <p>这样配置就完成了，需要配置的选项主要包括实例化Filter类，然后指定url的匹配模式，设置过滤器名称和执行顺序，这个过程和在web.xml中配置其实没什么区别，只是形式不同而已。现在我们可以启动服务器访问任意URL：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221130/e585bc1f6768d6af687ca1112f3030c4.jpg" alt="springboot过滤器与拦截器详解"></p> <p>大家可以看到上面的配置已经生效了。除了通过 FilterRegistrationBean 来配置以外，还有一种更直接的办法，直接通过注解就可以完成了：</p> <pre><code class="prism language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>shaoming<span class="token punctuation">.</span>filter<span class="token punctuation">;</span><span class="token comment">/**  * @author shaoming  * @Date: 2021/3/2 15:26  * @Description:  */</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>core<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Order<span class="token punctuation">;</span><span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>*<span class="token punctuation">;</span><span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>WebFilter<span class="token punctuation">;</span><span class="token keyword">import</span> java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>IOException<span class="token punctuation">;</span><span class="token annotation punctuation">@WebFilter</span><span class="token punctuation">(</span>urlPatterns<span class="token operator">=</span><span class="token string">"/*"</span><span class="token punctuation">,</span> filterName<span class="token operator">=</span><span class="token string">"logFilter2"</span><span class="token punctuation">)</span><span class="token keyword">public</span><span class="token keyword">class</span><span class="token class-name">LogCostFilter2</span><span class="token keyword">implements</span><span class="token class-name">Filter</span><span class="token punctuation">{<!-- --></span><span class="token annotation punctuation">@Override</span><span class="token keyword">public</span><span class="token keyword">void</span><span class="token function">init</span><span class="token punctuation">(</span>FilterConfig filterConfig<span class="token punctuation">)</span><span class="token keyword">throws</span> ServletException<span class="token punctuation">{<!-- --></span><span class="token punctuation">}</span><span class="token annotation punctuation">@Override</span><span class="token keyword">public</span><span class="token keyword">void</span><span class="token function">doFilter</span><span class="token punctuation">(</span>ServletRequest servletRequest<span class="token punctuation">,</span> ServletResponse servletResponse<span class="token punctuation">,</span> FilterChain filterChain<span class="token punctuation">)</span><span class="token keyword">throws</span> IOException<span class="token punctuation">,</span> ServletException<span class="token punctuation">{<!-- --></span><span class="token keyword">long</span> start<span class="token operator">=</span> System<span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         filterChain<span class="token punctuation">.</span><span class="token function">doFilter</span><span class="token punctuation">(</span>servletRequest<span class="token punctuation">,</span> servletResponse<span class="token punctuation">)</span><span class="token punctuation">;</span>         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"LogFilter2 Execute cost="</span><span class="token operator">+</span><span class="token punctuation">(</span>System<span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span> start<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token annotation punctuation">@Override</span><span class="token keyword">public</span><span class="token keyword">void</span><span class="token function">destroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre> <p>这里直接用@WebFilter就可以进行配置，同样，可以设置url匹配模式，过滤器名称等。这里需要注意一点的是@WebFilter这个注解是Servlet3.0的规范，并不是Spring boot提供的。除了这个注解以外，我们还需在配置类中加另外一个注解：@ServletComponetScan，指定扫描的包。</p> <pre><code class="prism language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>shaoming<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token punctuation">.</span>SpringApplication<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token punctuation">.</span>autoconfigure<span class="token punctuation">.</span>SpringBootApplication<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token punctuation">.</span>web<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>ServletComponentScan<span class="token punctuation">;</span><span class="token annotation punctuation">@SpringBootApplication</span><span class="token annotation punctuation">@ServletComponentScan</span><span class="token punctuation">(</span><span class="token string">"com.shaoming.filter"</span><span class="token punctuation">)</span><span class="token keyword">public</span><span class="token keyword">class</span><span class="token class-name">SpringbootTestDemoApplication</span><span class="token punctuation">{<!-- --></span><span class="token keyword">public</span><span class="token keyword">static</span><span class="token keyword">void</span><span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>         SpringApplication<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span>SpringbootTestDemoApplication<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre> <p>现在，我们再来访问一下任意URL：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221130/47d49ce595ce38db48071257ff616ad2.jpg" alt="springboot过滤器与拦截器详解"></p> <p>可以看到，我们配置的两个过滤器都生效了。细心的读者会发现，第二个Filter我们并没有指定执行的顺序，但是却在第一个Filter之前执行。这里需要解释一下，@WebFilter这个注解并没有指定执行顺序的属性，其执行顺序依赖于Filter的名称，是根据Filter类名（注意不是配置的filter的名字）的字母顺序倒序排列，并且@WebFilter指定的过滤器优先级都高于FilterRegistrationBean配置的过滤器。有兴趣的朋友可以自己实验一下。</p> </h1> </h1> <p>上面我们已经介绍了过滤器的配置方法，接下来我们再来看看如何配置一个拦截器。我们使用拦截器来实现上面同样的功能，记录请求的执行时间。首先我们实现拦截器类：</p> <pre><code class="prism language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>shaoming<span class="token punctuation">.</span>interceptor<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>HandlerInterceptor<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>ModelAndView<span class="token punctuation">;</span><span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>http<span class="token punctuation">.</span>HttpServletRequest<span class="token punctuation">;</span><span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>http<span class="token punctuation">.</span>HttpServletResponse<span class="token punctuation">;</span><span class="token comment">/**  * @author shaoming  * @Date: 2021/3/2 15:50  * @Description:  */</span><span class="token keyword">public</span><span class="token keyword">class</span><span class="token class-name">LogCostInterceptor</span><span class="token keyword">implements</span><span class="token class-name">HandlerInterceptor</span><span class="token punctuation">{<!-- --></span><span class="token keyword">long</span>  start<span class="token operator">=</span> System<span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token annotation punctuation">@Override</span><span class="token keyword">public</span><span class="token keyword">boolean</span><span class="token function">preHandle</span><span class="token punctuation">(</span>HttpServletRequest httpServletRequest<span class="token punctuation">,</span> HttpServletResponse httpServletResponse<span class="token punctuation">,</span>                              Object o<span class="token punctuation">)</span><span class="token keyword">throws</span> Exception<span class="token punctuation">{<!-- --></span>         start<span class="token operator">=</span> System<span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">return</span><span class="token boolean">true</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token annotation punctuation">@Override</span><span class="token keyword">public</span><span class="token keyword">void</span><span class="token function">postHandle</span><span class="token punctuation">(</span>HttpServletRequest httpServletRequest<span class="token punctuation">,</span> HttpServletResponse httpServletResponse<span class="token punctuation">,</span> Object o<span class="token punctuation">,</span>                ModelAndView modelAndView<span class="token punctuation">)</span><span class="token keyword">throws</span> Exception<span class="token punctuation">{<!-- --></span>         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Interceptor cost="</span><span class="token operator">+</span><span class="token punctuation">(</span>System<span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span> start<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token annotation punctuation">@Override</span><span class="token keyword">public</span><span class="token keyword">void</span><span class="token function">afterCompletion</span><span class="token punctuation">(</span>HttpServletRequest httpServletRequest<span class="token punctuation">,</span> HttpServletResponse httpServletResponse<span class="token punctuation">,</span>                                 Object o<span class="token punctuation">,</span> Exception e<span class="token punctuation">)</span><span class="token keyword">throws</span> Exception<span class="token punctuation">{<!-- --></span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre> <blockquote> <p>//1.x中拦截器配置<br /> @Component<br /> public class InterceptorConfig extends WebMvcConfigurerAdapter {<!-- --><br /> @Override<br /> public void addInterceptors(InterceptorRegistry registry) {<!-- --><br /> //添加拦截器<br /> registry.addInterceptor(new MyInterceptor())<br /> .addPathPatterns("/<strong>")//定义拦截路径<br /> .excludePathPatterns("/hello/</strong>"); //排除拦截路径<br /> }<br /> }</p> <p>//2.x中拦截器配置<br /> @Configuration<br /> public class InterceptorConfig extends WebMvcConfigurationSupport {<!-- --><br /> @Override<br /> public void addInterceptors(InterceptorRegistry registry) {<!-- --><br /> registry.addInterceptor(new MyInterceptor())//添加拦截器<br /> .addPathPatterns("/hello/**")//添加拦截的请求路径<br /> .excludePathPatterns("/hello/world");//添加排除那些请求路径不经过拦截器<br /> }<br /> }</p> <p><code>注意:在springboot2.x版本中自定义拦截器之后出现项目中静态资源 404情况,需要在自定义拦截器的配置中加入如下配置即可:</code></p> </blockquote> <p>这里我们需要实现HandlerInterceptor这个接口，这个接口包括三个方法，preHandle是请求执行前执行的，postHandler是请求结束执行的，但只有preHandle方法返回true的时候才会执行，afterCompletion是视图渲染完成后才执行，同样需要preHandle返回true，该方法通常用于清理资源等工作。除了实现上面的接口外，我们还需对其进行配置：</p> <pre><code class="prism language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>shaoming<span class="token punctuation">.</span>config<span class="token punctuation">;</span><span class="token keyword">import</span> com<span class="token punctuation">.</span>shaoming<span class="token punctuation">.</span>interceptor<span class="token punctuation">.</span>LogCostInterceptor<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>config<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>InterceptorRegistry<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>config<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>WebMvcConfigurerAdapter<span class="token punctuation">;</span><span class="token comment">/**  * @author shaoming  * @Date: 2021/3/2 16:10  * @Description:  */</span><span class="token keyword">public</span><span class="token keyword">class</span><span class="token class-name">InterceptorConfig</span><span class="token keyword">extends</span><span class="token class-name">WebMvcConfigurerAdapter</span><span class="token punctuation">{<!-- --></span><span class="token annotation punctuation">@Override</span><span class="token keyword">public</span><span class="token keyword">void</span><span class="token function">addInterceptors</span><span class="token punctuation">(</span>InterceptorRegistry registry<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>         registry<span class="token punctuation">.</span><span class="token function">addInterceptor</span><span class="token punctuation">(</span><span class="token keyword">new</span><span class="token class-name">LogCostInterceptor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addPathPatterns</span><span class="token punctuation">(</span><span class="token string">"/**"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">addInterceptors</span><span class="token punctuation">(</span>registry<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre> <p>这里我们继承了WebMVCConfigurerAdapter，看过前面的文章的朋友应该已经见过这个类了，在进行静态资源目录配置的时候我们用到过这个类。这里我们重写了addInterceptors这个方法，进行拦截器的配置，主要配置项就两个，一个是指定拦截器，第二个是指定拦截的URL。现在我们再启动系统访问任意一个URL：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221130/2df57c16acf801dc803c3745ff4db532.jpg" alt="springboot过滤器与拦截器详解"></p> <p>可以看到，我们通过拦截器实现了同样的功能。不过这里还要说明一点的是，其实这个实现是有问题的，因为preHandle和postHandle是两个方法，所以我们这里不得不设置一个共享变量start来存储开始值，但是这样就会存在线程安全问题。当然，我们可以通过其他方法来解决，比如通过ThreadLocal就可以很好的解决这个问题，有兴趣的同学可以自己实现。不过通过这一点我们其实可以看到，虽然拦截器在很多场景下优于过滤器，但是在这种场景下，过滤器比拦截器实现起来更简单。</p> </h1> <p>本文主要对基于Spring boot对过滤器和拦截器的配置进行的讲解。无论是过滤器还是拦截器都属于AOP（面向切面编程）思想的具体实现。除了这两种实现我们还见过另一种更灵活的AOP实现技术，即Aspect，我们可以通过Aspect来完成更多更强大的功能。</p> <p>，我们可以通过其他方法来解决，比如通过ThreadLocal就可以很好的解决这个问题，有兴趣的同学可以自己实现。不过通过这一点我们其实可以看到，虽然拦截器在很多场景下优于过滤器，但是在这种场景下，过滤器比拦截器实现起来更简单。</p> </h1> <p>本文主要对基于Spring boot对过滤器和拦截器的配置进行的讲解。无论是过滤器还是拦截器都属于AOP（面向切面编程）思想的具体实现。除了这两种实现我们还见过另一种更灵活的AOP实现技术，即Aspect，我们可以通过Aspect来完成更多更强大的功能。</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-84637.htm">动物医院诊疗活动范围（动物医院价目表）</a></p>
+                                        <p>下一个：<a href="/news/article-85373.htm">芜湖宠物猫店（芜湖宠物猫店地址）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-81127.htm" title="动物疫苗属于疫苗分类吗（动物疫苗属于兽药吗）">动物疫苗属于疫苗分类吗（动物疫苗属于兽药吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-9-node-share-links.htm" title="3月9日→22.2M/S|2025年最新免费节点Free Stash Node订阅链接地址">3月9日→22.2M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-86797.htm" title="宠物粮上市公司有哪些（宠物粮龙头股）">宠物粮上市公司有哪些（宠物粮龙头股）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-2-free-subscribe-node.htm" title="3月2日→22.1M/S|2025年最新免费节点Free Stash Node订阅链接地址">3月2日→22.1M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-2-clash-stash-node.htm" title="4月2日→21.5M/S|2025年最新免费节点Free Stash Node订阅链接地址">4月2日→21.5M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-77002.htm" title="mysql 独立schema_详解MySQL中的数据类型和schema优化">mysql 独立schema_详解MySQL中的数据类型和schema优化</a></li>
+                        <li class="py-2"><a href="/news/article-73622.htm" title="附近免费领养狗狗的地方在哪里呀最近（哪有领养狗狗的地方）">附近免费领养狗狗的地方在哪里呀最近（哪有领养狗狗的地方）</a></li>
+                        <li class="py-2"><a href="/news/article-79058.htm" title="中国宠物领养行业报告（宠物领养网站的设计与实现）">中国宠物领养行业报告（宠物领养网站的设计与实现）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-11-free-stash-node.htm" title="3月11日→19.7M/S|2025年最新免费节点Free Stash Node订阅链接地址">3月11日→19.7M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-69028.htm" title="兽用疫苗储藏冷藏温度多少合适（兽用疫苗储存温度要求）">兽用疫苗储藏冷藏温度多少合适（兽用疫苗储存温度要求）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- about-section end -->
+                <!-- main-footer -->
+        <footer class="main-footer">
+            <div class="footer-bottom">
+                <div class="auto-container">
+                    <div class="inner-box clearfix">
+                        <div class="copyright pull-left">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <p>
+                                <a href="/">Free Stash Node免费机场节点分享官网</a> 版权所有 Powered by WordPress
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- main-footer end -->
+        <!--Scroll to top-->
+        <button class="scroll-top scroll-to-target" data-target="html">
+            <span class="fa fa-arrow-up"></span>
+        </button>
+        <!-- jequery plugins -->
+        <script src="/assets/website/js/frontend/freestashnode/jquery.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/popper.min.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/owl.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/wow.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/validation.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/jquery.fancybox.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/appear.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/scrollbar.js"></script>
+        <!-- main-js -->
+        <script src="/assets/website/js/frontend/freestashnode/script.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+</body><!-- End of .page_wrapper -->
+
+</html>
