@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freestashnode.github.io/news/article-93445.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Redis 单数据多源超高并发下的解决方案</title>
+        <meta name="description" content="Redis 是目前最流行的KV缓存数据库，它简单易用，安全稳定，在互联网行业有着非常广泛的应用。本文主要给大家分享一下 Redis 在单数据多源超高并发访问下的解决思路和方案。 前言 Redis 主要" />
+        <link rel="icon" href="/assets/website/img/freestashnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Stash Node免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freestashnode.github.io/news/article-93445.htm" />
+    <meta property="og:site_name" content="Free Stash Node免费机场节点分享官网" />
+    <meta property="og:title" content="Redis 单数据多源超高并发下的解决方案" />
+    <meta property="og:image" content="https://freestashnode.github.io/uploads/20240919/bae3c17e02e2a82d097001ec6d500af4.webp" />
+        <meta property="og:release_date" content="2025-04-11T08:57:36" />
+    <meta property="og:updated_time" content="2025-04-11T08:57:36" />
+        <meta property="og:description" content="Redis 是目前最流行的KV缓存数据库，它简单易用，安全稳定，在互联网行业有着非常广泛的应用。本文主要给大家分享一下 Redis 在单数据多源超高并发访问下的解决思路和方案。 前言 Redis 主要" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Redis 单数据多源超高并发下的解决方案">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <!-- Stylesheets -->
+    <link href="/assets/website/css/freestashnode/font-awesome-all.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/flaticon.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/owl.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/bootstrap.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/animate.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/color.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/style.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/responsive.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YXFDLQYLFV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YXFDLQYLFV');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+<!-- page wrapper -->
+
+<body data-page="detail">
+    <div class="boxed_wrapper">
+                <!-- preloader -->
+        <div class="preloader"></div>
+        <!-- preloader -->
+        <!-- main header -->
+        <header class="main-header style-one">
+            <!-- header-lower -->
+            <div class="header-lower">
+                <div class="outer-box">
+                    <div class="logo-box">
+                        <figure class="logo">
+                            <a href="/">
+                                                        <span>Free Stash Node</span>
+                                                        </a>
+                        </figure>
+                    </div>
+                    <div class="menu-area">
+                        <!--Mobile Navigation Toggler-->
+                        <div class="mobile-nav-toggler">
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                        </div>
+                        <nav class="main-menu navbar-expand-md navbar-light">
+                            <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+                                <ul class="navigation clearfix">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/client.htm">客户端</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                    </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!--sticky Header-->
+            <div class="sticky-header">
+                <div class="outer-box">
+                    <div class="logo-box">
+                        <figure class="logo">
+                            <a href="/">
+                                <span>Free Stash Node</span>
+                            </a>
+                        </figure>
+                    </div>
+                    <div class="menu-area">
+                        <nav class="main-menu clearfix">
+                            <!--Keep This Empty / Menu will come through Javascript-->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- main-header end -->
+        <!-- Mobile Menu  -->
+        <div class="mobile-menu">
+            <div class="menu-backdrop"></div>
+            <div class="close-btn"><i class="fas fa-times"></i></div>
+            <nav class="menu-box">
+                <div class="menu-outer">
+                    <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
+                </div>
+                <div class="social-links">
+                    <ul class="clearfix">
+                        <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+                        <li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+                        <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
+                        <li><a href="#"><span class="fab fa-instagram"></span></a></li>
+                        <li><a href="#"><span class="fab fa-youtube"></span></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div><!-- End Mobile Menu -->
+        <!-- Page Title -->
+        <section class="page-title centred" style="background-image: url(/assets/website/img/freestashnode/background/page-title.jpg);">
+            <div class="auto-container">
+                <div class="content-box">
+                    <div class="title">
+                        <h1>Redis 单数据多源超高并发下的解决方案</h1>
+                    </div>
+                    <ul class="bread-crumb clearfix">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- End Page Title -->
+        <!-- about-section -->
+        <section class="about-section">
+            <div class="auto-container">
+                <div class="row clearfix">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="StashNode免费订阅官网" data-url="https://stashnode.github.io">
+                  				  				  				<div id="content_views" class="htmledit_views"> <div class="content-detail markdown-body"> <p>Redis 是目前最流行的KV缓存数据库，它简单易用，安全稳定，在互联网行业有着非常广泛的应用。<br />本文主要给大家分享一下 Redis 在单数据多源超高并发访问下的解决思路和方案。</p> <h2>前言</h2> <h3>Redis 主要解决两个问题：</h3> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221229/6c5958af57b9cc2a0318075836f9e5b8.jpg" alt="Redis 单数据多源超高并发下的解决方案"><br />当遇到日活千万，同时百万在线的业务场景时，前端访问直接加载到后台数据库的话，可能顺间压垮底层数据库，导致业务停摆。又或者随着查询条件变多，结合条件复杂化，查询结果的响应时间也无法得到保证，导致用户体验下降，用户流失。为了解决高并发，低延迟的业务场景， Redis 应运而生。</p> <h3>下面我们来看两个场景</h3> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221229/1095b1f55931b71fd08ac3174434a3c9.jpg" alt="Redis 单数据多源超高并发下的解决方案"><br />这是一个线上找房的业务场景，超多的查询条件导致后台必然是一个复杂的查询 SQL，这种场景下是否必须使用 Redis 呢？<br />答案是否定的，由于线上找房业务并发量低，客户对于业务响应时间要求也没有那么苛刻，大部分的请求可以直接通过动态 SQL 临时查询。当然为了提升用户体验，可以将一些热点的查询结果预缓存到 Redis 里提升用户体验。</p> <h3>我们再来看下这个场景</h3> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221229/5ba5a0da8774aaf9ed71e87fc1e7889a.jpg" alt="Redis 单数据多源超高并发下的解决方案"><br />视频应用的查片系统，跟找房系统几乎是一模一样的业务场景，但是并发量要高几个数量级，这个场景就非常适合使用 Redis 作为缓存提升并发访问量，降低响应时间，满足几十万甚至上百万的并发访问需求。由此可见决定是否使用 Redis 的根本要素就是并发量和延迟要求。<br />下面我们来看一下 Redis 是如何解决互联网极端场景下的并发访问需求的。</p> <h2>超高并发访问下的缓存解决方案</h2> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221229/35f4929232d527cf948e9467be2b5429.jpg" alt="Redis 单数据多源超高并发下的解决方案"></p> <p>这是一个典型的媒体类缓存架构图，发文系统不定期更新媒体库，通过分布式缓存服务将各个最新文章同步到 Redis 缓存，前端应用通过路由层找到相应的数据源访问。各个缓存服务数据不同步。当发生热点事件时，路由层可能将不通地区的访问路由到热点数据所在的缓存服务器，带来瞬间的流量暴涨，极端情况下可能导致服务器宕机，业务受损。那么这种不定期突发流量的场景要如何解决呢？</p> <p>这里有几个思路：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221229/c2aea2b3f9efd0ea28f52a0316b070b9.jpg" alt="Redis 单数据多源超高并发下的解决方案"></p> <ul> <li>将热点 Key 加前缀打散，实现热数据复制</li> <li>路由层追加本地缓存，通过多级缓存提升缓存能力</li> <li>缓存层提供数据副本，提高并发访问能力</li> </ul> <p>第一种方案，可以有效打散热数据，但是热点事件是不定期随机发生，运维压力大，成本高，这只是个头痛医头脚痛医脚的方案。<br />第二种方案，可以通过追加本地缓存提升缓存能力，但是本地缓存设置多大，刷新频率多高，业务是否能容忍脏读，这些都是无法绕开的问题。<br />第三种方案，可以追加只读副本来实现数据的复制，但是同样也会带来成本高企，主库负载高等问题。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221229/a099c5c11e7d8c4e4521021dc1bb38e8.jpg" alt="Redis 单数据多源超高并发下的解决方案"><br />上面这个架构图是一个优化的解决方案，通过主库拉取多个只读从库的分支，对不同的请求源，划分独立的缓存服务。比如手机应用就固定路由到APP数据资源组，WEB 访问就路由到WEB 数据资源组等，并且每个资源组可以提供N个只读副本，提高同源访问下的并发访问能力。这种架构可以提升不同访问源的资源隔离能力，提升多源访问下业务的稳定性和可用性。</p> <p>这个方案的问题也比较明显：</p> <ul> <li>主库读写性能差</li> <li>只读副本多，成本高</li> <li>只读链路过长，管理维护难，运维成本高</li> </ul> <p>我们的客户里最夸张的用到过 1主40只读的架构，来满足类似的业务场景。</p> <h2>阿里云Redis是如何解决这种超高并发访问的问题呢？</h2> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221229/166e80b561a62264c026c8dafde07b39.jpg" alt="Redis 单数据多源超高并发下的解决方案"></p> <p>阿里云重磅推出Redis性能增强版本，通过提升网络IO的并发处理能力，极大的提升了Redis单节点的读写性能，对比社区版本，性能提升3倍。由于保持单 Worker 的处理模式，100% 兼容 Redis 协议。上面的单数据百万QPS 的访问能力轻松达成。本文介绍的媒体类场景可以通过开通性能增强版1主5只读实例实现单数据200w+ QPS，有效缓解突发热点事件带来的流量激增，超高并发访问等行业痛点问题。相比较自建1主40只读的社区版本，同样性能标准的阿里云Redis性能增强版1主5只读架构更稳定，管理更便捷，使用也更方便。</p> <p>目前阿里云性能增强版已经上线，期待您的使用。</p> </div></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-92694.htm">SpringAop实现原理及代理模式</a></p>
+                                        <p>下一个：<a href="/news/article-93448.htm">eclipse &#8211;  maven &#8211; 打war包的几种方式:</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-72292.htm" title="北京宠爱国际动物医疗（北京宠爱国际动物医疗机构）">北京宠爱国际动物医疗（北京宠爱国际动物医疗机构）</a></li>
+                        <li class="py-2"><a href="/news/article-79057.htm" title="动物疫苗销售需要什么手续和条件要求呢英语的简单介绍">动物疫苗销售需要什么手续和条件要求呢英语的简单介绍</a></li>
+                        <li class="py-2"><a href="/news/article-83237.htm" title="附近免费领养狗狗的地方 附近免费领养狗狗的地方在哪里?">附近免费领养狗狗的地方 附近免费领养狗狗的地方在哪里?</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-15-free-node-subscribe.htm" title="3月15日→20.1M/S|2025年最新免费节点Free Stash Node订阅链接地址">3月15日→20.1M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-91446.htm" title="ERROR: Failed to resolve: org.jetbrains.kotlin:kotlin-stdlib-jre7:1.3.41">ERROR: Failed to resolve: org.jetbrains.kotlin:kotlin-stdlib-jre7:1.3.41</a></li>
+                        <li class="py-2"><a href="/news/article-89697.htm" title="奶猫身上的跳蚤怎么彻底去除（奶猫身上的跳蚤会传染到人身上吗）">奶猫身上的跳蚤怎么彻底去除（奶猫身上的跳蚤会传染到人身上吗）</a></li>
+                        <li class="py-2"><a href="/news/article-88952.htm" title="猫粮成本价一斤多少钱（猫粮多少钱一公斤）">猫粮成本价一斤多少钱（猫粮多少钱一公斤）</a></li>
+                        <li class="py-2"><a href="/news/article-67715.htm" title="springboot中restTemplate请求时的异常处理以及编码格式">springboot中restTemplate请求时的异常处理以及编码格式</a></li>
+                        <li class="py-2"><a href="/news/article-88267.htm" title="被野猫轻微抓伤有一点渗血有事吗图片（如果被野猫抓伤了只是流了一点点血会怎样?）">被野猫轻微抓伤有一点渗血有事吗图片（如果被野猫抓伤了只是流了一点点血会怎样?）</a></li>
+                        <li class="py-2"><a href="/news/article-89698.htm" title="宠物公众领养所（宠物领养中心领养条件是什么）">宠物公众领养所（宠物领养中心领养条件是什么）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">39</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- about-section end -->
+                <!-- main-footer -->
+        <footer class="main-footer">
+            <div class="footer-bottom">
+                <div class="auto-container">
+                    <div class="inner-box clearfix">
+                        <div class="copyright pull-left">
+                                                <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                            <p>
+                                <a href="/">Free Stash Node免费机场节点分享官网</a> 版权所有 Powered by WordPress
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- main-footer end -->
+        <!--Scroll to top-->
+        <button class="scroll-top scroll-to-target" data-target="html">
+            <span class="fa fa-arrow-up"></span>
+        </button>
+        <!-- jequery plugins -->
+        <script src="/assets/website/js/frontend/freestashnode/jquery.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/popper.min.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/owl.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/wow.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/validation.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/jquery.fancybox.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/appear.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/scrollbar.js"></script>
+        <!-- main-js -->
+        <script src="/assets/website/js/frontend/freestashnode/script.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+</body><!-- End of .page_wrapper -->
+
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freestashnode.github.io/news/article-93448.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>eclipse &#8211;  maven &#8211; 打war包的几种方式:</title>
+        <meta name="description" content="第一种：利用pom.xml文件打包。 右键pom.xml文件，选择Debug as或Run as 都行。但需要选择Maven install&nbsp; 打包  &nbsp;执行成功后，日志会打印出位" />
+        <link rel="icon" href="/assets/website/img/freestashnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Stash Node免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freestashnode.github.io/news/article-93448.htm" />
+    <meta property="og:site_name" content="Free Stash Node免费机场节点分享官网" />
+    <meta property="og:title" content="eclipse &#8211;  maven &#8211; 打war包的几种方式:" />
+    <meta property="og:image" content="https://freestashnode.github.io/uploads/20240919/ad8989ee76494af68a204e5cba9f1336.webp" />
+        <meta property="og:release_date" content="2025-04-11T08:57:37" />
+    <meta property="og:updated_time" content="2025-04-11T08:57:37" />
+        <meta property="og:description" content="第一种：利用pom.xml文件打包。 右键pom.xml文件，选择Debug as或Run as 都行。但需要选择Maven install&nbsp; 打包  &nbsp;执行成功后，日志会打印出位" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="eclipse &#8211;  maven &#8211; 打war包的几种方式:">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <!-- Stylesheets -->
+    <link href="/assets/website/css/freestashnode/font-awesome-all.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/flaticon.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/owl.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/bootstrap.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/animate.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/color.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/style.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/responsive.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YXFDLQYLFV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YXFDLQYLFV');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+<!-- page wrapper -->
+
+<body data-page="detail">
+    <div class="boxed_wrapper">
+                <!-- preloader -->
+        <div class="preloader"></div>
+        <!-- preloader -->
+        <!-- main header -->
+        <header class="main-header style-one">
+            <!-- header-lower -->
+            <div class="header-lower">
+                <div class="outer-box">
+                    <div class="logo-box">
+                        <figure class="logo">
+                            <a href="/">
+                                                        <span>Free Stash Node</span>
+                                                        </a>
+                        </figure>
+                    </div>
+                    <div class="menu-area">
+                        <!--Mobile Navigation Toggler-->
+                        <div class="mobile-nav-toggler">
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                        </div>
+                        <nav class="main-menu navbar-expand-md navbar-light">
+                            <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+                                <ul class="navigation clearfix">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/client.htm">客户端</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                    </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!--sticky Header-->
+            <div class="sticky-header">
+                <div class="outer-box">
+                    <div class="logo-box">
+                        <figure class="logo">
+                            <a href="/">
+                                <span>Free Stash Node</span>
+                            </a>
+                        </figure>
+                    </div>
+                    <div class="menu-area">
+                        <nav class="main-menu clearfix">
+                            <!--Keep This Empty / Menu will come through Javascript-->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- main-header end -->
+        <!-- Mobile Menu  -->
+        <div class="mobile-menu">
+            <div class="menu-backdrop"></div>
+            <div class="close-btn"><i class="fas fa-times"></i></div>
+            <nav class="menu-box">
+                <div class="menu-outer">
+                    <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
+                </div>
+                <div class="social-links">
+                    <ul class="clearfix">
+                        <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+                        <li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+                        <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
+                        <li><a href="#"><span class="fab fa-instagram"></span></a></li>
+                        <li><a href="#"><span class="fab fa-youtube"></span></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div><!-- End Mobile Menu -->
+        <!-- Page Title -->
+        <section class="page-title centred" style="background-image: url(/assets/website/img/freestashnode/background/page-title.jpg);">
+            <div class="auto-container">
+                <div class="content-box">
+                    <div class="title">
+                        <h1>eclipse &#8211;  maven &#8211; 打war包的几种方式:</h1>
+                    </div>
+                    <ul class="bread-crumb clearfix">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- End Page Title -->
+        <!-- about-section -->
+        <section class="about-section">
+            <div class="auto-container">
+                <div class="row clearfix">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="StashNode免费订阅官网" data-url="https://stashnode.github.io">
+                  				  				  				<div id="content_views" class="htmledit_views"> </h1> <p><strong>第一种：利用pom.xml文件打包。</strong></p> <p>右键pom.xml文件，选择Debug as或Run as 都行。但需要选择Maven install&nbsp; 打包</p> <p><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/2http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg22http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg6http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg3/4f4dhttp://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg6a9494741e37d8d8ahttp://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpghttp://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpghttp://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpgabb6f5b.jpg"></p> <p>&nbsp;执行成功后，日志会打印出位置（看自己配置是否日志输出）。如果没有输出，在默认的C盘.m2文件夹中</p> <p><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/2http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg22http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg6http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg3/d3e5ehttp://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpgcee8ea761ab11cehttp://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpghttp://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg2dbeb13da.jpg"></p> <p><strong>第二种方式：右键项目。选择Debug as 或 Run as 。但是这个时候要选择&nbsp;Debug configurations</strong></p> <p><strong><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg"></strong></p> <p><strong>先Browse Workspace&nbsp; 选择需要打包的项目 ，然后在Goals：中输入clean install&nbsp; 命令&nbsp; Debug执行后，会在target目录下生成打的war包</strong></p> <p><strong>第三种:直接右击项Export，然后选择WAR file　　(<strong>&nbsp;推荐这种</strong>)</strong></p> <p><img decoding="async" alt="" src="http://query.52xam.cn:15222/uploads_dev/2http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg22http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg6http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg2/dcc45ed2958b1d347b366afd742234http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg9.jpg"></p> <p><strong>第四种；利用mvn package命令:(eclipse 中只用package就行 ，或者clean package&nbsp;&nbsp;推荐这种)</strong></p> <p><img decoding="async" alt="" src="http://query.52xam.cn:15222/uploads_dev/2http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg22http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg6http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg2/f76cf117db42ee55a5d8999cad8969e1.jpg"></p> <h3>mvn compile与mvn install、mvn deploy的区别</h3> <ol> <li>mvn compile，编译类文件</li> <li>mvn install，包含mvn compile，mvn package，然后上传到本地仓库</li> <li>mvn deploy,包含mvn install,然后，上传到私服</li> </ol> <p><strong>打出war包之后直接部署到tomcat即可运行。类似于普通项目的部署。</strong></p> <p><strong>&nbsp;第五种:利用maven的插件</strong></p> <p><strong>pom.xml中:</strong></p> <p><img decoding="async" alt="复制代码" src="http://query.52xam.cn:15222/uploads_dev/2http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg22http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg6http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg2/http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpgf5http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg73ea56a5http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg9f4http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg62bfef8b2e8de69.jpg"></p> <pre>            &lt;!-- tomcat插件 --&gt;             &lt;plugin&gt;                 &lt;groupId&gt;org.apache.tomcat.maven&lt;/groupId&gt;                 &lt;artifactId&gt;tomcat7-maven-plugin&lt;/artifactId&gt;                 &lt;version&gt;2.2&lt;/version&gt;                 &lt;configuration&gt;                     &lt;port&gt;8http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg&lt;/port&gt;                     &lt;path&gt;/SSM&lt;/path&gt;                 &lt;/configuration&gt;             &lt;/plugin&gt;</pre> <p><img decoding="async" alt="复制代码" src="http://query.52xam.cn:15222/uploads_dev/2http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg22http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg6http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg2/http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpgf5http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg73ea56a5http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg9f4http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg62bfef8b2e8de69.jpg"></p> <p>run as :</p> <p>　　tomcat7:exec-war</p> <p>　　或者</p> <p>　　tomcat7:exec-war-only</p> <p><strong>第六种:使用maven的war命令:</strong></p> <p><strong>　　war:exploded&nbsp; &nbsp; 直接将项目打包成war包解压后的目录结构，类似于将war打包并解压</strong></p> <p><img decoding="async" alt="" src="http://query.52xam.cn:15222/uploads_dev/2http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg22http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg6http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg2/9311759a91866ad855f821c8f7aeb375.jpg"></p> <p>或者:&nbsp; &nbsp; war:war&nbsp; &nbsp; 直接将项目打成war包。</p> <p>附一个完整的pom.xml文件:</p> <p><img decoding="async" alt="复制代码" src="http://query.52xam.cn:15222/uploads_dev/2http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg22http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg6http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg2/http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpgf5http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg73ea56a5http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg9f4http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg62bfef8b2e8de69.jpg"></p> <pre>&lt;project xmlns="http://maven.apache.org/POM/4.http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg.http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg" xmlns:xsi="http://www.w3.org/2http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpghttp://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg1/XMLSchema-instance"     xsi:schemaLocation="http://maven.apache.org/POM/4.http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg.http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg http://maven.apache.org/xsd/maven-4.http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg.http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg.xsd"&gt;     &lt;modelVersion&gt;4.http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg.http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg&lt;/modelVersion&gt;     &lt;groupId&gt;MavenDemo&lt;/groupId&gt;     &lt;artifactId&gt;MavenDemo&lt;/artifactId&gt;     &lt;version&gt;http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg.http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg.1-SNAPSHOT&lt;/version&gt;     &lt;packaging&gt;war&lt;/packaging&gt;     &lt;name /&gt;     &lt;description /&gt;      &lt;!-- 声明变量，下面用类似于el表达式提取 --&gt;     &lt;properties&gt;         &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;          &lt;struts.version&gt;2.3.24.1&lt;/struts.version&gt;         &lt;struts.javassist.version&gt;3.12.1.GA&lt;/struts.javassist.version&gt;         &lt;spring.version&gt;4.2.4.RELEASE&lt;/spring.version&gt;         &lt;mybatis.version&gt;3.2.2&lt;/mybatis.version&gt;         &lt;mybatis.spring.version&gt;1.2.1&lt;/mybatis.spring.version&gt;         &lt;mysql.version&gt;5.1.37&lt;/mysql.version&gt;         &lt;slf4j.version&gt;1.7.5&lt;/slf4j.version&gt;         &lt;aspectj.version&gt;1.6.1http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg&lt;/aspectj.version&gt;     &lt;/properties&gt;     &lt;dependencies&gt;          &lt;!-- struts2 依赖包 --&gt;         &lt;dependency&gt;             &lt;groupId&gt;org.apache.struts&lt;/groupId&gt;             &lt;artifactId&gt;struts2-core&lt;/artifactId&gt;             &lt;version&gt;${struts.version}&lt;/version&gt;         &lt;/dependency&gt;         &lt;dependency&gt;             &lt;groupId&gt;javassist&lt;/groupId&gt;             &lt;artifactId&gt;javassist&lt;/artifactId&gt;             &lt;version&gt;${struts.javassist.version}&lt;/version&gt;         &lt;/dependency&gt;         &lt;dependency&gt;             &lt;groupId&gt;org.apache.struts&lt;/groupId&gt;             &lt;artifactId&gt;struts2-spring-plugin&lt;/artifactId&gt;             &lt;version&gt;${struts.version}&lt;/version&gt;         &lt;/dependency&gt;          &lt;!-- spring 依赖包 --&gt;         &lt;dependency&gt;             &lt;groupId&gt;org.springframework&lt;/groupId&gt;             &lt;artifactId&gt;spring-core&lt;/artifactId&gt;             &lt;version&gt;${spring.version}&lt;/version&gt;         &lt;/dependency&gt;         &lt;dependency&gt;             &lt;groupId&gt;org.springframework&lt;/groupId&gt;             &lt;artifactId&gt;spring-aop&lt;/artifactId&gt;             &lt;version&gt;${spring.version}&lt;/version&gt;         &lt;/dependency&gt;         &lt;dependency&gt;             &lt;groupId&gt;org.springframework&lt;/groupId&gt;             &lt;artifactId&gt;spring-test&lt;/artifactId&gt;             &lt;version&gt;${spring.version}&lt;/version&gt;         &lt;/dependency&gt;         &lt;!-- &lt;dependency&gt; &lt;groupId&gt;org.springframework&lt;/groupId&gt; &lt;artifactId&gt;spring-tx&lt;/artifactId&gt;              &lt;version&gt;${spring.version}&lt;/version&gt; &lt;/dependency&gt; --&gt;         &lt;dependency&gt;             &lt;groupId&gt;org.springframework&lt;/groupId&gt;             &lt;artifactId&gt;spring-beans&lt;/artifactId&gt;             &lt;version&gt;${spring.version}&lt;/version&gt;         &lt;/dependency&gt;         &lt;dependency&gt;             &lt;groupId&gt;org.springframework&lt;/groupId&gt;             &lt;artifactId&gt;spring-context&lt;/artifactId&gt;             &lt;version&gt;${spring.version}&lt;/version&gt;         &lt;/dependency&gt;         &lt;dependency&gt;             &lt;groupId&gt;org.springframework&lt;/groupId&gt;             &lt;artifactId&gt;spring-aspects&lt;/artifactId&gt;             &lt;version&gt;${spring.version}&lt;/version&gt;         &lt;/dependency&gt;         &lt;dependency&gt;             &lt;groupId&gt;org.springframework&lt;/groupId&gt;             &lt;artifactId&gt;spring-orm&lt;/artifactId&gt;             &lt;version&gt;${spring.version}&lt;/version&gt;         &lt;/dependency&gt;         &lt;dependency&gt;             &lt;groupId&gt;org.springframework&lt;/groupId&gt;             &lt;artifactId&gt;spring-oxm&lt;/artifactId&gt;             &lt;version&gt;${spring.version}&lt;/version&gt;         &lt;/dependency&gt;         &lt;dependency&gt;             &lt;groupId&gt;org.springframework&lt;/groupId&gt;             &lt;artifactId&gt;spring-web&lt;/artifactId&gt;             &lt;version&gt;${spring.version}&lt;/version&gt;         &lt;/dependency&gt;         &lt;!-- mybatis 依赖包 --&gt;         &lt;dependency&gt;             &lt;groupId&gt;org.mybatis&lt;/groupId&gt;             &lt;artifactId&gt;mybatis&lt;/artifactId&gt;             &lt;version&gt;${mybatis.version}&lt;/version&gt;         &lt;/dependency&gt;         &lt;dependency&gt;             &lt;groupId&gt;cglib&lt;/groupId&gt;             &lt;artifactId&gt;cglib&lt;/artifactId&gt;             &lt;version&gt;2.2.2&lt;/version&gt;         &lt;/dependency&gt;         &lt;dependency&gt;             &lt;groupId&gt;org.mybatis&lt;/groupId&gt;             &lt;artifactId&gt;mybatis-spring&lt;/artifactId&gt;             &lt;version&gt;${mybatis.spring.version}&lt;/version&gt;         &lt;/dependency&gt;         &lt;!-- pageHelper --&gt;         &lt;dependency&gt;             &lt;groupId&gt;com.github.pagehelper&lt;/groupId&gt;             &lt;artifactId&gt;pagehelper&lt;/artifactId&gt;             &lt;version&gt;5.1.2&lt;/version&gt;         &lt;/dependency&gt;         &lt;!-- myql 依赖包 --&gt;         &lt;dependency&gt;             &lt;groupId&gt;mysql&lt;/groupId&gt;             &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;             &lt;version&gt;${mysql.version}&lt;/version&gt;         &lt;/dependency&gt;          &lt;!-- aspectj 依赖包 --&gt;          &lt;dependency&gt;             &lt;groupId&gt;org.aspectj&lt;/groupId&gt;             &lt;artifactId&gt;aspectjrt&lt;/artifactId&gt;             &lt;version&gt;${aspectj.version}&lt;/version&gt;         &lt;/dependency&gt;         &lt;!-- &lt;dependency&gt; &lt;groupId&gt;org.aspectj&lt;/groupId&gt; &lt;artifactId&gt;aspectjweaver&lt;/artifactId&gt;              &lt;version&gt;${aspectj.version}&lt;/version&gt; &lt;/dependency&gt; --&gt;         &lt;!-- slf4j 依赖包 --&gt;         &lt;dependency&gt;             &lt;groupId&gt;org.slf4j&lt;/groupId&gt;             &lt;artifactId&gt;slf4j-log4j12&lt;/artifactId&gt;             &lt;version&gt;${slf4j.version}&lt;/version&gt;         &lt;/dependency&gt;         &lt;!-- 测试 --&gt;         &lt;!-- &lt;dependency&gt; &lt;groupId&gt;junit&lt;/groupId&gt; &lt;artifactId&gt;junit&lt;/artifactId&gt;              &lt;version&gt;${junit.version}&lt;/version&gt; &lt;/dependency&gt; --&gt;          &lt;dependency&gt;             &lt;groupId&gt;junit&lt;/groupId&gt;             &lt;artifactId&gt;junit&lt;/artifactId&gt;             &lt;version&gt;4.9&lt;/version&gt;         &lt;/dependency&gt;         &lt;dependency&gt;             &lt;groupId&gt;javax.servlet&lt;/groupId&gt;             &lt;artifactId&gt;servlet-api&lt;/artifactId&gt;             &lt;version&gt;2.5&lt;/version&gt;             &lt;scope&gt;provided&lt;/scope&gt;         &lt;/dependency&gt;         &lt;dependency&gt;             &lt;groupId&gt;javax.servlet&lt;/groupId&gt;             &lt;artifactId&gt;jsp-api&lt;/artifactId&gt;             &lt;version&gt;2.http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg&lt;/version&gt;             &lt;scope&gt;provided&lt;/scope&gt;         &lt;/dependency&gt;          &lt;!-- 数据库连接池 --&gt;         &lt;dependency&gt;             &lt;groupId&gt;c3phttp://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg&lt;/groupId&gt;             &lt;artifactId&gt;c3phttp://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg&lt;/artifactId&gt;             &lt;version&gt;http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg.9.1.2&lt;/version&gt;         &lt;/dependency&gt;           &lt;!-- 调试过程中自己加的包依赖包 --&gt;         &lt;dependency&gt;             &lt;groupId&gt;org.apache.logging.log4j&lt;/groupId&gt;             &lt;artifactId&gt;log4j-api&lt;/artifactId&gt;             &lt;version&gt;2.http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg-rc1&lt;/version&gt;         &lt;/dependency&gt;          &lt;dependency&gt;             &lt;groupId&gt;org.apache.logging.log4j&lt;/groupId&gt;             &lt;artifactId&gt;log4j-core&lt;/artifactId&gt;             &lt;version&gt;2.http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg-rc1&lt;/version&gt;         &lt;/dependency&gt;           &lt;dependency&gt;             &lt;groupId&gt;org.aspectj&lt;/groupId&gt;             &lt;artifactId&gt;aspectjweaver&lt;/artifactId&gt;             &lt;version&gt;1.8.7&lt;/version&gt;         &lt;/dependency&gt;         &lt;dependency&gt;             &lt;groupId&gt;org.apache.struts&lt;/groupId&gt;             &lt;artifactId&gt;struts2-json-plugin&lt;/artifactId&gt;             &lt;version&gt;2.3.32&lt;/version&gt;         &lt;/dependency&gt;          &lt;!-- jedis依赖 --&gt;         &lt;dependency&gt;             &lt;groupId&gt;redis.clients&lt;/groupId&gt;             &lt;artifactId&gt;jedis&lt;/artifactId&gt;             &lt;version&gt;2.9.http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg&lt;/version&gt;         &lt;/dependency&gt;         &lt;dependency&gt;             &lt;groupId&gt;org.springframework.data&lt;/groupId&gt;             &lt;artifactId&gt;spring-data-redis&lt;/artifactId&gt;             &lt;version&gt;1.8.7.RELEASE&lt;/version&gt;         &lt;/dependency&gt;         &lt;!-- jackson --&gt;         &lt;dependency&gt;             &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;             &lt;artifactId&gt;jackson-core&lt;/artifactId&gt;             &lt;version&gt;2.1.http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg&lt;/version&gt;         &lt;/dependency&gt;         &lt;dependency&gt;             &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;             &lt;artifactId&gt;jackson-databind&lt;/artifactId&gt;             &lt;version&gt;2.1.http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg&lt;/version&gt;         &lt;/dependency&gt;         &lt;dependency&gt;             &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;             &lt;artifactId&gt;jackson-annotations&lt;/artifactId&gt;             &lt;version&gt;2.1.http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg&lt;/version&gt;         &lt;/dependency&gt;     &lt;/dependencies&gt;      &lt;build&gt;         &lt;!-- 配置了很多插件 --&gt;         &lt;plugins&gt;              &lt;!-- 编译插件 --&gt;             &lt;plugin&gt;                 &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;                 &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;                 &lt;version&gt;3.5.1&lt;/version&gt;                 &lt;configuration&gt;                     &lt;source&gt;1.7&lt;/source&gt;                     &lt;target&gt;1.7&lt;/target&gt;                     &lt;encoding&gt;UTF-8&lt;/encoding&gt;                 &lt;/configuration&gt;             &lt;/plugin&gt;              &lt;!-- tomcat插件 --&gt;             &lt;plugin&gt;                 &lt;groupId&gt;org.apache.tomcat.maven&lt;/groupId&gt;                 &lt;artifactId&gt;tomcat7-maven-plugin&lt;/artifactId&gt;                 &lt;version&gt;2.2&lt;/version&gt;                 &lt;configuration&gt;                     &lt;port&gt;8http://img.555519.xyz/uploads3/20220603/6f2be68354dbbdb3ec8749104de903a1.jpg&lt;/port&gt;                     &lt;path&gt;/SSM&lt;/path&gt;                 &lt;/configuration&gt;             &lt;/plugin&gt;         &lt;/plugins&gt;     &lt;/build&gt; &lt;/project&gt;</pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-93445.htm">Redis 单数据多源超高并发下的解决方案</a></p>
+                                        <p>下一个：<a href="/news/article-94343.htm">动物疫苗打几次有效果呢（动物疫苗打几次有效果呢知乎）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-79733.htm" title="青岛动物医院排名（青岛市动物诊疗价目收费表）">青岛动物医院排名（青岛市动物诊疗价目收费表）</a></li>
+                        <li class="py-2"><a href="/news/article-79734.htm" title="宠物领养app下载安装免费（宠物领养小程序有哪些）">宠物领养app下载安装免费（宠物领养小程序有哪些）</a></li>
+                        <li class="py-2"><a href="/news/article-74972.htm" title="非泼罗尼和阿维菌素哪一个驱虫好用（阿维菌素透皮溶液和非泼罗尼滴剂哪个更合适泰迪幼崽）">非泼罗尼和阿维菌素哪一个驱虫好用（阿维菌素透皮溶液和非泼罗尼滴剂哪个更合适泰迪幼崽）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-30-clash-stash.htm" title="3月30日→20.5M/S|2025年最新免费节点Free Stash Node订阅链接地址">3月30日→20.5M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-5-free-node-subscribe.htm" title="4月5日→19.4M/S|2025年最新免费节点Free Stash Node订阅链接地址">4月5日→19.4M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-86797.htm" title="宠物粮上市公司有哪些（宠物粮龙头股）">宠物粮上市公司有哪些（宠物粮龙头股）</a></li>
+                        <li class="py-2"><a href="/news/article-66468.htm" title="宠物疫苗可以带上高铁吗现在（宠物疫苗能上地铁吗）">宠物疫苗可以带上高铁吗现在（宠物疫苗能上地铁吗）</a></li>
+                        <li class="py-2"><a href="/news/article-92694.htm" title="SpringAop实现原理及代理模式">SpringAop实现原理及代理模式</a></li>
+                        <li class="py-2"><a href="/news/article-91973.htm" title="烽火战国将府（烽火战国将府怎么打）">烽火战国将府（烽火战国将府怎么打）</a></li>
+                        <li class="py-2"><a href="/news/article-83940.htm" title="Python实现双X轴双Y轴绘图">Python实现双X轴双Y轴绘图</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">39</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- about-section end -->
+                <!-- main-footer -->
+        <footer class="main-footer">
+            <div class="footer-bottom">
+                <div class="auto-container">
+                    <div class="inner-box clearfix">
+                        <div class="copyright pull-left">
+                                                <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                            <p>
+                                <a href="/">Free Stash Node免费机场节点分享官网</a> 版权所有 Powered by WordPress
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- main-footer end -->
+        <!--Scroll to top-->
+        <button class="scroll-top scroll-to-target" data-target="html">
+            <span class="fa fa-arrow-up"></span>
+        </button>
+        <!-- jequery plugins -->
+        <script src="/assets/website/js/frontend/freestashnode/jquery.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/popper.min.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/owl.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/wow.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/validation.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/jquery.fancybox.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/appear.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/scrollbar.js"></script>
+        <!-- main-js -->
+        <script src="/assets/website/js/frontend/freestashnode/script.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+</body><!-- End of .page_wrapper -->
+
+</html>
