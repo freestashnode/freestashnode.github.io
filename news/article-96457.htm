@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freestashnode.github.io/news/article-96457.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>使用Python递归遍历目标路径下的所有文件</title>
+        <meta name="description" content="需求介绍  从网上获取目标网站的数据一般通过网络爬虫的方式，但是这种方式往往可能效率比较低，而且有些网站可能会限制爬虫，比如著名的Github，当通过API爬虫的方式获取数据的时候，Github官方对" />
+        <link rel="icon" href="/assets/website/img/freestashnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Stash Node免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freestashnode.github.io/news/article-96457.htm" />
+    <meta property="og:site_name" content="Free Stash Node免费机场节点分享官网" />
+    <meta property="og:title" content="使用Python递归遍历目标路径下的所有文件" />
+    <meta property="og:image" content="https://freestashnode.github.io/uploads/20240919/21c2a7468dafa9830448f6174d6f4571.webp" />
+        <meta property="og:release_date" content="2025-04-15T06:01:10" />
+    <meta property="og:updated_time" content="2025-04-15T06:01:10" />
+        <meta property="og:description" content="需求介绍  从网上获取目标网站的数据一般通过网络爬虫的方式，但是这种方式往往可能效率比较低，而且有些网站可能会限制爬虫，比如著名的Github，当通过API爬虫的方式获取数据的时候，Github官方对" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="使用Python递归遍历目标路径下的所有文件">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <!-- Stylesheets -->
+    <link href="/assets/website/css/freestashnode/font-awesome-all.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/flaticon.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/owl.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/bootstrap.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/animate.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/color.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/style.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/responsive.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YXFDLQYLFV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YXFDLQYLFV');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+<!-- page wrapper -->
+
+<body data-page="detail">
+    <div class="boxed_wrapper">
+                <!-- preloader -->
+        <div class="preloader"></div>
+        <!-- preloader -->
+        <!-- main header -->
+        <header class="main-header style-one">
+            <!-- header-lower -->
+            <div class="header-lower">
+                <div class="outer-box">
+                    <div class="logo-box">
+                        <figure class="logo">
+                            <a href="/">
+                                                        <span>Free Stash Node</span>
+                                                        </a>
+                        </figure>
+                    </div>
+                    <div class="menu-area">
+                        <!--Mobile Navigation Toggler-->
+                        <div class="mobile-nav-toggler">
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                        </div>
+                        <nav class="main-menu navbar-expand-md navbar-light">
+                            <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+                                <ul class="navigation clearfix">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/client.htm">客户端</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                    </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!--sticky Header-->
+            <div class="sticky-header">
+                <div class="outer-box">
+                    <div class="logo-box">
+                        <figure class="logo">
+                            <a href="/">
+                                <span>Free Stash Node</span>
+                            </a>
+                        </figure>
+                    </div>
+                    <div class="menu-area">
+                        <nav class="main-menu clearfix">
+                            <!--Keep This Empty / Menu will come through Javascript-->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- main-header end -->
+        <!-- Mobile Menu  -->
+        <div class="mobile-menu">
+            <div class="menu-backdrop"></div>
+            <div class="close-btn"><i class="fas fa-times"></i></div>
+            <nav class="menu-box">
+                <div class="menu-outer">
+                    <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
+                </div>
+                <div class="social-links">
+                    <ul class="clearfix">
+                        <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+                        <li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+                        <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
+                        <li><a href="#"><span class="fab fa-instagram"></span></a></li>
+                        <li><a href="#"><span class="fab fa-youtube"></span></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div><!-- End Mobile Menu -->
+        <!-- Page Title -->
+        <section class="page-title centred" style="background-image: url(/assets/website/img/freestashnode/background/page-title.jpg);">
+            <div class="auto-container">
+                <div class="content-box">
+                    <div class="title">
+                        <h1>使用Python递归遍历目标路径下的所有文件</h1>
+                    </div>
+                    <ul class="bread-crumb clearfix">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- End Page Title -->
+        <!-- about-section -->
+        <section class="about-section">
+            <div class="auto-container">
+                <div class="row clearfix">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="StashNode免费订阅官网" data-url="https://stashnode.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-tomorrow-night"> <h2> <a id="_0" rel="nofollow"></a>需求介绍</h2> <blockquote> <p>从网上获取目标网站的数据一般通过网络爬虫的方式，但是这种方式往往可能效率比较低，而且有些网站可能会限制爬虫，比如著名的Github，当通过API爬虫的方式获取数据的时候，Github官方对爬虫速率进行了限制，超过了这个速率的爬虫会被限制，同时Github官方还要求提供Github用户验证等等，这些限制无形中都加大了我们爬虫的难度，但是其实我们还可以通过直接下载Github仓库的方式来获取数据，这种方式比爬虫要更加方便快捷，但是下下来的文件中很多是文件夹或者不符合条件的文件，我们该如何快速的通过python脚本将这些文件提取出来呢？下面就是我们要介绍的使用python递归遍历目标路径下的所有文件。</p> </blockquote> <h2> <a id="_3" rel="nofollow"></a>实现思路</h2> <ol> <li>导入操作json和文件的模块,并定义最终存储的变量。</li> </ol> <pre><code class="prism language-py"><span class="token keyword">import</span> os <span class="token keyword">import</span> json target_json <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> </code></pre> <ol start="2"> <li>定义递归函数，接收路径作为参数，遍历路径中的每一个item，并判断其为文件夹还是文件,文件夹则投入继续递归，文件则读取文件中的json数据并存储到指定变量中。</li> </ol> <pre><code class="prism language-py"><span class="token keyword">def</span> <span class="token function">getTarget</span><span class="token punctuation">(</span><span class="token builtin">dir</span><span class="token punctuation">)</span><span class="token punctuation">:</span>   temp <span class="token operator">=</span> os<span class="token punctuation">.</span>listdir<span class="token punctuation">(</span><span class="token builtin">dir</span><span class="token punctuation">)</span>   <span class="token keyword">for</span> t <span class="token keyword">in</span> temp<span class="token punctuation">:</span>     <span class="token keyword">if</span> <span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>isfile<span class="token punctuation">(</span><span class="token builtin">dir</span> <span class="token operator">+</span> <span class="token string">'/'</span> <span class="token operator">+</span> t<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>       <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'找到了'</span><span class="token punctuation">,</span>t<span class="token punctuation">)</span>        <span class="token keyword">for</span> line <span class="token keyword">in</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token builtin">dir</span> <span class="token operator">+</span> <span class="token string">'/'</span> <span class="token operator">+</span> t<span class="token punctuation">)</span><span class="token punctuation">:</span>          <span class="token comment"># print(line)</span>         line<span class="token operator">=</span>line<span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">)</span>         line <span class="token operator">=</span> json<span class="token punctuation">.</span>loads<span class="token punctuation">(</span>line<span class="token punctuation">)</span>         target_json<span class="token punctuation">.</span>append<span class="token punctuation">(</span>line<span class="token punctuation">)</span>       <span class="token comment"># with open(dir + '/' + t) as f:</span>       <span class="token comment">#   line = f.readline()</span>       <span class="token comment">#   while line:</span>       <span class="token comment">#     target_json.append(line)</span>         <span class="token comment"># print(line)</span>     <span class="token keyword">else</span><span class="token punctuation">:</span>       getTarget<span class="token punctuation">(</span><span class="token builtin">dir</span> <span class="token operator">+</span> <span class="token string">'/'</span> <span class="token operator">+</span> t<span class="token punctuation">)</span>        getTarget<span class="token punctuation">(</span><span class="token string">'./crates.io-index-master'</span><span class="token punctuation">)</span> </code></pre> <ol start="3"> <li>将指定变量中的数据存储为json文件，方便后续使用。</li> </ol> <pre><code class="prism language-py">json_str <span class="token operator">=</span> json<span class="token punctuation">.</span>dumps<span class="token punctuation">(</span>target_json<span class="token punctuation">)</span> <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'target_json.json'</span><span class="token punctuation">,</span> <span class="token string">'w'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> json_file<span class="token punctuation">:</span>     json_file<span class="token punctuation">.</span>write<span class="token punctuation">(</span>json_str<span class="token punctuation">)</span> </code></pre> <h2> <a id="_45" rel="nofollow"></a>总结</h2> <blockquote> <p>获取有代码仓库的网站的数据，不一定要使用爬虫，有时候直接从代码仓库中下载数据并使用脚本进行处理，无论是从获取的速度还是精度都要更高。</p> </blockquote></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-95733.htm">猫咪驱虫的正确方法视频讲解（猫咪驱虫操作视频）</a></p>
+                                        <p>下一个：<a href="/news/article-96459.htm">宠物领养图片真实大全（宠物领养百度百科）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-3-24-free-stash-node.htm" title="3月24日→22.6M/S|2025年最新免费节点Free Stash Node订阅链接地址">3月24日→22.6M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-20-free-clash-stash.htm" title="3月20日→20.3M/S|2025年最新免费节点Free Stash Node订阅链接地址">3月20日→20.3M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-7-free-stash-node.htm" title="4月7日→20.1M/S|2025年最新免费节点Free Stash Node订阅链接地址">4月7日→20.1M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-79734.htm" title="宠物领养app下载安装免费（宠物领养小程序有哪些）">宠物领养app下载安装免费（宠物领养小程序有哪些）</a></li>
+                        <li class="py-2"><a href="/news/article-91973.htm" title="烽火战国将府（烽火战国将府怎么打）">烽火战国将府（烽火战国将府怎么打）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-31-clash-stash-node.htm" title="3月31日→22.6M/S|2025年最新免费节点Free Stash Node订阅链接地址">3月31日→22.6M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-25-free-high-speed-nodes.htm" title="3月25日→22M/S|2025年最新免费节点Free Stash Node订阅链接地址">3月25日→22M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-86797.htm" title="宠物粮上市公司有哪些（宠物粮龙头股）">宠物粮上市公司有哪些（宠物粮龙头股）</a></li>
+                        <li class="py-2"><a href="/news/article-88266.htm" title="厦门同安宠物领养中心地址（同安哪里有宠物店的地方）">厦门同安宠物领养中心地址（同安哪里有宠物店的地方）</a></li>
+                        <li class="py-2"><a href="/news/article-69667.htm" title="合肥宠物寄养中心（合肥宠物寄养中心在哪里）">合肥宠物寄养中心（合肥宠物寄养中心在哪里）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">45</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- about-section end -->
+                <!-- main-footer -->
+        <footer class="main-footer">
+            <div class="footer-bottom">
+                <div class="auto-container">
+                    <div class="inner-box clearfix">
+                        <div class="copyright pull-left">
+                                                <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                            <p>
+                                <a href="/">Free Stash Node免费机场节点分享官网</a> 版权所有 Powered by WordPress
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- main-footer end -->
+        <!--Scroll to top-->
+        <button class="scroll-top scroll-to-target" data-target="html">
+            <span class="fa fa-arrow-up"></span>
+        </button>
+        <!-- jequery plugins -->
+        <script src="/assets/website/js/frontend/freestashnode/jquery.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/popper.min.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/owl.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/wow.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/validation.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/jquery.fancybox.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/appear.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/scrollbar.js"></script>
+        <!-- main-js -->
+        <script src="/assets/website/js/frontend/freestashnode/script.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+</body><!-- End of .page_wrapper -->
+
+</html>
