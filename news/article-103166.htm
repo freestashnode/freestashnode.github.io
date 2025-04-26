@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freestashnode.github.io/news/article-103166.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>java js 二级联动下拉列表_JS实现下拉列表的二级联动</title>
+        <meta name="description" content="这个是简单也是最基本的下拉框联动的示例，这个示例主要针对那些只有二级联动，且第一级是固定的选项，第二级的内容也比较简单，不刷新的联动，动态的联动需要检索数据库，这个对不需要更新的二级联动比较实用。这里" />
+        <link rel="icon" href="/assets/website/img/freestashnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Stash Node免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freestashnode.github.io/news/article-103166.htm" />
+    <meta property="og:site_name" content="Free Stash Node免费机场节点分享官网" />
+    <meta property="og:title" content="java js 二级联动下拉列表_JS实现下拉列表的二级联动" />
+    <meta property="og:image" content="https://freestashnode.github.io/uploads/20240919/933582a6197b7e4d126eb5b5d9a37c63.webp" />
+        <meta property="og:release_date" content="2025-04-24T09:17:23" />
+    <meta property="og:updated_time" content="2025-04-24T09:17:23" />
+        <meta property="og:description" content="这个是简单也是最基本的下拉框联动的示例，这个示例主要针对那些只有二级联动，且第一级是固定的选项，第二级的内容也比较简单，不刷新的联动，动态的联动需要检索数据库，这个对不需要更新的二级联动比较实用。这里" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="java js 二级联动下拉列表_JS实现下拉列表的二级联动">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <!-- Stylesheets -->
+    <link href="/assets/website/css/freestashnode/font-awesome-all.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/flaticon.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/owl.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/bootstrap.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/animate.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/color.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/style.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/responsive.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YXFDLQYLFV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YXFDLQYLFV');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+<!-- page wrapper -->
+
+<body data-page="detail">
+    <div class="boxed_wrapper">
+                <!-- preloader -->
+        <div class="preloader"></div>
+        <!-- preloader -->
+        <!-- main header -->
+        <header class="main-header style-one">
+            <!-- header-lower -->
+            <div class="header-lower">
+                <div class="outer-box">
+                    <div class="logo-box">
+                        <figure class="logo">
+                            <a href="/">
+                                                        <span>Free Stash Node</span>
+                                                        </a>
+                        </figure>
+                    </div>
+                    <div class="menu-area">
+                        <!--Mobile Navigation Toggler-->
+                        <div class="mobile-nav-toggler">
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                        </div>
+                        <nav class="main-menu navbar-expand-md navbar-light">
+                            <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+                                <ul class="navigation clearfix">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/client.htm">客户端</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                    </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!--sticky Header-->
+            <div class="sticky-header">
+                <div class="outer-box">
+                    <div class="logo-box">
+                        <figure class="logo">
+                            <a href="/">
+                                <span>Free Stash Node</span>
+                            </a>
+                        </figure>
+                    </div>
+                    <div class="menu-area">
+                        <nav class="main-menu clearfix">
+                            <!--Keep This Empty / Menu will come through Javascript-->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- main-header end -->
+        <!-- Mobile Menu  -->
+        <div class="mobile-menu">
+            <div class="menu-backdrop"></div>
+            <div class="close-btn"><i class="fas fa-times"></i></div>
+            <nav class="menu-box">
+                <div class="menu-outer">
+                    <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
+                </div>
+                <div class="social-links">
+                    <ul class="clearfix">
+                        <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+                        <li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+                        <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
+                        <li><a href="#"><span class="fab fa-instagram"></span></a></li>
+                        <li><a href="#"><span class="fab fa-youtube"></span></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div><!-- End Mobile Menu -->
+        <!-- Page Title -->
+        <section class="page-title centred" style="background-image: url(/assets/website/img/freestashnode/background/page-title.jpg);">
+            <div class="auto-container">
+                <div class="content-box">
+                    <div class="title">
+                        <h1>java js 二级联动下拉列表_JS实现下拉列表的二级联动</h1>
+                    </div>
+                    <ul class="bread-crumb clearfix">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- End Page Title -->
+        <!-- about-section -->
+        <section class="about-section">
+            <div class="auto-container">
+                <div class="row clearfix">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="StashNode免费订阅官网" data-url="https://stashnode.github.io">
+                <div class="xcblog-blog-detail xcblog-blog-detail-defined">
+                      				  				  				<div id="content_views" class="htmledit_views"> <div style="font-size:16px;"> <p>这个是简单也是最基本的下拉框联动的示例，这个示例主要针对那些只有二级联动，且第一级是固定的选项，第二级的内容也比较简单，不刷新的联动，动态的联动需要检索数据库，这个对不需要更新的二级联动比较实用。这里使用了javascript来联动第二级下拉框。</p> <p>String path = request.getContextPath();</p> <p>String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";</p> <p>%&gt;</p> <p> New Document</p> <p>//定义了城市的二维数组，里面的顺序跟省份的顺序是相同的。通过selectedIndex获得省份的下标值来得到相应的城市数组</p> <p>var city=[</p> <p>["北京","天津","上海","重庆"],</p> <p>["南京","苏州","南通","常州"],</p> <p>["福州","福安","龙岩","南平"],</p> <p>["广州","潮阳","潮州","澄海"],</p> <p>["兰州","白银","定西","敦煌"]</p> <p>];</p> <p>function getCity(){<!-- --></p> <p>//获得省份下拉框的对象</p> <p>var sltProvince=document.form1.province;</p> <p>//获得城市下拉框的对象</p> <p>var sltCity=document.form1.city;</p> <p>//得到对应省份的城市数组</p> <p>var provinceCity=city[sltProvince.selectedIndex - 1];</p> <p>//清空城市下拉框，仅留提示选项</p> <p>sltCity.length=1;</p> <p>//将城市数组中的值填充到城市下拉框中</p> <p>for(var i=0;i</p> <p>sltCity[i+1]=new Option(provinceCity[i],provinceCity[i]);</p> <p>}</p> <p>}</p> <p>请选择所在省份</p> <p>直辖市</p> <p>江苏省</p> <p>福建省</p> <p>广东省</p> <p>甘肃省</p> <p>请选择所在城市</p> <p>这段代码比较简单。</p> <p>如果对js不大熟悉，可以看看下面关于js处理select对象的内容：</p> <p>1、使用selectedIndex属性获取当前选项的索引</p> <p>下拉框的选项是一个线性数组，每个选项都有一个索引，selectedIndex表示当前被选中的选项的索引号。结合options属性，可以得到被选中的option对象，从而对其做进一步的处理。当下拉框可多选时，selectedIndex属性返回第一个被选中的索引。</p> <p>selectedIndex是个只读的属性，想把通过索引指定的下拉框的项设置为选中状态，可以设置option对象的selected=true来实现。</p> <p>2、为select对象添加一个选项</p> <p>sltCity[i+1]=new&nbsp;Option(provinceCity[i],provinceCity[i]);</p> <p>new&nbsp;Option(provinceCity[i],provinceCity[i])表示创建一个值为provinceCity[i]，文本为provinceCity[i]的option对象，sltCity是页面上的city对象，i+1指定新添选项的位置。</p> <p>3、清空一个select对象</p> <p>要将下拉框的所有选项删除有两种方法，</p> <p>第一种方法就是遍历删除：</p> <p>1&nbsp;var l=myselect.length;</p> <p>2&nbsp;for(var i=0;i</p> <p>3&nbsp;myselect.options[i]=null;</p> <p>4&nbsp;}</p> <p>第二种方法比较简单，因此一般都使用此方法：</p> <p>myselect.length=0;</p> </div> </div> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-102338.htm">@Column注解属性详解</a></p>
+                                        <p>下一个：<a href="/news/article-103168.htm">宠物狗领养信息怎么写好（宠物狗领养信息怎么写好一点）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-79058.htm" title="中国宠物领养行业报告（宠物领养网站的设计与实现）">中国宠物领养行业报告（宠物领养网站的设计与实现）</a></li>
+                        <li class="py-2"><a href="/news/article-83940.htm" title="Python实现双X轴双Y轴绘图">Python实现双X轴双Y轴绘图</a></li>
+                        <li class="py-2"><a href="/news/article-96459.htm" title="宠物领养图片真实大全（宠物领养百度百科）">宠物领养图片真实大全（宠物领养百度百科）</a></li>
+                        <li class="py-2"><a href="/news/article-66466.htm" title="C/C++编程：异常处理(exception handling)的原理">C/C++编程：异常处理(exception handling)的原理</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-16-node-share.htm" title="3月16日→19.7M/S|2025年最新免费节点Free Stash Node订阅链接地址">3月16日→19.7M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-25-node-share-links.htm" title="4月25日→21.7M/S|2025年最新免费节点Free Stash Node订阅链接地址">4月25日→21.7M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-15-linux-clash-stash.htm" title="4月15日→18M/S|2025年最新免费节点Free Stash Node订阅链接地址">4月15日→18M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-100164.htm" title="关于上海宠物医院价格查询表的信息">关于上海宠物医院价格查询表的信息</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-19-node-share-links.htm" title="4月19日→22.6M/S|2025年最新免费节点Free Stash Node订阅链接地址">4月19日→22.6M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-26-free-node-subscribe.htm" title="3月26日→18.8M/S|2025年最新免费节点Free Stash Node订阅链接地址">3月26日→18.8M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">77</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- about-section end -->
+                <!-- main-footer -->
+        <footer class="main-footer">
+            <div class="footer-bottom">
+                <div class="auto-container">
+                    <div class="inner-box clearfix">
+                        <div class="copyright pull-left">
+                                                <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                            <p>
+                                <a href="/">Free Stash Node免费机场节点分享官网</a> 版权所有 Powered by WordPress
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- main-footer end -->
+        <!--Scroll to top-->
+        <button class="scroll-top scroll-to-target" data-target="html">
+            <span class="fa fa-arrow-up"></span>
+        </button>
+        <!-- jequery plugins -->
+        <script src="/assets/website/js/frontend/freestashnode/jquery.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/popper.min.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/owl.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/wow.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/validation.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/jquery.fancybox.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/appear.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/scrollbar.js"></script>
+        <!-- main-js -->
+        <script src="/assets/website/js/frontend/freestashnode/script.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+</body><!-- End of .page_wrapper -->
+
+</html>

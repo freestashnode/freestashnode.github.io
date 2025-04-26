@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freestashnode.github.io/news/article-104787.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>小程序怎么自定义导航栏，导航栏放图片、设置高度</title>
+        <meta name="description" content="今天来说一下小程序的自定义导航栏。 1、设置导航栏style为custom： 2、这是刷新页面，页面的内容就跑到了页面的顶端，不留丝毫间隙： 3、然后定义一个components，就是我们自定义的导航" />
+        <link rel="icon" href="/assets/website/img/freestashnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Stash Node免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freestashnode.github.io/news/article-104787.htm" />
+    <meta property="og:site_name" content="Free Stash Node免费机场节点分享官网" />
+    <meta property="og:title" content="小程序怎么自定义导航栏，导航栏放图片、设置高度" />
+    <meta property="og:image" content="https://freestashnode.github.io/uploads/20240919/710fa7f9c8c82ca1274d9fe2c4fcc037.webp" />
+        <meta property="og:release_date" content="2025-04-26T07:39:57" />
+    <meta property="og:updated_time" content="2025-04-26T07:39:57" />
+        <meta property="og:description" content="今天来说一下小程序的自定义导航栏。 1、设置导航栏style为custom： 2、这是刷新页面，页面的内容就跑到了页面的顶端，不留丝毫间隙： 3、然后定义一个components，就是我们自定义的导航" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="小程序怎么自定义导航栏，导航栏放图片、设置高度">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <!-- Stylesheets -->
+    <link href="/assets/website/css/freestashnode/font-awesome-all.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/flaticon.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/owl.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/bootstrap.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/animate.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/color.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/style.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/responsive.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YXFDLQYLFV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YXFDLQYLFV');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+<!-- page wrapper -->
+
+<body data-page="detail">
+    <div class="boxed_wrapper">
+                <!-- preloader -->
+        <div class="preloader"></div>
+        <!-- preloader -->
+        <!-- main header -->
+        <header class="main-header style-one">
+            <!-- header-lower -->
+            <div class="header-lower">
+                <div class="outer-box">
+                    <div class="logo-box">
+                        <figure class="logo">
+                            <a href="/">
+                                                        <span>Free Stash Node</span>
+                                                        </a>
+                        </figure>
+                    </div>
+                    <div class="menu-area">
+                        <!--Mobile Navigation Toggler-->
+                        <div class="mobile-nav-toggler">
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                        </div>
+                        <nav class="main-menu navbar-expand-md navbar-light">
+                            <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+                                <ul class="navigation clearfix">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/client.htm">客户端</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                    </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!--sticky Header-->
+            <div class="sticky-header">
+                <div class="outer-box">
+                    <div class="logo-box">
+                        <figure class="logo">
+                            <a href="/">
+                                <span>Free Stash Node</span>
+                            </a>
+                        </figure>
+                    </div>
+                    <div class="menu-area">
+                        <nav class="main-menu clearfix">
+                            <!--Keep This Empty / Menu will come through Javascript-->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- main-header end -->
+        <!-- Mobile Menu  -->
+        <div class="mobile-menu">
+            <div class="menu-backdrop"></div>
+            <div class="close-btn"><i class="fas fa-times"></i></div>
+            <nav class="menu-box">
+                <div class="menu-outer">
+                    <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
+                </div>
+                <div class="social-links">
+                    <ul class="clearfix">
+                        <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+                        <li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+                        <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
+                        <li><a href="#"><span class="fab fa-instagram"></span></a></li>
+                        <li><a href="#"><span class="fab fa-youtube"></span></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div><!-- End Mobile Menu -->
+        <!-- Page Title -->
+        <section class="page-title centred" style="background-image: url(/assets/website/img/freestashnode/background/page-title.jpg);">
+            <div class="auto-container">
+                <div class="content-box">
+                    <div class="title">
+                        <h1>小程序怎么自定义导航栏，导航栏放图片、设置高度</h1>
+                    </div>
+                    <ul class="bread-crumb clearfix">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- End Page Title -->
+        <!-- about-section -->
+        <section class="about-section">
+            <div class="auto-container">
+                <div class="row clearfix">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="StashNode免费订阅官网" data-url="https://stashnode.github.io">
+                <div class="xcblog-blog-detail xcblog-blog-detail-defined">
+                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>今天来说一下小程序的自定义导航栏。</p> <p>1、设置导航栏style为custom：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221230/1cbde565397cab2b675757d20d2e26d9.jpg" alt="小程序怎么自定义导航栏，导航栏放图片、设置高度"></p> <p>2、这是刷新页面，页面的内容就跑到了页面的顶端，不留丝毫间隙：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221230/83b351a94839cae76290e0f4af529198.jpg" alt="小程序怎么自定义导航栏，导航栏放图片、设置高度"></p> <p>3、然后定义一个components，就是我们自定义的导航栏组件：<br /> （1）先在项目根目录创建一个components文件夹，这个文件夹的名称是固定的，就是components：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221230/72be6f8dbb61a0d9d242d540735eb9ec.jpg" alt="小程序怎么自定义导航栏，导航栏放图片、设置高度"><br /> （2）文件夹内创建一个导航栏组件的文件夹：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221230/684f64e426ad3d0aed914c14e8b4a310.jpg" alt="小程序怎么自定义导航栏，导航栏放图片、设置高度"><br /> （3）右击创建的“nav”文件夹，点击“新建Component”，会自动在该文件夹下生成四个我们常用的文件：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221230/db36c2b409e912855762f0aabdef9f6c.jpg" alt="小程序怎么自定义导航栏，导航栏放图片、设置高度"><br /><img decoding="async" src="http://img.555519.xyz/uploads/20221230/1ca59f5b90c27a5e24cef8f05482f10d.jpg" alt="小程序怎么自定义导航栏，导航栏放图片、设置高度"><br /> （4）下面是代码时间（后端开发写的前端代码，将就看吧）：<br /> nav.js：</p> <pre><code class="prism language-json"># data中增加barHeight参数 <span class="token literal-property property">data</span><span class="token operator">:</span> <span class="token punctuation">{<!-- --></span>     <span class="token literal-property property">barHeight</span><span class="token operator">:</span> wx<span class="token punctuation">.</span><span class="token function">getSystemInfoSync</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>statusBarHeight <span class="token punctuation">}</span><span class="token punctuation">,</span> </code></pre> <p>nav.wxml：</p> <pre><code class="prism language-wxml">&lt;view style="padding-top:{<!-- -->{barHeight + 40}}rpx; padding-bottom: 50rpx;"&gt;     &lt;view class="topView" bindtap="jumpToAbout"&gt;         &lt;image class="topImage" src="/images/logo.png" alt="小程序怎么自定义导航栏，导航栏放图片、设置高度" mode="aspectFill"&gt;&lt;/image&gt;         &lt;text class="topText"&gt;自定义导航栏&lt;/text&gt;         &lt;image class="topIcon" src="/images/right.png" alt="小程序怎么自定义导航栏，导航栏放图片、设置高度"&gt;&lt;/image&gt;     &lt;/view&gt;     &lt;text class="topSubText"&gt;副标题可以写在这里&lt;/text&gt; &lt;/view&gt; </code></pre> <p>nav.wxss：</p> <pre><code class="prism language-css"><span class="token selector">.topView</span> <span class="token punctuation">{<!-- --></span>     <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span> <span class="token punctuation">}</span>  <span class="token selector">.topImage</span> <span class="token punctuation">{<!-- --></span>     <span class="token property">height</span><span class="token punctuation">:</span> 60rpx<span class="token punctuation">;</span>     <span class="token property">width</span><span class="token punctuation">:</span> 130rpx<span class="token punctuation">;</span> <span class="token punctuation">}</span>  <span class="token selector">.topText</span> <span class="token punctuation">{<!-- --></span>     <span class="token property">margin-left</span><span class="token punctuation">:</span> 12rpx<span class="token punctuation">;</span>     <span class="token property">font-size</span><span class="token punctuation">:</span> larger<span class="token punctuation">;</span> <span class="token punctuation">}</span>  <span class="token selector">.topIcon</span> <span class="token punctuation">{<!-- --></span>     <span class="token property">height</span><span class="token punctuation">:</span> 40rpx<span class="token punctuation">;</span>     <span class="token property">width</span><span class="token punctuation">:</span> 40rpx<span class="token punctuation">;</span>     <span class="token property">margin-top</span><span class="token punctuation">:</span> 8rpx<span class="token punctuation">;</span> <span class="token punctuation">}</span>  <span class="token selector">.topSubText</span> <span class="token punctuation">{<!-- --></span>     <span class="token property">color</span><span class="token punctuation">:</span> #999<span class="token punctuation">;</span> <span class="token punctuation">}</span> </code></pre> <p>4、导航栏组件就定义好了，然后把它引入页面：<br /> （1）要引入的页面json配置文件中引用：</p> <pre><code class="prism language-json"><span class="token punctuation">{<!-- --></span>   <span class="token string-property property">"usingComponents"</span><span class="token operator">:</span> <span class="token punctuation">{<!-- --></span>       <span class="token string-property property">"nav"</span><span class="token operator">:</span><span class="token string">"../../components/nav/nav"</span>   <span class="token punctuation">}</span> <span class="token punctuation">}</span> </code></pre> <p>必须用相对路径。<br /> （2）页面中引入组件：</p> <pre><code class="prism language-wxml">&lt;nav&gt;&lt;/nav&gt; &lt;text&gt;内容&lt;/text&gt; </code></pre> <p>5、最后看效果：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221230/950af8c7cbe478ff8eedd561c915fb3b.jpg" alt="小程序怎么自定义导航栏，导航栏放图片、设置高度"></p> <p>这样就搞定了，希望你们的logo比我的好看。</p> </p></div> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-103882.htm">宠物粮怎么卖（宠物粮食怎么卖）</a></p>
+                                        <p>下一个：<a href="/news/article-104790.htm">Vue动态绑定、添加input</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-94972.htm" title="穷养布偶猫吃什么猫粮知乎（布偶猫吃什么猫粮比较好贵的）">穷养布偶猫吃什么猫粮知乎（布偶猫吃什么猫粮比较好贵的）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-2-free-subscribe-node.htm" title="3月2日→22.1M/S|2025年最新免费节点Free Stash Node订阅链接地址">3月2日→22.1M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-3-linux-clash-stash.htm" title="4月3日→20.2M/S|2025年最新免费节点Free Stash Node订阅链接地址">4月3日→20.2M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-95732.htm" title="动物防疫疫苗数量统计表怎么填图片（动物防疫疫苗数量统计表怎么填图片大全）">动物防疫疫苗数量统计表怎么填图片（动物防疫疫苗数量统计表怎么填图片大全）</a></li>
+                        <li class="py-2"><a href="/news/article-72958.htm" title="动物疫苗注射工作注意事项有哪些（动物疫苗注射工作注意事项有哪些要求）">动物疫苗注射工作注意事项有哪些（动物疫苗注射工作注意事项有哪些要求）</a></li>
+                        <li class="py-2"><a href="/news/article-102338.htm" title="@Column注解属性详解">@Column注解属性详解</a></li>
+                        <li class="py-2"><a href="/news/article-77691.htm" title="宠物用品批发零售（宠物用品批发连锁）">宠物用品批发零售（宠物用品批发连锁）</a></li>
+                        <li class="py-2"><a href="/news/article-97131.htm" title="动物预防接种计划表（动物预防接种实验报告）">动物预防接种计划表（动物预防接种实验报告）</a></li>
+                        <li class="py-2"><a href="/news/article-72292.htm" title="北京宠爱国际动物医疗（北京宠爱国际动物医疗机构）">北京宠爱国际动物医疗（北京宠爱国际动物医疗机构）</a></li>
+                        <li class="py-2"><a href="/news/article-70313.htm" title="中国兽药30强企业排名 中国兽药30强企业排名榜">中国兽药30强企业排名 中国兽药30强企业排名榜</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">77</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- about-section end -->
+                <!-- main-footer -->
+        <footer class="main-footer">
+            <div class="footer-bottom">
+                <div class="auto-container">
+                    <div class="inner-box clearfix">
+                        <div class="copyright pull-left">
+                                                <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                            <p>
+                                <a href="/">Free Stash Node免费机场节点分享官网</a> 版权所有 Powered by WordPress
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- main-footer end -->
+        <!--Scroll to top-->
+        <button class="scroll-top scroll-to-target" data-target="html">
+            <span class="fa fa-arrow-up"></span>
+        </button>
+        <!-- jequery plugins -->
+        <script src="/assets/website/js/frontend/freestashnode/jquery.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/popper.min.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/owl.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/wow.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/validation.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/jquery.fancybox.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/appear.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/scrollbar.js"></script>
+        <!-- main-js -->
+        <script src="/assets/website/js/frontend/freestashnode/script.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+</body><!-- End of .page_wrapper -->
+
+</html>
