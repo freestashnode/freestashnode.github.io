@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freestashnode.github.io/news/article-106302.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>mysql ifnull判断null与空值</title>
+        <meta name="description" content="最近遇到一个需求上的问题，运用的数据库是Mysql，涉及到了ifnull函数。 ifnull（expr1，expr2）   如果expr1为null，则显示expr2,否则显示expr1。  举个例子" />
+        <link rel="icon" href="/assets/website/img/freestashnode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Stash Node免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freestashnode.github.io/news/article-106302.htm" />
+    <meta property="og:site_name" content="Free Stash Node免费机场节点分享官网" />
+    <meta property="og:title" content="mysql ifnull判断null与空值" />
+    <meta property="og:image" content="https://freestashnode.github.io/uploads/20240919/3b2341528fd88fc178e5343ee0f28498.webp" />
+        <meta property="og:release_date" content="2025-04-28T09:45:19" />
+    <meta property="og:updated_time" content="2025-04-28T09:45:19" />
+        <meta property="og:description" content="最近遇到一个需求上的问题，运用的数据库是Mysql，涉及到了ifnull函数。 ifnull（expr1，expr2）   如果expr1为null，则显示expr2,否则显示expr1。  举个例子" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="mysql ifnull判断null与空值">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <!-- Stylesheets -->
+    <link href="/assets/website/css/freestashnode/font-awesome-all.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/flaticon.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/owl.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/bootstrap.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/animate.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/color.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/style.css" rel="stylesheet">
+    <link href="/assets/website/css/freestashnode/responsive.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YXFDLQYLFV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YXFDLQYLFV');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+<!-- page wrapper -->
+
+<body data-page="detail">
+    <div class="boxed_wrapper">
+                <!-- preloader -->
+        <div class="preloader"></div>
+        <!-- preloader -->
+        <!-- main header -->
+        <header class="main-header style-one">
+            <!-- header-lower -->
+            <div class="header-lower">
+                <div class="outer-box">
+                    <div class="logo-box">
+                        <figure class="logo">
+                            <a href="/">
+                                                        <span>Free Stash Node</span>
+                                                        </a>
+                        </figure>
+                    </div>
+                    <div class="menu-area">
+                        <!--Mobile Navigation Toggler-->
+                        <div class="mobile-nav-toggler">
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                            <i class="icon-bar"></i>
+                        </div>
+                        <nav class="main-menu navbar-expand-md navbar-light">
+                            <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+                                <ul class="navigation clearfix">
+                                                                        <li><a href="/">首页</a></li>
+                                                                        <li><a href="/free-nodes/">免费节点</a></li>
+                                                                        <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                        <li><a href="/client.htm">客户端</a></li>
+                                                                        <li><a href="/news/">新闻资讯</a></li>
+                                                                    </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!--sticky Header-->
+            <div class="sticky-header">
+                <div class="outer-box">
+                    <div class="logo-box">
+                        <figure class="logo">
+                            <a href="/">
+                                <span>Free Stash Node</span>
+                            </a>
+                        </figure>
+                    </div>
+                    <div class="menu-area">
+                        <nav class="main-menu clearfix">
+                            <!--Keep This Empty / Menu will come through Javascript-->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- main-header end -->
+        <!-- Mobile Menu  -->
+        <div class="mobile-menu">
+            <div class="menu-backdrop"></div>
+            <div class="close-btn"><i class="fas fa-times"></i></div>
+            <nav class="menu-box">
+                <div class="menu-outer">
+                    <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
+                </div>
+                <div class="social-links">
+                    <ul class="clearfix">
+                        <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+                        <li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+                        <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
+                        <li><a href="#"><span class="fab fa-instagram"></span></a></li>
+                        <li><a href="#"><span class="fab fa-youtube"></span></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div><!-- End Mobile Menu -->
+        <!-- Page Title -->
+        <section class="page-title centred" style="background-image: url(/assets/website/img/freestashnode/background/page-title.jpg);">
+            <div class="auto-container">
+                <div class="content-box">
+                    <div class="title">
+                        <h1>mysql ifnull判断null与空值</h1>
+                    </div>
+                    <ul class="bread-crumb clearfix">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/news/">新闻资讯</a></li>
+                        <li>正文</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- End Page Title -->
+        <!-- about-section -->
+        <section class="about-section">
+            <div class="auto-container">
+                <div class="row clearfix">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="StashNode免费订阅官网" data-url="https://stashnode.github.io">
+                <div class="xcblog-blog-detail xcblog-blog-detail-defined">
+                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>最近遇到一个需求上的问题，运用的数据库是Mysql，涉及到了ifnull函数。</p> <pre><code class="prism language-sql">ifnull（expr1，expr2）   如果expr1为<span class="token boolean">null</span>，则显示expr2<span class="token punctuation">,</span>否则显示expr1。 </code></pre> <p>举个例子：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230118/4fd85cbd3ac48e35cae21a6da20b47fe.jpg" alt="mysql ifnull判断null与空值"></p> <pre><code class="prism language-sql"><span class="token keyword">SELECT</span> IFNULL<span class="token punctuation">(</span>rcar_id<span class="token punctuation">,</span>rcar_id1<span class="token punctuation">)</span> <span class="token keyword">from</span> wb_busi_gross_rcar  <span class="token keyword">where</span> serial_no <span class="token operator">=</span> <span class="token string">'20000019122617250028'</span> </code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230118/98cfa5cf0b138a23830aa172d6f958bc.jpg" alt="mysql ifnull判断null与空值"></p> <p><strong>1.如果两个都为null,结果为null。</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads/20230118/ffe3f1c062512ae47917bd954c1a7307.jpg" alt="mysql ifnull判断null与空值"><br /><img decoding="async" src="http://img.555519.xyz/uploads/20230118/a965ed6a85633a45961b89d83b0e22e1.jpg" alt="mysql ifnull判断null与空值"></p> <p><strong>2.如果为空（mysql区分null与空字符串），不受影响。</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads/20230118/bc43bedb46ea1bbc8043e1b32e624d4a.jpg" alt="mysql ifnull判断null与空值"><br /><img decoding="async" src="http://img.555519.xyz/uploads/20230118/2c3c1f74d5056d80c52689db077e14fe.jpg" alt="mysql ifnull判断null与空值"><br /> 所以这里需要把空转换为null，才能进行判断，下面给出一个方法。</p> <pre><code class="prism language-sql"><span class="token keyword">SELECT</span> ifnull<span class="token punctuation">(</span><span class="token keyword">case</span> <span class="token keyword">when</span> rcar_id <span class="token operator">=</span> <span class="token string">''</span> <span class="token keyword">then</span> <span class="token boolean">null</span> <span class="token keyword">else</span> rcar_id <span class="token keyword">end</span><span class="token punctuation">,</span><span class="token keyword">case</span> <span class="token keyword">when</span> rcar_id1 <span class="token operator">=</span> <span class="token string">''</span> <span class="token keyword">then</span> <span class="token boolean">null</span> <span class="token keyword">else</span> rcar_id1 <span class="token keyword">end</span><span class="token punctuation">)</span> rcar_id <span class="token keyword">from</span> wb_busi_gross_rcar  <span class="token keyword">where</span> serial_no <span class="token operator">=</span> <span class="token string">'20000019122617250028'</span>  </code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230118/a4377ec3cadeeacab33177ffa2fb4024.jpg" alt="mysql ifnull判断null与空值"><br /> 记录下来，方便学习，如有错误之处，欢迎指正！</p> </p></div> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-105480.htm">附近免费领养小猫山东 山东领养猫咪</a></p>
+                                        <p>下一个：<a href="/news/article-106303.htm">动物医院仪器有哪些牌子好（动物医院常用仪器）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-4-17-free-subscribe-node.htm" title="4月17日→19.3M/S|2025年最新免费节点Free Stash Node订阅链接地址">4月17日→19.3M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-106302.htm" title="mysql ifnull判断null与空值">mysql ifnull判断null与空值</a></li>
+                        <li class="py-2"><a href="/news/article-105479.htm" title="学宠物美容怎么样?有前景吗?（学宠物美容有前途吗）">学宠物美容怎么样?有前景吗?（学宠物美容有前途吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-29-free-subscribe-node.htm" title="3月29日→20.3M/S|2025年最新免费节点Free Stash Node订阅链接地址">3月29日→20.3M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-11-free-node-subscribe-links.htm" title="4月11日→22.3M/S|2025年最新免费节点Free Stash Node订阅链接地址">4月11日→22.3M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-82518.htm" title="【PyTorch】Input type (torch.cuda.FloatTensor) and weight type (torch.FloatTensor) should be the same">【PyTorch】Input type (torch.cuda.FloatTensor) and weight type (torch.FloatTensor) should be the same</a></li>
+                        <li class="py-2"><a href="/news/article-72290.htm" title="宠物粮价格及图片（宠物粮go）">宠物粮价格及图片（宠物粮go）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-19-free-subscribe-node.htm" title="3月19日→19.4M/S|2025年最新免费节点Free Stash Node订阅链接地址">3月19日→19.4M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-3-node-share.htm" title="3月3日→20.7M/S|2025年最新免费节点Free Stash Node订阅链接地址">3月3日→20.7M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-72292.htm" title="北京宠爱国际动物医疗（北京宠爱国际动物医疗机构）">北京宠爱国际动物医疗（北京宠爱国际动物医疗机构）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">89</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- about-section end -->
+                <!-- main-footer -->
+        <footer class="main-footer">
+            <div class="footer-bottom">
+                <div class="auto-container">
+                    <div class="inner-box clearfix">
+                        <div class="copyright pull-left">
+                                                <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                            <p>
+                                <a href="/">Free Stash Node免费机场节点分享官网</a> 版权所有 Powered by WordPress
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- main-footer end -->
+        <!--Scroll to top-->
+        <button class="scroll-top scroll-to-target" data-target="html">
+            <span class="fa fa-arrow-up"></span>
+        </button>
+        <!-- jequery plugins -->
+        <script src="/assets/website/js/frontend/freestashnode/jquery.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/popper.min.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/owl.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/wow.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/validation.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/jquery.fancybox.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/appear.js"></script>
+        <script src="/assets/website/js/frontend/freestashnode/scrollbar.js"></script>
+        <!-- main-js -->
+        <script src="/assets/website/js/frontend/freestashnode/script.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+    </div>
+</body><!-- End of .page_wrapper -->
+
+</html>
