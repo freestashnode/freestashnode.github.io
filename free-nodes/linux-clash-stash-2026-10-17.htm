@@ -393,17 +393,13 @@ bash &lt;(curl -s -L https://github.com/v2fly/fhs-install-v2ray/raw/master/insta
 <div class="clearfix"></div>
 <div class="col-md-12 mt-5">
         <p>上一个：<a href="/free-nodes/2026-10-16-node-share.htm">10月16日→19.7M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></p>
+        <p>下一个：<a href="/free-nodes/2026-10-18-free-node-subscribe.htm">10月18日→18.4M/S|2025年最新免费节点Free Stash Node订阅链接地址</a></p>
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>WinXray 节点健康检测如何提高稳定性？</h5></div>
+    <div class="panel-heading"><h5>Hiddify Next 可以兼容旧版 Hiddify 吗？</h5></div>
     <div class="panel-body">
-        WinXray 会定期检测节点延迟和丢包率，并结合策略组自动切换到最优节点。避免高延迟或失效节点，提高网页浏览、视频播放和游戏连接的速度和稳定性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Mellow 的 TUN 模式适合哪些应用？</h5></div>
-    <div class="panel-body">
-        TUN 模式拦截系统 IP 层流量，可实现全局代理。适合游戏、视频、浏览器和其他全局应用，实现低延迟和稳定连接，保证所有流量通过代理节点，提高访问速度和稳定性。<hr />    </div>
+        Hiddify Next 完全向下兼容旧版配置，用户可直接导入原有 JSON 或 YAML 文件。系统会自动检测格式并进行迁移，非常适合升级旧环境到新版客户端。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>V2Ray 如何实现分流规则？</h5></div>
@@ -416,9 +412,9 @@ bash &lt;(curl -s -L https://github.com/v2fly/fhs-install-v2ray/raw/master/insta
         QuantumultX 支持域名、IP、端口、协议和用户自定义脚本分流。结合策略组使用，可实现精准流量控制，如广告屏蔽、视频加速和游戏优化，提高访问速度和体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Nekoray 节点订阅自动更新如何配置？</h5></div>
+    <div class="panel-heading"><h5>如何用 systemd 管理 V2Ray/ Sing-box 服务？</h5></div>
     <div class="panel-body">
-        用户可添加订阅 URL，Nekoray 会定期下载并替换旧节点。这样可保证节点列表始终最新，减少手动维护，提高使用效率，同时保证网络访问稳定可靠。<hr />    </div>
+        创建 systemd 单元文件，指定 ExecStart 指令并设置 Restart=on-failure 与合适的 User/Group。启用服务并使用 `systemctl enable` 与 `systemctl start` 管理，便于开机自启与日志集中收集。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>VMess 使用 TLS+WebSocket 的好处是什么？</h5></div>
@@ -426,14 +422,14 @@ bash &lt;(curl -s -L https://github.com/v2fly/fhs-install-v2ray/raw/master/insta
         TLS+WebSocket 可伪装成正常 HTTPS 流量，增强抗封锁能力和隐蔽性。结合域名伪装和策略组使用，可在高封锁网络环境下保持安全、稳定和高速的网络访问体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>如何用 systemd 管理 V2Ray/ Sing-box 服务？</h5></div>
+    <div class="panel-heading"><h5>Mellow 的 TUN 模式适合哪些应用？</h5></div>
     <div class="panel-body">
-        创建 systemd 单元文件，指定 ExecStart 指令并设置 Restart=on-failure 与合适的 User/Group。启用服务并使用 `systemctl enable` 与 `systemctl start` 管理，便于开机自启与日志集中收集。<hr />    </div>
+        TUN 模式拦截系统 IP 层流量，可实现全局代理。适合游戏、视频、浏览器和其他全局应用，实现低延迟和稳定连接，保证所有流量通过代理节点，提高访问速度和稳定性。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Hiddify Next 可以兼容旧版 Hiddify 吗？</h5></div>
+    <div class="panel-heading"><h5>Nekoray 的节点导入是否支持批量 URL？</h5></div>
     <div class="panel-body">
-        Hiddify Next 完全向下兼容旧版配置，用户可直接导入原有 JSON 或 YAML 文件。系统会自动检测格式并进行迁移，非常适合升级旧环境到新版客户端。<hr />    </div>
+        支持。Nekoray 可通过订阅 URL 批量导入节点，并定期更新。用户无需手动添加每个节点，保证节点列表始终最新，提高使用效率和便利性。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Netch 可以做什么？</h5></div>
@@ -441,9 +437,14 @@ bash &lt;(curl -s -L https://github.com/v2fly/fhs-install-v2ray/raw/master/insta
         Netch 是一款 Windows 平台的网络加速工具，支持基于 V2Ray、Socks5、Shadowsocks 等协议的代理。它可用于加速游戏、视频或网站访问，并能通过 TAP 模式实现系统级代理，广受游戏玩家喜爱。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Nekoray 的节点导入是否支持批量 URL？</h5></div>
+    <div class="panel-heading"><h5>WinXray 节点健康检测如何提高稳定性？</h5></div>
     <div class="panel-body">
-        支持。Nekoray 可通过订阅 URL 批量导入节点，并定期更新。用户无需手动添加每个节点，保证节点列表始终最新，提高使用效率和便利性。    </div>
+        WinXray 会定期检测节点延迟和丢包率，并结合策略组自动切换到最优节点。避免高延迟或失效节点，提高网页浏览、视频播放和游戏连接的速度和稳定性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Nekoray 节点订阅自动更新如何配置？</h5></div>
+    <div class="panel-body">
+        用户可添加订阅 URL，Nekoray 会定期下载并替换旧节点。这样可保证节点列表始终最新，减少手动维护，提高使用效率，同时保证网络访问稳定可靠。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -491,16 +492,16 @@ bash &lt;(curl -s -L https://github.com/v2fly/fhs-install-v2ray/raw/master/insta
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/linux-clash-stash-2026-10-17.htm" title="10月17日→18.2M/S|2025年最新免费节点Free Stash Node订阅链接地址">10月17日→18.2M/S|2025年最新免费节点Free Stash Node订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-10-clash-stash.htm" title="9月10日→18.7M/S|2025年最新免费节点Free Stash Node订阅链接地址">9月10日→18.7M/S|2025年最新免费节点Free Stash Node订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-10-16-node-share.htm" title="10月16日→19.7M/S|2025年最新免费节点Free Stash Node订阅链接地址">10月16日→19.7M/S|2025年最新免费节点Free Stash Node订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-10-13.htm" title="10月13日→22.8M/S|2025年最新免费节点Free Stash Node订阅链接地址">10月13日→22.8M/S|2025年最新免费节点Free Stash Node订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-22-clash-stash-node.htm" title="9月22日→19M/S|2025年最新免费节点Free Stash Node订阅链接地址">9月22日→19M/S|2025年最新免费节点Free Stash Node订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-24-clash-stash-node.htm" title="9月24日→21.4M/S|2025年最新免费节点Free Stash Node订阅链接地址">9月24日→21.4M/S|2025年最新免费节点Free Stash Node订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-6-free-node-subscribe.htm" title="9月6日→19.6M/S|2025年最新免费节点Free Stash Node订阅链接地址">9月6日→19.6M/S|2025年最新免费节点Free Stash Node订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-stash-node-2026-9-9.htm" title="9月9日→20M/S|2025年最新免费节点Free Stash Node订阅链接地址">9月9日→20M/S|2025年最新免费节点Free Stash Node订阅链接地址</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/linux-clash-stash-2026-9-15.htm" title="9月15日→21.6M/S|2025年最新免费节点Free Stash Node订阅链接地址">9月15日→21.6M/S|2025年最新免费节点Free Stash Node订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-10-24-clash-stash.htm" title="10月24日→18.3M/S|2025年最新免费节点Free Stash Node订阅链接地址">10月24日→18.3M/S|2025年最新免费节点Free Stash Node订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/node-share-links-2026-9-25.htm" title="9月25日→19.7M/S|2025年最新免费节点Free Stash Node订阅链接地址">9月25日→19.7M/S|2025年最新免费节点Free Stash Node订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-9-23.htm" title="9月23日→19.3M/S|2025年最新免费节点Free Stash Node订阅链接地址">9月23日→19.3M/S|2025年最新免费节点Free Stash Node订阅链接地址</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/2026-10-10-clash-stash.htm" title="10月10日→18.1M/S|2025年最新免费节点Free Stash Node订阅链接地址">10月10日→18.1M/S|2025年最新免费节点Free Stash Node订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/linux-clash-stash-2026-9-17.htm" title="9月17日→18.4M/S|2025年最新免费节点Free Stash Node订阅链接地址">9月17日→18.4M/S|2025年最新免费节点Free Stash Node订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-30-node-share.htm" title="9月30日→19.2M/S|2025年最新免费节点Free Stash Node订阅链接地址">9月30日→19.2M/S|2025年最新免费节点Free Stash Node订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-28-share-clash-stash.htm" title="9月28日→21.4M/S|2025年最新免费节点Free Stash Node订阅链接地址">9月28日→21.4M/S|2025年最新免费节点Free Stash Node订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-9-27.htm" title="9月27日→18.5M/S|2025年最新免费节点Free Stash Node订阅链接地址">9月27日→18.5M/S|2025年最新免费节点Free Stash Node订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/linux-clash-stash-2026-10-11.htm" title="10月11日→23M/S|2025年最新免费节点Free Stash Node订阅链接地址">10月11日→23M/S|2025年最新免费节点Free Stash Node订阅链接地址</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-2-node-share.htm" title="9月2日→21.6M/S|2025年最新免费节点Free Stash Node订阅链接地址">9月2日→21.6M/S|2025年最新免费节点Free Stash Node订阅链接地址</a><hr /></li>
                     </ul>
     </div>
 </div>
@@ -512,7 +513,7 @@ bash &lt;(curl -s -L https://github.com/v2fly/fhs-install-v2ray/raw/master/insta
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">16</span> <a href="/date/2026-10/" title="2026-10 归档">2026-10</a></h4>
+                <h4><span class="badge" style="float: right;">23</span> <a href="/date/2026-10/" title="2026-10 归档">2026-10</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">29</span> <a href="/date/2026-09/" title="2026-09 归档">2026-09</a></h4>
